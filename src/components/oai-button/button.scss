@@ -1,0 +1,32 @@
+@import './abstract/button-size';
+@import './abstract/button-theme';
+
+$filled: '[style="filled"i]';
+$outlined: '[style="outlined"i]';
+
+button {
+  block-size: var(--size-block, initial);
+  border-radius: var(--border-radius);
+  box-sizing: border-box;
+  inline-size: var(--button-size-inline, initial);
+  background-color: var(--theme);
+  color: var(--foreground);
+
+  &:disabled {
+    opacity: .4;
+  }
+
+  &:not(#{$outlined}) {
+    border: 0 none;
+  }
+}
+
+:host(#{$outlined}) {
+  button {
+    background-color: transparent;
+    border-width: 1px;
+    border-style: solid;
+    border-color: var(--theme);
+    color: var(--theme);
+  }
+}

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <title>Stencil Component Starter</title>
+  <script src="/build/oai.js"></script>
+  <link rel="stylesheet" href="./build/oai.css">
+
+</head>
+
+<body>
+
+  <my-component first="Stencil" middle="'Don't call me a framework'" last="JS"></my-component>
+
+  <oai-side-drawer></oai-side-drawer>
+
+  <oai-button id="button">Example</oai-button>
+  <br>
+  <select name="minSize">
+    <option value="" selected>Default</option>
+    <option value="xs">XS</option>
+    <option value="sm">SM</option>
+    <option value="lg">LG</option>
+    <option value="xl">XL</option>
+  </select>
+
+  <select name="color">
+    <option value="" selected>Default</option>
+    <option value="primary">Primary</option>
+    <option value="secondary">Secondary</option>
+    <option value="warn">Warn</option>
+  </select>
+
+  <select name="state">
+    <option value="" selected>Default</option>
+    <option value="disabled">Disabled</option>
+    <option value="pending">Pending</option>
+  </select>
+
+  <select name="style">
+    <option value="" selected>Default</option>
+    <option value="outlined">Outlined</option>
+  </select>
+
+  <script>
+    const button = document.querySelector('#button');
+
+    const setAttr = e => {
+      const {
+        name,
+        value
+      } = e.target;
+      console.log(!value)
+      if (!value) {
+        return button.removeAttribute(name);
+      }
+      button.setAttribute(name, value);
+    };
+
+    ['minSize', 'color', 'state', 'style'].forEach(attr =>
+      document.getElementsByName(attr)[0]
+      .addEventListener('change', setAttr)
+    );
+
+  </script>
+</body>
+
+</html>

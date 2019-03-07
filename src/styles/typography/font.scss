@@ -1,0 +1,21 @@
+// @supports (font-variations-settings: 'wdth'200) {
+@font-face {
+  font-family: Gingham;
+  src: url('../assets/fonts/Gingham/Gingham.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: AvenirNext;
+  src: url('../assets/fonts/AvenirNext/AvenirNext_Variable.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: AvenirNext;
+  font-variation-settings: 'wdth'400, 'wght'98;
+}
+
+// }
