@@ -12,6 +12,19 @@ import '@stencil/core';
 
 export namespace Components {
 
+  interface OaiButton {
+    /**
+    * The minimum size
+    */
+    'state': 'default' | 'disabled' | 'pending';
+  }
+  interface OaiButtonAttributes extends StencilHTMLAttributes {
+    /**
+    * The minimum size
+    */
+    'state'?: 'default' | 'disabled' | 'pending';
+  }
+
   interface MyComponent {
     /**
     * The first name
@@ -41,47 +54,34 @@ export namespace Components {
     'middle'?: string;
   }
 
-  interface OaiButton {
-    /**
-    * The minimum size
-    */
-    'state': 'default' | 'disabled' | 'pending';
-  }
-  interface OaiButtonAttributes extends StencilHTMLAttributes {
-    /**
-    * The minimum size
-    */
-    'state'?: 'default' | 'disabled' | 'pending';
-  }
-
   interface OaiSideDrawer {}
   interface OaiSideDrawerAttributes extends StencilHTMLAttributes {}
 }
 
 declare global {
   interface StencilElementInterfaces {
-    'MyComponent': Components.MyComponent;
     'OaiButton': Components.OaiButton;
+    'MyComponent': Components.MyComponent;
     'OaiSideDrawer': Components.OaiSideDrawer;
   }
 
   interface StencilIntrinsicElements {
-    'my-component': Components.MyComponentAttributes;
     'oai-button': Components.OaiButtonAttributes;
+    'my-component': Components.MyComponentAttributes;
     'oai-side-drawer': Components.OaiSideDrawerAttributes;
   }
 
-
-  interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {}
-  var HTMLMyComponentElement: {
-    prototype: HTMLMyComponentElement;
-    new (): HTMLMyComponentElement;
-  };
 
   interface HTMLOaiButtonElement extends Components.OaiButton, HTMLStencilElement {}
   var HTMLOaiButtonElement: {
     prototype: HTMLOaiButtonElement;
     new (): HTMLOaiButtonElement;
+  };
+
+  interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {}
+  var HTMLMyComponentElement: {
+    prototype: HTMLMyComponentElement;
+    new (): HTMLMyComponentElement;
   };
 
   interface HTMLOaiSideDrawerElement extends Components.OaiSideDrawer, HTMLStencilElement {}
@@ -91,14 +91,14 @@ declare global {
   };
 
   interface HTMLElementTagNameMap {
-    'my-component': HTMLMyComponentElement
     'oai-button': HTMLOaiButtonElement
+    'my-component': HTMLMyComponentElement
     'oai-side-drawer': HTMLOaiSideDrawerElement
   }
 
   interface ElementTagNameMap {
-    'my-component': HTMLMyComponentElement;
     'oai-button': HTMLOaiButtonElement;
+    'my-component': HTMLMyComponentElement;
     'oai-side-drawer': HTMLOaiSideDrawerElement;
   }
 
