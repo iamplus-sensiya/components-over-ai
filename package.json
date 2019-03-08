@@ -1,5 +1,5 @@
 {
-  "name": "webcomponents-over-ai",
+  "name": "components-over-ai",
   "version": "0.0.1",
   "description": "Stencil Component Starter",
   "module": "dist/esm/index.js",
@@ -14,13 +14,18 @@
     "build": "stencil build --docs",
     "start": "stencil build --dev --watch --serve",
     "test": "stencil test --spec --e2e",
-    "test.watch": "stencil test --spec --e2e --watchAll"
+    "test.watch": "stencil test --spec --e2e --watchAll",
+    "docz:dev": "docz dev --typescript",
+    "docz:build": "docz build"
   },
   "dependencies": {
     "@stencil/sass": "^0.1.1"
   },
   "devDependencies": {
-    "@stencil/core": "^0.16.4"
+    "@stencil/core": "^0.16.4",
+    "docz": "^0.13.7",
+    "docz-theme-default": "^0.13.7",
+    "webpack": "^4.28.4"
   },
   "license": "MIT"
 }
