@@ -13,7 +13,13 @@ export const config: Config = {
   ],
   globalStyle: 'src/styles/app.scss',
   plugins: [
-    sass()
+    sass(
+      // {
+      //   injectGlobalPaths: [
+      //     'src/styles/abstracts/index.scss'
+      //   ]
+      // }
+    )
   ],
   copy: [
     { src: 'assets' }
@@ -22,7 +28,6 @@ export const config: Config = {
     openBrowser: false
   },
   bundles: [
-    { components: ['my-component'] },
     { components: ['oai-side-drawer'] },
     { components: ['oai-button'] },
   ]

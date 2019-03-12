@@ -1,16 +1,19 @@
-@import './abstract/button-size';
-@import './abstract/button-theme';
+@import '../../styles/abstracts/typography';
+@import './abstracts/button-size';
+@import './abstracts/button-theme';
 
 $filled: '[style="filled"i]';
 $outlined: '[style="outlined"i]';
 
 button {
+  @include oai-font-body-2;
   block-size: var(--size-block, initial);
+  inline-size: var(--button-size-inline, initial);
   border-radius: var(--border-radius);
   box-sizing: border-box;
-  inline-size: var(--button-size-inline, initial);
-  background-color: var(--theme);
-  color: var(--foreground);
+  outline: none;
+  padding-inline-start: 25px;
+  padding-inline-end: 25px;
 
   &:disabled {
     opacity: .4;
@@ -21,12 +24,29 @@ button {
   }
 }
 
+// filled is the default
+:host(:not(#{$outlined})) {
+  button {
+    background-color: var(--theme);
+    color: var(--contrast);
+    transition: box-shadow .2s;
+
+    &:not(:disabled):not(:active) {
+      box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.3);
+
+      &:hover {
+        box-shadow: 0px 10px 19px rgba(0, 0, 0, 0.24);
+      }
+    }
+  }
+}
+
 :host(#{$outlined}) {
   button {
     background-color: transparent;
     border-width: 1px;
     border-style: solid;
-    border-color: var(--theme);
+    border-color: currentColor;
     color: var(--theme);
   }
 }
