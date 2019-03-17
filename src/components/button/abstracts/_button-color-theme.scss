@@ -20,7 +20,7 @@ $nagatedAttributeSelectors:();
 }
 
 // DEFAULT
-@include multiNagateSelectors(':host', $nagatedAttributeSelectors) {
+@include nagateMultiSelectors(':host', $nagatedAttributeSelectors) {
 
   & button {
     --theme: var(--oai-color-pale);

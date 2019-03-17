@@ -9,7 +9,6 @@ export class OAIButton {
 
     /** (optional) The minimum size of the button (xs / sm / lg / xl) */
     /** (optional) The style of the button (default = filled / outlined (stroked)) */
-    /** (optional) The theme of the button (default = pale / primary / accent / warn) */
 
     /**
      * @Prop --oai-color-pale: pale theme main color;
@@ -24,11 +23,12 @@ export class OAIButton {
 
     /** (optional) The state of the button (default / disabled / pending) */
     @Prop({ reflectToAttr: true }) state: 'default' | 'disabled' | 'pending' = 'default';
+    @Prop({ reflectToAttr: true }) color: 'pale' | 'primary' | 'accent' | 'warn' = 'pale';
 
     render() {
 
         let pendingIndicator = this.state === 'pending' ?
-            <oai-progress-indicator /> : null;
+            <oai-progress-indicator class="pending-indicator" color={this.color} /> : null;
 
         return (
             <button disabled={this.state === 'disabled' || this.state === 'pending'}>

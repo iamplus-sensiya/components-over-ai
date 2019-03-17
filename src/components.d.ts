@@ -13,14 +13,16 @@ import '@stencil/core';
 export namespace Components {
 
   interface OaiButton {
+    'color': 'pale' | 'primary' | 'accent' | 'warn';
     /**
-    * (optional) The minimum size of the button (xs / sm / lg / xl) (optional) The style of the button (default = filled / outlined (stroked)) (optional) The theme of the button (default = pale / primary / accent / warn) (optional) The state of the button (default / disabled / pending)
+    * (optional) The minimum size of the button (xs / sm / lg / xl) (optional) The style of the button (default = filled / outlined (stroked)) (optional) The state of the button (default / disabled / pending)
     */
     'state': 'default' | 'disabled' | 'pending';
   }
   interface OaiButtonAttributes extends StencilHTMLAttributes {
+    'color'?: 'pale' | 'primary' | 'accent' | 'warn';
     /**
-    * (optional) The minimum size of the button (xs / sm / lg / xl) (optional) The style of the button (default = filled / outlined (stroked)) (optional) The theme of the button (default = pale / primary / accent / warn) (optional) The state of the button (default / disabled / pending)
+    * (optional) The minimum size of the button (xs / sm / lg / xl) (optional) The style of the button (default = filled / outlined (stroked)) (optional) The state of the button (default / disabled / pending)
     */
     'state'?: 'default' | 'disabled' | 'pending';
   }
@@ -29,12 +31,14 @@ export namespace Components {
   interface OaiSideDrawerAttributes extends StencilHTMLAttributes {}
 
   interface OaiProgressIndicator {
+    'color': 'pale' | 'primary' | 'accent' | 'warn';
     /**
     * (optional) The size of the progress indicator (xs (default) / sm / lg / xl)
     */
     'size': 'xs' | 'sm' | 'lg' | 'xl';
   }
   interface OaiProgressIndicatorAttributes extends StencilHTMLAttributes {
+    'color'?: 'pale' | 'primary' | 'accent' | 'warn';
     /**
     * (optional) The size of the progress indicator (xs (default) / sm / lg / xl)
     */

@@ -1,6 +1,6 @@
 @import '../../styles/abstracts/typography';
 @import './abstracts/button-size';
-@import './abstracts/button-theme';
+@import './abstracts/button-color-theme';
 
 $filled: '[style="filled"i]';
 $outlined: '[style="outlined"i]';
@@ -32,7 +32,8 @@ button {
   button {
     background-color: var(--theme);
     color: var(--contrast);
-    transition: box-shadow .2s;
+    transition: box-shadow .2s,
+      background-color .5s;
 
     &:not(:disabled):not(:active) {
       box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.3);

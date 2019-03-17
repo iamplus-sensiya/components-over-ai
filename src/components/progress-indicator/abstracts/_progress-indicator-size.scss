@@ -1,22 +1,20 @@
-$xs: '[size="xs"i]';
-$sm: '[size="sm"i]';
-$lg: '[size="lg"i]';
-$xl: '[size="xl"i]';
+@import '../../../styles/mixins';
 
-// DEFAULT | XS
-// :host([size='xs'i]),
-:host(:not(#{$sm}):not(#{$lg}):not(#{$xl})) {
-  --progress-indicator-size: 1.6rem;
+$sizes: ('xs':1.6rem, 'sm':2.4rem, 'lg':3.6rem, 'xl':4.8rem);
+$nagatedAttributeSelectors:();
+
+@each $size-prop,
+$size in $sizes {
+  $attr:'[size="#{$size-prop}"i]';
+  $nagatedAttributeSelectors: append($nagatedAttributeSelectors, $attr, );
+
+  :host(#{$attr}) {
+    --progress-indicator-size: #{$size};
+  }
+
 }
 
-:host(#{$sm}) {
-  --progress-indicator-size: 2.6rem;
-}
-
-:host(#{$lg}) {
-  --progress-indicator-size: 3.6rem;
-}
-
-:host(#{$xl}) {
-  --progress-indicator-size: 4.8rem;
+// DEFAULT TO XS
+@include nagateMultiSelectors(':host', $nagatedAttributeSelectors) {
+  --progress-indicator-size: #{map-get($sizes, 'xs')};
 }

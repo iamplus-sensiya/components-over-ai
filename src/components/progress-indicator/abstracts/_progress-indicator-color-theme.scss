@@ -1,0 +1,18 @@
+@import '../../../styles/mixins';
+
+$themes: primary secondary warn;
+$nagatedAttributeSelectors:();
+
+@each $theme in $themes {
+  $attr:'[color="#{$theme}"i]';
+  $nagatedAttributeSelectors: append($nagatedAttributeSelectors, $attr, );
+
+  :host(#{$attr}) {
+    --theme: var(--oai-color-#{$theme});
+  }
+}
+
+// DEFAULT
+@include nagateMultiSelectors(':host', $nagatedAttributeSelectors) {
+  --theme: var(--oai-color-pale);
+}
