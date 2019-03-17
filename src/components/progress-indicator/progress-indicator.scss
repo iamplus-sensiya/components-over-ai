@@ -1,0 +1,25 @@
+@import './abstracts/progress-indicator-size.scss';
+
+.loader {
+  --border-size: calc(var(--progress-indicator-size) / 4);
+  border: var(--border-size, $xs) solid #f3f3f3;
+  /* Light grey */
+  border-top: var(--border-size, $xs) solid #3498db;
+  /* Blue */
+  border-radius: 50%;
+  //   display: inline-block;
+  inline-size: var(--progress-indicator-size);
+  block-size: var(--progress-indicator-size);
+  animation: spin 2s linear infinite;
+  //   aspect-ratio: 1/1;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}

@@ -14,11 +14,16 @@
 
   <oai-side-drawer></oai-side-drawer>
   <br>
-  <oai-button id="button">Example</oai-button>
+
+  <oai-button id="button">
+    <i slot="prefix">✏️</i>
+    Example
+    <i slot="suffix">📝</i>
+  </oai-button>
   <br>
   <br>
   <select name="minSize">
-    <option value="" selected>Default</option>
+    <option value="" selected>Default Min Size</option>
     <option value="xs">XS</option>
     <option value="sm">SM</option>
     <option value="lg">LG</option>
@@ -26,20 +31,20 @@
   </select>
 
   <select name="color">
-    <option value="" selected>Default</option>
+    <option value="" selected>Default Color</option>
     <option value="primary">Primary</option>
     <option value="secondary">Secondary</option>
     <option value="warn">Warn</option>
   </select>
 
   <select name="state">
-    <option value="" selected>Default</option>
+    <option value="" selected>Default State</option>
     <option value="disabled">Disabled</option>
     <option value="pending">Pending</option>
   </select>
 
   <select name="style">
-    <option value="" selected>Default</option>
+    <option value="" selected>Default Style</option>
     <option value="outlined">Outlined</option>
   </select>
 

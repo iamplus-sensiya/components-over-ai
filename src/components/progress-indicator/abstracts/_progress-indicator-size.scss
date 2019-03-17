@@ -1,0 +1,22 @@
+$xs: '[size="xs"i]';
+$sm: '[size="sm"i]';
+$lg: '[size="lg"i]';
+$xl: '[size="xl"i]';
+
+// DEFAULT | XS
+// :host([size='xs'i]),
+:host(:not(#{$sm}):not(#{$lg}):not(#{$xl})) {
+  --progress-indicator-size: 1.6rem;
+}
+
+:host(#{$sm}) {
+  --progress-indicator-size: 2.6rem;
+}
+
+:host(#{$lg}) {
+  --progress-indicator-size: 3.6rem;
+}
+
+:host(#{$xl}) {
+  --progress-indicator-size: 4.8rem;
+}

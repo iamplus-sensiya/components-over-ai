@@ -26,15 +26,18 @@ export class OAIButton {
     @Prop({ reflectToAttr: true }) state: 'default' | 'disabled' | 'pending' = 'default';
 
     render() {
-        let pendingIndicator = null;
-        if (this.state === 'pending') {
-            pendingIndicator = 'loading...';
-        }
+
+        let pendingIndicator = this.state === 'pending' ?
+            <oai-progress-indicator /> : null;
+
         return (
             <button disabled={this.state === 'disabled' || this.state === 'pending'}>
                 {pendingIndicator}
+                <slot name="prefix" />
                 <slot />
+                <slot name="suffix" />
             </button>
         )
+
     }
 }

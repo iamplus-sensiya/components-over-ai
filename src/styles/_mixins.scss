@@ -1,0 +1,26 @@
+@function set-contrast-color($color) {
+
+  // based on the background color
+  @if (lightness($color) > 50) {
+    @return #0d131d; // Lighter backgorund, return dark color
+  }
+
+  @else {
+    @return #ffffff; // Darker background, return light color
+  }
+}
+
+// selects 
+@mixin multiNagateSelectors($selector, $list) {
+  $selector: $selector+'(';
+
+  @each $item in $list {
+    $selector: $selector+':not('+$item+')';
+  }
+
+  $selector: $selector+')';
+
+  #{$selector} {
+    @content;
+  }
+}

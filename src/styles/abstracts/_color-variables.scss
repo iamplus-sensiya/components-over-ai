@@ -1,0 +1,26 @@
+$main-colors: ('background':#e7e7e9,
+'pale': #B0B0B0,
+'primary': #4A90E2,
+'secondary': #009473,
+'warn' : #DD4124);
+
+@function color($key) {
+  @if map-has-key($colors, $key) {
+    @return map-get($colors, $key);
+  }
+
+  //if the requested key is not in the map:
+  @warn "Unknown `#{$key}` in $colors.";
+  @return null;
+}
+
+:root {
+
+  @each $color-name,
+  $color in $main-colors {
+    --oai-color-#{$color-name}: #{$color};
+    --oai-color-#{$color-name}-contrast: #{set-contrast-color($color)};
+    --oai-color-#{$color-name}-disabled: #{lighten($color, 25)};
+  }
+
+}

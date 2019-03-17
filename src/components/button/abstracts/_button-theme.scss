@@ -1,0 +1,34 @@
+@import '../../../styles/mixins';
+
+$themes: primary secondary warn;
+$nagatedAttributeSelectors:();
+
+@each $theme in $themes {
+  $attr:'[color="#{$theme}"i]';
+  $nagatedAttributeSelectors: append($nagatedAttributeSelectors, $attr, );
+
+  :host(#{$attr}) {
+    & button {
+      --theme: var(--oai-color-#{$theme});
+      --contrast: var(--oai-color-#{$theme}-contrast);
+
+      &:disabled {
+        --theme: var(--oai-color-#{$theme}-disabled);
+      }
+    }
+  }
+}
+
+// DEFAULT
+@include multiNagateSelectors(':host', $nagatedAttributeSelectors) {
+
+  & button {
+    --theme: var(--oai-color-pale);
+    --contrast: var(--oai-color-pale-contrast);
+
+    &:disabled {
+      --theme: var(--oai-color-pale-disabled);
+    }
+  }
+
+}

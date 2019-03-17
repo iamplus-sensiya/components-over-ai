@@ -6,6 +6,7 @@ $filled: '[style="filled"i]';
 $outlined: '[style="outlined"i]';
 
 button {
+  --button-inline-space-between-size: 1rem;
   @include oai-font-body-2;
   block-size: var(--size-block, initial);
   inline-size: var(--button-size-inline, initial);
@@ -14,10 +15,12 @@ button {
   outline: none;
   padding-inline-start: 25px;
   padding-inline-end: 25px;
+  display: flex;
+  align-items: center;
 
-  &:disabled {
-    opacity: .4;
-  }
+  // &:disabled {
+  //   opacity: .4;
+  // }
 
   &:not(#{$outlined}) {
     border: 0 none;
@@ -49,4 +52,13 @@ button {
     border-color: currentColor;
     color: var(--theme);
   }
+}
+
+.pending-indicator,
+::slotted([slot="prefix"i]) {
+  margin-inline-end: var(--button-inline-space-between-size);
+}
+
+::slotted([slot="suffix"i]) {
+  margin-inline-start: var(--button-inline-space-between-size);
 }
