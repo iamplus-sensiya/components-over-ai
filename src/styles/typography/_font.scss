@@ -7,15 +7,25 @@
 }
 
 @font-face {
-  font-family: AvenirNext;
+  font-family: #{$main-font};
   src: url('../assets/fonts/AvenirNext/AvenirNext_Variable.ttf');
   font-weight: normal;
   font-style: normal;
 }
 
 body {
-  font-family: AvenirNext;
-  font-variation-settings: 'wdth'400, 'wght'98;
+  font-family: $main-font,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Helvetica,
+    Arial,
+    sans-serif,
+    "Apple Color Emoji",
+    "Segoe UI Emoji",
+    "Segoe UI Symbol";
+  font-variation-settings: 'wdth'200, 'wght'98;
 }
 
 // }

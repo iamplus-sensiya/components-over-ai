@@ -8,9 +8,11 @@ body-2: 1.6rem,
 body-1: 1.4rem,
 caption: 1.2rem);
 
+$main-font: 'AvenirNext';
+
 @mixin oai-font-body-2() {
-  font-size: 1.6rem;
+  font: map-get($font-sizes, 'body-2') / 1 $main-font;
   // font-family: ;
   font-variation-settings: "wdth"100,
-    "wght"600;
+    "wght"400;
 }
