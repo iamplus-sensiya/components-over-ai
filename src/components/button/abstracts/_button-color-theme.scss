@@ -10,7 +10,8 @@ $nagatedAttributeSelectors:();
   :host(#{$attr}) {
     & button {
       --theme: var(--oai-color-#{$theme});
-      --contrast: var(--oai-color-#{$theme}-contrast);
+      // --contrast: var(--oai-color-#{$theme}-contrast);
+      --contrast: white;
 
       &:disabled {
         --theme: var(--oai-color-#{$theme}-disabled);
