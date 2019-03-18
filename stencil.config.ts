@@ -28,7 +28,6 @@ export const config: Config = {
     openBrowser: false
   },
   bundles: [
-    { components: ['oai-side-drawer'] },
     { components: ['oai-progress-indicator'] },
     { components: ['oai-button'] },
   ]

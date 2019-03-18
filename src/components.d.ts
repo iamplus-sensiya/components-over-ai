@@ -27,9 +27,6 @@ export namespace Components {
     'state'?: 'default' | 'disabled' | 'pending';
   }
 
-  interface OaiSideDrawer {}
-  interface OaiSideDrawerAttributes extends StencilHTMLAttributes {}
-
   interface OaiProgressIndicator {
     'color': 'pale' | 'primary' | 'accent' | 'error' | 'warn';
     /**
@@ -49,13 +46,11 @@ export namespace Components {
 declare global {
   interface StencilElementInterfaces {
     'OaiButton': Components.OaiButton;
-    'OaiSideDrawer': Components.OaiSideDrawer;
     'OaiProgressIndicator': Components.OaiProgressIndicator;
   }
 
   interface StencilIntrinsicElements {
     'oai-button': Components.OaiButtonAttributes;
-    'oai-side-drawer': Components.OaiSideDrawerAttributes;
     'oai-progress-indicator': Components.OaiProgressIndicatorAttributes;
   }
 
@@ -66,12 +61,6 @@ declare global {
     new (): HTMLOaiButtonElement;
   };
 
-  interface HTMLOaiSideDrawerElement extends Components.OaiSideDrawer, HTMLStencilElement {}
-  var HTMLOaiSideDrawerElement: {
-    prototype: HTMLOaiSideDrawerElement;
-    new (): HTMLOaiSideDrawerElement;
-  };
-
   interface HTMLOaiProgressIndicatorElement extends Components.OaiProgressIndicator, HTMLStencilElement {}
   var HTMLOaiProgressIndicatorElement: {
     prototype: HTMLOaiProgressIndicatorElement;
@@ -80,13 +69,11 @@ declare global {
 
   interface HTMLElementTagNameMap {
     'oai-button': HTMLOaiButtonElement
-    'oai-side-drawer': HTMLOaiSideDrawerElement
     'oai-progress-indicator': HTMLOaiProgressIndicatorElement
   }
 
   interface ElementTagNameMap {
     'oai-button': HTMLOaiButtonElement;
-    'oai-side-drawer': HTMLOaiSideDrawerElement;
     'oai-progress-indicator': HTMLOaiProgressIndicatorElement;
   }
 

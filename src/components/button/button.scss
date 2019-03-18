@@ -7,21 +7,20 @@ $outlined: '[style="outlined"i]';
 
 button {
   --button-inline-space-between-size: 1rem;
+  --button-padding-inline-size: 2.5rem;
   @include oai-font-body-2;
+  position: relative;
   block-size: var(--size-block, initial);
   min-inline-size: var(--button-size-inline, initial);
   border-radius: var(--border-radius);
   box-sizing: border-box;
   outline: none;
-  padding-inline-start: 25px;
-  padding-inline-end: 25px;
+  padding-inline-start: var(--button-padding-inline-size);
+  padding-inline-end: var(--button-padding-inline-size);
   display: flex;
   align-items: center;
   justify-content: center;
   white-space: nowrap;
-  // &:disabled {
-  //   opacity: .4;
-  // }
 
   &:not(#{$outlined}) {
     border: 0 none;
@@ -49,18 +48,33 @@ button {
 :host(#{$outlined}) {
   button {
     background-color: transparent;
+    color: var(--theme);
     border-width: 1px;
     border-style: solid;
     border-color: currentColor;
-    color: var(--theme);
+
+    &:not(:disabled):not(:active) {
+
+      &:hover,
+      &:active {
+        background-color: var(--theme);
+        color: var(--contrast);
+      }
+    }
+
   }
 }
 
-.pending-indicator,
 ::slotted([slot="prefix"i]) {
   margin-inline-end: var(--button-inline-space-between-size);
 }
 
 ::slotted([slot="suffix"i]) {
   margin-inline-start: var(--button-inline-space-between-size);
+}
+
+.pending-indicator {
+  position: absolute;
+  left: calc(var(--button-padding-inline-size) / 2);
+  transform: translateX(-50%);
 }
