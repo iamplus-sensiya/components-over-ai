@@ -9,7 +9,7 @@ button {
   --button-inline-space-between-size: 1rem;
   @include oai-font-body-2;
   block-size: var(--size-block, initial);
-  inline-size: var(--button-size-inline, initial);
+  min-inline-size: var(--button-size-inline, initial);
   border-radius: var(--border-radius);
   box-sizing: border-box;
   outline: none;
@@ -17,7 +17,8 @@ button {
   padding-inline-end: 25px;
   display: flex;
   align-items: center;
-
+  justify-content: center;
+  white-space: nowrap;
   // &:disabled {
   //   opacity: .4;
   // }

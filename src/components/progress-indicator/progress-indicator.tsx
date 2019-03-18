@@ -9,7 +9,7 @@ export class OAIProgressIndicator {
     /** (optional) The size of the progress indicator (xs (default) / sm / lg / xl) */
 
     @Prop({ reflectToAttr: true }) size: 'xs' | 'sm' | 'lg' | 'xl' = 'xs';
-    @Prop({ reflectToAttr: true }) color: 'pale' | 'primary' | 'accent' | 'warn' = 'pale';
+    @Prop({ reflectToAttr: true }) color: 'pale' | 'primary' | 'accent' | 'error' | 'warn' = 'pale';
 
     render() {
         return (

@@ -1,6 +1,6 @@
 @import '../../../styles/mixins';
 
-$themes: primary secondary warn;
+$themes: primary secondary error warn;
 $nagatedAttributeSelectors:();
 
 @each $theme in $themes {

@@ -1,6 +1,6 @@
 @import '../../../styles/mixins';
 
-$themes: primary secondary warn;
+$themes: primary secondary error warn;
 $nagatedAttributeSelectors:();
 
 @each $theme in $themes {
@@ -10,8 +10,12 @@ $nagatedAttributeSelectors:();
   :host(#{$attr}) {
     & button {
       --theme: var(--oai-color-#{$theme});
-      // --contrast: var(--oai-color-#{$theme}-contrast);
-      --contrast: white;
+      --contrast: var(--oai-color-#{$theme}-contrast);
+      // --contrast: white;
+
+      &:active {
+        --theme: var(--oai-color-#{$theme}-shade);
+      }
 
       &:disabled {
         --theme: var(--oai-color-#{$theme}-disabled);
@@ -26,6 +30,10 @@ $nagatedAttributeSelectors:();
   & button {
     --theme: var(--oai-color-pale);
     --contrast: var(--oai-color-pale-contrast);
+
+    &:active {
+      --theme: var(--oai-color-pale-shade);
+    }
 
     &:disabled {
       --theme: var(--oai-color-pale-disabled);

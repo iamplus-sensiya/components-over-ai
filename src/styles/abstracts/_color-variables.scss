@@ -2,7 +2,8 @@ $main-colors: ('background':#e7e7e9,
 'pale': #B0B0B0,
 'primary': #4A90E2,
 'secondary': #009473,
-'warn' : #DD4124);
+'error' : #DD4124,
+'warn' : #F5A623);
 
 @function color($key) {
   @if map-has-key($colors, $key) {
@@ -19,8 +20,10 @@ $main-colors: ('background':#e7e7e9,
   @each $color-name,
   $color in $main-colors {
     --oai-color-#{$color-name}: #{$color};
-    --oai-color-#{$color-name}-contrast: #{set-contrast-color($color)};
-    --oai-color-#{$color-name}-disabled: #{lighten($color, 25)};
+    --oai-color-#{$color-name}-contrast: #{set-contrast-color($color, 'white', '#0d131d', 91)};
+    --oai-color-#{$color-name}-shade: #{mix(white, $color, 12%)};
+    // --oai-color-#{$color-name}-light: #{mix(white, $color, 18%)};
+    --oai-color-#{$color-name}-disabled: #{mix(white, $color, 62%)};
   }
 
 }
