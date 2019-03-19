@@ -15,14 +15,14 @@ export namespace Components {
   interface OaiButton {
     'color': 'pale' | 'primary' | 'accent' | 'error' | 'warn';
     /**
-    * (optional) The minimum size of the button (xs / sm / lg / xl) (optional) The style of the button (default = filled / outlined (stroked)) (optional) The state of the button (default / disabled / pending)
+    * (optional) The minimum size of the button (xs / sm / lg / xl) (optional) The type of the button (default = filled / outlined (stroked)) (optional) The state of the button (default / disabled / pending)
     */
     'state': 'default' | 'disabled' | 'pending';
   }
   interface OaiButtonAttributes extends StencilHTMLAttributes {
     'color'?: 'pale' | 'primary' | 'accent' | 'error' | 'warn';
     /**
-    * (optional) The minimum size of the button (xs / sm / lg / xl) (optional) The style of the button (default = filled / outlined (stroked)) (optional) The state of the button (default / disabled / pending)
+    * (optional) The minimum size of the button (xs / sm / lg / xl) (optional) The type of the button (default = filled / outlined (stroked)) (optional) The state of the button (default / disabled / pending)
     */
     'state'?: 'default' | 'disabled' | 'pending';
   }

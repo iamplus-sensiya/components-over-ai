@@ -5,8 +5,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
   <title>Stencil Component Starter</title>
-  <script src="/build/oai.js"></script>
-  <link rel="stylesheet" href="./build/oai.css">
+  <script src="/build/overaiComponents.js"></script>
+  <link rel="stylesheet" href="./build/overaiComponents.css">
 
 </head>
 
@@ -44,8 +44,8 @@
     <option value="pending">Pending</option>
   </select>
 
-  <select name="style">
-    <option value="" selected>Default Style</option>
+  <select name="type">
+    <option value="" selected>Default Type</option>
     <option value="outlined">Outlined</option>
   </select>
 
@@ -64,12 +64,13 @@
       button.setAttribute(name, value);
     };
 
-    ['minSize', 'color', 'state', 'style'].forEach(attr =>
+    ['minSize', 'color', 'state', 'type'].forEach(attr =>
       document.getElementsByName(attr)[0]
       .addEventListener('change', setAttr)
     );
 
   </script>
+
 </body>
 
 </html>

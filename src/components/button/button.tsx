@@ -8,7 +8,7 @@ import { Component, Prop } from '@stencil/core';
 export class OAIButton {
 
     /** (optional) The minimum size of the button (xs / sm / lg / xl) */
-    /** (optional) The style of the button (default = filled / outlined (stroked)) */
+    /** (optional) The type of the button (default = filled / outlined (stroked)) */
 
     /**
      * @Prop --oai-color-pale: pale theme main color;

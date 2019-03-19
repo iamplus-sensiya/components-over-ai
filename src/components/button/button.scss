@@ -2,8 +2,8 @@
 @import './abstracts/button-size';
 @import './abstracts/button-color-theme';
 
-$filled: '[style="filled"i]';
-$outlined: '[style="outlined"i]';
+// $filled: '[type="filled"i]';
+$outlined: '[type="outlined"i]';
 
 :host {
   @include oai-font-body-2;
