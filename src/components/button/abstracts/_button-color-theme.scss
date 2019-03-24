@@ -14,7 +14,7 @@ $nagatedAttributeSelectors:();
       // --contrast: white;
 
       &:active {
-        --theme: var(--oai-color-#{$theme}-shade);
+        --theme: var(--oai-color-#{$theme}-tint);
       }
 
       &:disabled {
@@ -32,7 +32,7 @@ $nagatedAttributeSelectors:();
     --contrast: var(--oai-color-pale-contrast);
 
     &:active {
-      --theme: var(--oai-color-pale-shade);
+      --theme: var(--oai-color-pale-tint);
     }
 
     &:disabled {
