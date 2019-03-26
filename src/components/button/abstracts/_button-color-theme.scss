@@ -1,3 +1,7 @@
+/**
+ * @prop --theme: Theme color of the button
+ * @prop --contrast: Contrast (usually text) color of the button
+ */
 @import '../../../styles/mixins';
 
 $themes: primary secondary error warn;

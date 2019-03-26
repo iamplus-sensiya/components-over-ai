@@ -1,3 +1,6 @@
+/**
+ * @prop --button-size-inline: Minimum inline size (width) of the button
+ */
 :host([minsize='xs'i]) {
   --button-size-inline: 10rem;
 }
