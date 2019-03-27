@@ -23,9 +23,8 @@
   },
   "devDependencies": {
     "@stencil/core": "^0.16.4",
-    "docz": "^0.13.7",
-    "docz-theme-default": "^0.13.7",
-    "webpack": "^4.28.4"
+    "docz": "^1.0.0-rc.3",
+    "docz-theme-default": "^1.0.0-rc.3"
   },
   "license": "MIT"
 }
