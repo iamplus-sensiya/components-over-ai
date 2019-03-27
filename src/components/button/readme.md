@@ -1,11 +1,8 @@
 ---
 name: OAI Button
 ---
+
 # oai-button
-
-
-Hello, I'm still a mdx file, but now I have a button component!
-
 
 
 <!-- Auto Generated Below -->

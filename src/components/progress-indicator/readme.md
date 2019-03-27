@@ -1,10 +1,8 @@
-
 ---
 name: OAI Progress Indicator
 ---
 
 # oai-progress-indicator
-
 
 
 
