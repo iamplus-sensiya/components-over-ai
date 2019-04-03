@@ -37,6 +37,8 @@ button {
     color: var(--contrast);
     transition: box-shadow .2s,
       background-color .5s;
+    will-change: box-shadow,
+      background-color;
 
     &:not(:disabled):not(:active) {
       box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.3);
@@ -56,6 +58,7 @@ button {
     border-width: 1px;
     transition: background-color .2s,
       color .2s;
+    will-change: background-color, color;
 
     &:not(:disabled):hover {
       background-color: var(--theme);
