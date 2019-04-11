@@ -12,16 +12,6 @@
 
 <body>
 
-  <oai-button id="button">
-    <svg slot="prefix" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-      stroke-width="2" stroke-linecap="square" stroke-linejoin="arcs">
-      <path d="M14 2H6a2 2 0 0 0-2 2v16c0 1.1.9 2 2 2h12a2 2 0 0 0 2-2V8l-6-6z" />
-      <path d="M14 3v5h5M12 18v-6M9 15h6" /></svg>
-    Example
-    <!-- <i slot="suffix">📝</i> -->
-  </oai-button>
-  <br>
-  <br>
   <select name="minSize">
     <option value="" selected>Default Min Size</option>
     <option value="xs">XS</option>
@@ -48,9 +38,26 @@
     <option value="" selected>Default Type</option>
     <option value="outlined">Outlined</option>
   </select>
+  <br>
+  <br>
+
+  <oai-anchor class="button">This is an anchor tag</oai-anchor>
+  <br>
+  <br>
+
+  <oai-button class="button">
+    <svg slot="prefix" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="arcs">
+      <path d="M14 2H6a2 2 0 0 0-2 2v16c0 1.1.9 2 2 2h12a2 2 0 0 0 2-2V8l-6-6z" />
+      <path d="M14 3v5h5M12 18v-6M9 15h6" /></svg>
+    This is a button
+    <!-- <i slot="suffix">📝</i> -->
+  </oai-button>
+  <br>
+  <br>
 
   <script>
-    const button = document.querySelector('#button');
+    const buttons = document.querySelectorAll('.button');
 
     const setAttr = e => {
       const {
@@ -59,9 +66,9 @@
       } = e.target;
       console.log(!value)
       if (!value) {
-        return button.removeAttribute(name);
+        return buttons.forEach(b => b.removeAttribute(name));
       }
-      button.setAttribute(name, value);
+      buttons.forEach(b => b.setAttribute(name, value));
     };
 
     ['minSize', 'color', 'state', 'type'].forEach(attr =>

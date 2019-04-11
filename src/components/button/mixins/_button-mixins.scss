@@ -1,0 +1,82 @@
+@import '../../../styles/abstracts/typography';
+@import '../abstracts/button-size';
+@import '../abstracts/button-color-theme';
+
+// $filled: '[type="filled"i]';
+$outlined: '[type="outlined"i]';
+
+%button {
+  --button-inline-space-between-size: 1rem;
+  --button-padding-inline-size: 2.5rem;
+  font: inherit;
+  font-variation-settings: inherit;
+  position: relative;
+  block-size: var(--size-block, initial);
+  min-inline-size: var(--button-size-inline, initial);
+  border-radius: var(--border-radius);
+  box-sizing: border-box;
+  outline: none;
+  padding-inline-start: var(--button-padding-inline-size);
+  padding-inline-end: var(--button-padding-inline-size);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+@mixin button-host {
+  @include oai-font-body-2;
+
+  ::slotted([slot="prefix"i]) {
+    margin-inline-end: var(--button-inline-space-between-size);
+  }
+
+  ::slotted([slot="suffix"i]) {
+    margin-inline-start: var(--button-inline-space-between-size);
+  }
+
+  .pending-indicator {
+    position: absolute;
+    left: calc(var(--button-padding-inline-size) / 2);
+    transform: translateX(-50%);
+  }
+}
+
+@mixin button {
+  @extend %button;
+
+  // filled is the default
+  :host(:not(#{$outlined})) & {
+    border: 0 none;
+    background-color: var(--theme);
+    color: var(--contrast);
+    transition: box-shadow .2s,
+      background-color .5s;
+    will-change: box-shadow,
+      background-color;
+
+    &:not(:disabled):not(:active) {
+      box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.3);
+
+      &:hover {
+        box-shadow: 0px 10px 19px rgba(0, 0, 0, 0.24);
+      }
+    }
+  }
+
+  :host(#{$outlined}) & {
+    color: var(--theme);
+    border-color: currentColor;
+    border-style: solid;
+    border-width: 1px;
+    transition: background-color .2s,
+      color .2s;
+    will-change: background-color, color;
+
+    &:not(:disabled):hover {
+      background-color: var(--theme);
+      color: var(--contrast);
+    }
+  }
+}

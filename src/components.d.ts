@@ -12,6 +12,19 @@ import '@stencil/core';
 
 export namespace Components {
 
+  interface OaiAnchor {
+    /**
+    * (optional) The minimum size of the button (xs / sm / lg / xl) (optional) The type of the button (default = filled / outlined (stroked))
+    */
+    'color': 'pale' | 'primary' | 'accent' | 'error' | 'warn';
+  }
+  interface OaiAnchorAttributes extends StencilHTMLAttributes {
+    /**
+    * (optional) The minimum size of the button (xs / sm / lg / xl) (optional) The type of the button (default = filled / outlined (stroked))
+    */
+    'color'?: 'pale' | 'primary' | 'accent' | 'error' | 'warn';
+  }
+
   interface OaiButton {
     'color': 'pale' | 'primary' | 'accent' | 'error' | 'warn';
     /**
@@ -45,15 +58,23 @@ export namespace Components {
 
 declare global {
   interface StencilElementInterfaces {
+    'OaiAnchor': Components.OaiAnchor;
     'OaiButton': Components.OaiButton;
     'OaiProgressIndicator': Components.OaiProgressIndicator;
   }
 
   interface StencilIntrinsicElements {
+    'oai-anchor': Components.OaiAnchorAttributes;
     'oai-button': Components.OaiButtonAttributes;
     'oai-progress-indicator': Components.OaiProgressIndicatorAttributes;
   }
 
+
+  interface HTMLOaiAnchorElement extends Components.OaiAnchor, HTMLStencilElement {}
+  var HTMLOaiAnchorElement: {
+    prototype: HTMLOaiAnchorElement;
+    new (): HTMLOaiAnchorElement;
+  };
 
   interface HTMLOaiButtonElement extends Components.OaiButton, HTMLStencilElement {}
   var HTMLOaiButtonElement: {
@@ -68,11 +89,13 @@ declare global {
   };
 
   interface HTMLElementTagNameMap {
+    'oai-anchor': HTMLOaiAnchorElement
     'oai-button': HTMLOaiButtonElement
     'oai-progress-indicator': HTMLOaiProgressIndicatorElement
   }
 
   interface ElementTagNameMap {
+    'oai-anchor': HTMLOaiAnchorElement;
     'oai-button': HTMLOaiButtonElement;
     'oai-progress-indicator': HTMLOaiProgressIndicatorElement;
   }
