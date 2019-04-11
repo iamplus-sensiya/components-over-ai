@@ -74,6 +74,11 @@ $outlined: '[type="outlined"i]';
       color .2s;
     will-change: background-color, color;
 
+    &:focus {
+      background-color: var(--theme);
+      color: var(--contrast);
+    }
+
     &:not(:disabled):hover {
       background-color: var(--theme);
       color: var(--contrast);

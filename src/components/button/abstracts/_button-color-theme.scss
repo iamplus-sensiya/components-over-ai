@@ -32,6 +32,10 @@ $nagatedAttributeSelectors:();
       --contrast: var(--oai-color-#{$theme}-contrast);
       // --contrast: white;
 
+      &:focus {
+        --theme: var(--oai-color-#{$theme}-shade);
+      }
+
       &:active {
         --theme: var(--oai-color-#{$theme}-tint);
       }
@@ -50,6 +54,10 @@ $nagatedAttributeSelectors:();
   a {
     --theme: var(--oai-color-pale);
     --contrast: var(--oai-color-pale-contrast);
+
+    &:focus {
+      --theme: var(--oai-color-pale-shade);
+    }
 
     &:active {
       --theme: var(--oai-color-pale-tint);
