@@ -3,18 +3,3 @@
 @function set-contrast-color($bgcolor, $color-light, $color-dark, $threshold: 45%) {
   @return if(lightness($bgcolor) >=$threshold, $color-dark, $color-light);
 }
-
-// selects 
-@mixin nagateMultiSelectors($selector, $list) {
-  $selector: $selector+'(';
-
-  @each $item in $list {
-    $selector: $selector+':not('+$item+')';
-  }
-
-  $selector: $selector+')';
-
-  #{$selector} {
-    @content;
-  }
-}

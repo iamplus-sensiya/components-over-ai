@@ -1,17 +1,19 @@
-// @supports (font-variations-settings: 'wdth'200) {
-@font-face {
-  font-family: Gingham;
-  src: url('../assets/fonts/Gingham/Gingham.ttf');
-  font-weight: normal;
-  font-style: normal;
-}
+@import url('https://fonts.googleapis.com/css?family=Playfair+Display:400,700&display=swap');
 
-@font-face {
-  font-family: #{$main-font};
-  src: url('../assets/fonts/AvenirNext/AvenirNext_Variable.ttf');
-  font-weight: normal;
-  font-style: normal;
-}
+// // @supports (font-variations-settings: 'wdth'200) {
+// @font-face {
+//   font-family: Gingham;
+//   src: url('../assets/fonts/Gingham/Gingham.ttf');
+//   font-weight: normal;
+//   font-style: normal;
+// }
+
+// @font-face {
+//   font-family: #{$main-font};
+//   src: url('../assets/fonts/AvenirNext/AvenirNext_Variable.ttf');
+//   font-weight: normal;
+//   font-style: normal;
+// }
 
 body {
   font-family: $main-font,
@@ -25,7 +27,7 @@ body {
     "Apple Color Emoji",
     "Segoe UI Emoji",
     "Segoe UI Symbol";
-  font-variation-settings: 'wdth'200, 'wght'98;
+  // font-variation-settings: 'wdth'200, 'wght'98;
 }
 
 // }

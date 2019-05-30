@@ -1,0 +1,14 @@
+// selects 
+@mixin nagateMultiSelectors($selector, $list) {
+  $selector: $selector+'(';
+
+  @each $item in $list {
+    $selector: $selector+':not('+$item+')';
+  }
+
+  $selector: $selector+')';
+
+  #{$selector} {
+    @content;
+  }
+}

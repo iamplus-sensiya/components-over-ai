@@ -2,19 +2,52 @@
   font-size: 62.5%;
 }
 
+.display-4 {
+  @include oai-font-display-4;
+}
+
+.display-3 {
+  @include oai-font-display-3;
+}
+
+.display-2 {
+  @include oai-font-display-2;
+}
+
+.display-1 {
+  @include oai-font-display-1;
+}
+
 h1,
+.headline {
+  @include oai-font-headline;
+}
+
 h2,
+.title {
+  @include oai-font-title;
+}
+
 h3,
-h4,
-h5,
-h6 {
-  margin: 0;
+.subheading {
+  @include oai-font-subheading;
 }
 
-h1 {
-  font-size: 3.6rem;
+body,
+.body-1 {
+  @include oai-font-body-1;
 }
 
-body {
-  font-size: 1.4rem;
+em,
+.body-2 {
+  @include oai-font-body-2;
+}
+
+small,
+.caption {
+  @include oai-font-caption;
+}
+
+strong {
+  font-weight: 600;
 }

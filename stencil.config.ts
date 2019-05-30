@@ -14,11 +14,12 @@ export const config: Config = {
   globalStyle: 'src/styles/app.scss',
   plugins: [
     sass(
-      // {
-      //   injectGlobalPaths: [
-      //     'src/styles/abstracts/index.scss'
-      //   ]
-      // }
+      {
+        injectGlobalPaths: [
+          // 'src/styles/abstracts/index.scss'
+          'src/utils/components-utils.scss'
+        ]
+      }
     )
   ],
   copy: [

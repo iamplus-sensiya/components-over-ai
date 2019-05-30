@@ -1,0 +1,20 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
+:any-link {
+  text-decoration: underline;
+
+  &:focus {
+    outline: 1px solid currentColor;
+  }
+
+  &:visited {
+    color: #7A79E6
+  }
+}
