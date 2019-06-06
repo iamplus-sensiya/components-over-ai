@@ -1,8 +1,8 @@
 {
   "name": "@over.ai/components",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "description": "Stencil Component Starter",
-  "module": "dist/esm/index.js",
+  "module": "dist/index.mjs",
   "main": "dist/index.js",
   "unpkg": "dist/ionic.js",
   "types": "dist/types/components.d.ts",
@@ -14,17 +14,13 @@
     "build": "stencil build --docs",
     "start": "stencil build --dev --watch --serve",
     "test": "stencil test --spec --e2e",
-    "test.watch": "stencil test --spec --e2e --watchAll",
-    "docz:dev": "docz dev --typescript",
-    "docz:build": "docz build"
+    "test.watch": "stencil test --spec --e2e --watchAll"
   },
   "dependencies": {
-    "@stencil/sass": "^0.1.1"
+    "@stencil/sass": "^0.2.3"
   },
   "devDependencies": {
-    "@stencil/core": "^0.16.4",
-    "docz": "^1.0.0-rc.3",
-    "docz-theme-default": "^1.0.0-rc.3"
+    "@stencil/core": "1.0.0"
   },
   "license": "MIT"
 }

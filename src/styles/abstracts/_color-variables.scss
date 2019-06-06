@@ -1,9 +1,9 @@
-$main-colors: ('background':#e7e7e9,
-'pale': #B0B0B0,
-'primary': #4A90E2,
-'secondary': #009473,
-'error' : #DD4124,
-'warn' : #F5A623);
+// #region COLOR PALETTES DATA
+$main-colors: ('pale': #B0B0B0,
+  'primary': #4A90E2,
+  'secondary': #009473,
+  'error' : #DD4124,
+  'warn' : #F5A623);
 
 @function color($key) {
   @if map-has-key($colors, $key) {
@@ -27,4 +27,10 @@ $main-colors: ('background':#e7e7e9,
     --oai-color-#{$color-name}-disabled: #{mix(white, $color, 62%)};
   }
 
+}
+
+// #endregion
+:root {
+  --oai-color-background: #e7e7e9;
+  --oai-color-foreground: #2A2C2B;
 }

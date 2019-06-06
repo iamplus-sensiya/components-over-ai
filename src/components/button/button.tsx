@@ -1,4 +1,4 @@
-import { Component, Prop } from '@stencil/core';
+import { Component, h, Prop } from '@stencil/core';
 
 @Component({
     tag: 'oai-button',
@@ -12,7 +12,7 @@ export class OAIButton {
 
     /** (optional) The state of the button (default / disabled / pending) */
     @Prop({ reflectToAttr: true }) state: 'default' | 'disabled' | 'pending' = 'default';
-    @Prop({ reflectToAttr: true }) color: 'pale' | 'primary' | 'accent' | 'error' | 'warn' = 'pale';
+    @Prop({ reflectToAttr: true }) color: 'pale' | 'primary' | 'accent' | 'error' | 'warn' = 'primary';
 
     render() {
 

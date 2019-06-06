@@ -40,7 +40,7 @@ body,
 
 em,
 .body-2 {
-  @include oai-font-body-2;
+  font: var(--font-body-2);
 }
 
 small,

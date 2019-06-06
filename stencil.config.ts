@@ -5,7 +5,7 @@ export const config: Config = {
   namespace: 'overaiComponents',
   outputTargets: [
     { type: 'dist' },
-    { type: 'docs' },
+    { type: 'docs-readme' },
     {
       type: 'www',
       serviceWorker: null // disable service workers
@@ -31,6 +31,6 @@ export const config: Config = {
   bundles: [
     { components: ['oai-progress-indicator'] },
     { components: ['oai-button'] },
-    { components: ['oai-anchor'] },
+    { components: ['oai-drawer', 'oai-drawer-stack'] },
   ]
 };

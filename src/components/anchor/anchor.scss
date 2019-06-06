@@ -1,9 +1,0 @@
-@import '../button/mixins/button-mixins';
-
-:host {
-  @include button-host;
-}
-
-a {
-  @include button;
-}

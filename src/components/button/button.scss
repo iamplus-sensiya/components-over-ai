@@ -1,4 +1,4 @@
-@import './mixins/button-mixins';
+@import './button-mixins';
 
 :host {
   @include button-host;

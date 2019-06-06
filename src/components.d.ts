@@ -5,26 +5,10 @@
  */
 
 
-import '@stencil/core';
-
-
+import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 
 
 export namespace Components {
-
-  interface OaiAnchor {
-    /**
-    * (optional) The minimum size of the button (xs / sm / lg / xl) (optional) The type of the button (default = filled / outlined (stroked))
-    */
-    'color': 'pale' | 'primary' | 'accent' | 'error' | 'warn';
-  }
-  interface OaiAnchorAttributes extends StencilHTMLAttributes {
-    /**
-    * (optional) The minimum size of the button (xs / sm / lg / xl) (optional) The type of the button (default = filled / outlined (stroked))
-    */
-    'color'?: 'pale' | 'primary' | 'accent' | 'error' | 'warn';
-  }
-
   interface OaiButton {
     'color': 'pale' | 'primary' | 'accent' | 'error' | 'warn';
     /**
@@ -32,14 +16,15 @@ export namespace Components {
     */
     'state': 'default' | 'disabled' | 'pending';
   }
-  interface OaiButtonAttributes extends StencilHTMLAttributes {
-    'color'?: 'pale' | 'primary' | 'accent' | 'error' | 'warn';
-    /**
-    * (optional) The minimum size of the button (xs / sm / lg / xl) (optional) The type of the button (default = filled / outlined (stroked)) (optional) The state of the button (default / disabled / pending)
-    */
-    'state'?: 'default' | 'disabled' | 'pending';
+  interface OaiDrawer {
+    'offset': string | undefined;
+    'width': string;
   }
-
+  interface OaiDrawerStack {
+    'open': boolean;
+    'push': (tmpl: HTMLTemplateElement, config: { width: string; }) => Promise<void>;
+    'width': string;
+  }
   interface OaiProgressIndicator {
     'color': 'pale' | 'primary' | 'accent' | 'error' | 'warn';
     /**
@@ -47,34 +32,10 @@ export namespace Components {
     */
     'size': 'xs' | 'sm' | 'lg' | 'xl';
   }
-  interface OaiProgressIndicatorAttributes extends StencilHTMLAttributes {
-    'color'?: 'pale' | 'primary' | 'accent' | 'error' | 'warn';
-    /**
-    * (optional) The size of the progress indicator (xs (default) / sm / lg / xl)
-    */
-    'size'?: 'xs' | 'sm' | 'lg' | 'xl';
-  }
 }
 
 declare global {
-  interface StencilElementInterfaces {
-    'OaiAnchor': Components.OaiAnchor;
-    'OaiButton': Components.OaiButton;
-    'OaiProgressIndicator': Components.OaiProgressIndicator;
-  }
 
-  interface StencilIntrinsicElements {
-    'oai-anchor': Components.OaiAnchorAttributes;
-    'oai-button': Components.OaiButtonAttributes;
-    'oai-progress-indicator': Components.OaiProgressIndicatorAttributes;
-  }
-
-
-  interface HTMLOaiAnchorElement extends Components.OaiAnchor, HTMLStencilElement {}
-  var HTMLOaiAnchorElement: {
-    prototype: HTMLOaiAnchorElement;
-    new (): HTMLOaiAnchorElement;
-  };
 
   interface HTMLOaiButtonElement extends Components.OaiButton, HTMLStencilElement {}
   var HTMLOaiButtonElement: {
@@ -82,31 +43,70 @@ declare global {
     new (): HTMLOaiButtonElement;
   };
 
+  interface HTMLOaiDrawerElement extends Components.OaiDrawer, HTMLStencilElement {}
+  var HTMLOaiDrawerElement: {
+    prototype: HTMLOaiDrawerElement;
+    new (): HTMLOaiDrawerElement;
+  };
+
+  interface HTMLOaiDrawerStackElement extends Components.OaiDrawerStack, HTMLStencilElement {}
+  var HTMLOaiDrawerStackElement: {
+    prototype: HTMLOaiDrawerStackElement;
+    new (): HTMLOaiDrawerStackElement;
+  };
+
   interface HTMLOaiProgressIndicatorElement extends Components.OaiProgressIndicator, HTMLStencilElement {}
   var HTMLOaiProgressIndicatorElement: {
     prototype: HTMLOaiProgressIndicatorElement;
     new (): HTMLOaiProgressIndicatorElement;
   };
-
   interface HTMLElementTagNameMap {
-    'oai-anchor': HTMLOaiAnchorElement
-    'oai-button': HTMLOaiButtonElement
-    'oai-progress-indicator': HTMLOaiProgressIndicatorElement
-  }
-
-  interface ElementTagNameMap {
-    'oai-anchor': HTMLOaiAnchorElement;
     'oai-button': HTMLOaiButtonElement;
+    'oai-drawer': HTMLOaiDrawerElement;
+    'oai-drawer-stack': HTMLOaiDrawerStackElement;
     'oai-progress-indicator': HTMLOaiProgressIndicatorElement;
   }
-
-
-  export namespace JSX {
-    export interface Element {}
-    export interface IntrinsicElements extends StencilIntrinsicElements {
-      [tagName: string]: any;
-    }
-  }
-  export interface HTMLAttributes extends StencilHTMLAttributes {}
-
 }
+
+declare namespace LocalJSX {
+  interface OaiButton extends JSXBase.HTMLAttributes<HTMLOaiButtonElement> {
+    'color'?: 'pale' | 'primary' | 'accent' | 'error' | 'warn';
+    /**
+    * (optional) The minimum size of the button (xs / sm / lg / xl) (optional) The type of the button (default = filled / outlined (stroked)) (optional) The state of the button (default / disabled / pending)
+    */
+    'state'?: 'default' | 'disabled' | 'pending';
+  }
+  interface OaiDrawer extends JSXBase.HTMLAttributes<HTMLOaiDrawerElement> {
+    'offset'?: string | undefined;
+    'width'?: string;
+  }
+  interface OaiDrawerStack extends JSXBase.HTMLAttributes<HTMLOaiDrawerStackElement> {
+    'open'?: boolean;
+    'width'?: string;
+  }
+  interface OaiProgressIndicator extends JSXBase.HTMLAttributes<HTMLOaiProgressIndicatorElement> {
+    'color'?: 'pale' | 'primary' | 'accent' | 'error' | 'warn';
+    /**
+    * (optional) The size of the progress indicator (xs (default) / sm / lg / xl)
+    */
+    'size'?: 'xs' | 'sm' | 'lg' | 'xl';
+  }
+
+  interface IntrinsicElements {
+    'oai-button': OaiButton;
+    'oai-drawer': OaiDrawer;
+    'oai-drawer-stack': OaiDrawerStack;
+    'oai-progress-indicator': OaiProgressIndicator;
+  }
+}
+
+export { LocalJSX as JSX };
+
+
+declare module "@stencil/core" {
+  export namespace JSX {
+    interface IntrinsicElements extends LocalJSX.IntrinsicElements {}
+  }
+}
+
+

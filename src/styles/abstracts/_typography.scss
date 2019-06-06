@@ -9,8 +9,22 @@ $font-sizes: (xxl: 11.2rem,
   caption: 1.2rem);
 
 // $main-font: 'AvenirNext';
-$header-font: 'Playfair Display';
-$main-font: sans-serif;
+$system-fonts: -apple-system,
+BlinkMacSystemFont,
+"Segoe UI",
+Roboto,
+Helvetica,
+Arial,
+sans-serif,
+"Apple Color Emoji",
+"Segoe UI Emoji",
+"Segoe UI Symbol"; // fallback
+
+$header-font: 'Playfair Display',
+#{$system-fonts};
+
+$main-font: 'Poppins',
+#{$system-fonts};
 
 @mixin oai-font-display-4() {
   font: 400 #{map-get($font-sizes, 'xxl')}/1 $header-font;
@@ -25,7 +39,7 @@ $main-font: sans-serif;
 }
 
 @mixin oai-font-display-1() {
-  font: 600 #{map-get($font-sizes, 'lg')}/1 $main-font;
+  font: 500 #{map-get($font-sizes, 'lg')}/1 $main-font;
 }
 
 @mixin oai-font-headline() {
@@ -33,21 +47,26 @@ $main-font: sans-serif;
 }
 
 @mixin oai-font-title() {
-  font: 600 #{map-get($font-sizes, 'title')}/1 $main-font;
+  font: 500 #{map-get($font-sizes, 'title')}/1 $main-font;
 }
 
 @mixin oai-font-subheading() {
-  font: 600 #{map-get($font-sizes, 'subheading')}/1 $main-font;
+  font: 500 #{map-get($font-sizes, 'subheading')}/1 $main-font;
 }
 
 @mixin oai-font-body-2() {
-  font: 600 #{map-get($font-sizes, 'body-2')}/1 $main-font;
+  font: 500 #{map-get($font-sizes, 'body-2')}/1 $main-font;
 }
 
 @mixin oai-font-body-1() {
-  font: 500 #{map-get($font-sizes, 'body-1')}/1 $main-font;
+  font: 400 #{map-get($font-sizes, 'body-1')}/1 $main-font;
 }
 
 @mixin oai-font-caption() {
-  font: 500 #{map-get($font-sizes, 'caption')}/1 $main-font;
+  font: 400 #{map-get($font-sizes, 'caption')}/1 $main-font;
+}
+
+// TODO switch to this pattern
+body {
+  --font-body-2: 400 #{map-get($font-sizes, 'body-2')}/1 #{$main-font};
 }

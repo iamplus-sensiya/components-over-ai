@@ -5,7 +5,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
   <title>Stencil Component Starter</title>
-  <script src="/build/overaiComponents.js" defer></script>
+
+  <script type="module" src="/build/overaicomponents.esm.js"></script>
+  <script nomodule src="/build/overaicomponents.js"></script>
+
   <link rel="stylesheet" href="./build/overaiComponents.css">
 
 </head>
@@ -41,10 +44,6 @@
   <br>
   <br>
 
-  <oai-anchor class="button">This is an anchor tag</oai-anchor>
-  <br>
-  <br>
-
   <oai-button class="button">
     <svg slot="prefix" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
       stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="arcs">
@@ -53,8 +52,45 @@
     This is a button
     <!-- <i slot="suffix">📝</i> -->
   </oai-button>
+
   <br>
   <br>
+
+  <hr>
+  <oai-button class="button" id="drawerBtn" color="warn">
+    Push a drawer
+    <i slot="suffix">➕</i>
+  </oai-button>
+  <!-- <input type="checkbox" name="drawerSelect"> -->
+
+  <!-- <template>
+  </template> -->
+
+  <oai-drawer-stack></oai-drawer-stack>
+
+  <script>
+    // const temp = document.querySelector("oai-drawer");
+    const drawerStack = document.querySelector("oai-drawer-stack");
+
+    // console.log(drawersStack)
+
+    document.getElementById('drawerBtn')
+      .addEventListener('click', () => drawerStack.push(null, {
+        width: '40%'
+      }))
+
+    // (() => {
+    //   const selector = document.getElementsByName('drawerSelect')[0];
+    //   selector
+    //     .addEventListener('change', () => {
+    //       console.log(selector.value)
+    //       document.getElementsByTagName('oai-drawer')[0]
+    //         .setAttribute('open', selector.checked)
+    //     });
+    // })()
+
+  </script>
+  <hr>
 
   <div>
     <pre>.display-4</pre>

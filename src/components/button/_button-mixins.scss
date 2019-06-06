@@ -1,6 +1,5 @@
-@import '../../../styles/abstracts/typography';
-@import '../abstracts/button-size';
-@import '../abstracts/button-color-theme';
+@import './button-size';
+@import './button-color-theme';
 
 // $filled: '[type="filled"i]';
 $outlined: '[type="outlined"i]';
@@ -26,7 +25,8 @@ $outlined: '[type="outlined"i]';
 }
 
 @mixin button-host {
-  @include oai-font-body-2;
+  // @include oai-font-body-2;
+  font: var(--font-body-2);
 
   ::slotted([slot="prefix"i]) {
     margin-inline-end: var(--button-inline-space-between-size);
