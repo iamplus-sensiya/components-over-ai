@@ -1,22 +1,26 @@
 :host {
   background: white;
-  position: fixed;
   display: block;
+  position: fixed;
   top: 0;
   inset-inline-start: 0;
   bottom: 0;
   inset-inline-end: 0;
-  // right: 0;
-  // inset-block-start: 0;
-  border-radius: var(--border-radius);
+  right: 0;
+  inset-block-start: 0;
+  border-radius: var(--border-radius) 0 0 var(--border-radius);
   padding: var(--size-block);
-  border: 0;
+  // border: 0;
   margin: inherit;
   margin-inline-start: auto;
   block-size: 100%;
   box-sizing: border-box;
-  transition: transform 350ms ease;
-  animation: show 400ms ease;
+  transition: transform 450ms ease;
+  animation: show 350ms ease;
+  border-style: solid;
+  border-color: var(--oai-color-pale-shade);
+  border-width: 1px 0 1px 1px;
+  will-change: transform;
   // &[open] {
   //   animation: show 400ms ease;
   // }
