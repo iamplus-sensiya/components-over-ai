@@ -40,7 +40,6 @@ export class OAIDrawersStack {
 
     @Method()
     async pop() {
-        console.log(17)
         const drawers = ((this.el as any).shadowRoot as ShadowRoot).querySelectorAll('oai-drawer');
         const itemToRemove = drawers.item(drawers.length - 1);
         const restOfDrawers = Array.from(drawers).slice(0, drawers.length - 1);

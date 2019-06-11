@@ -14,7 +14,6 @@ export class OAIDrawer {
     @Prop() width: string = '70%';
 
     pop() {
-        console.log(9, this.stack);
         this.stack.pop();
     }
 

@@ -2,8 +2,19 @@
 
 :host {
   @include button-host;
+
+  // customize styling for ripple
+  // --ripple-background: white;
+  // --ripple-opacity: 0.3;
+  // --ripple-duration: 600ms;
+
+  // --ripple-opacity: 1;
+  // --ripple-background: radial-gradient(circle at center, rebeccapurple, dodgerblue, olive, gold, orange, tomato);
+  // --ripple-duration: 2000ms;
+  // --ripple-easing: cubic-bezier(0, .5, .5, 1);
 }
 
 button {
   @include button;
+  @include ripple;
 }
