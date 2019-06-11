@@ -20,6 +20,7 @@ export namespace Components {
     'width': string;
   }
   interface OaiDrawerStack {
+    'pop': () => Promise<void>;
     'push': (tmpl: HTMLTemplateElement, config: { width: string; }) => Promise<void>;
   }
   interface OaiProgressIndicator {

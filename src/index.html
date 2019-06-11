@@ -57,8 +57,12 @@
   <br>
 
   <hr>
-  <oai-button class="button" id="drawerBtn" color="warn">
+  <oai-button id="drawerPushBtn" color="warn" style="position: relative; z-index: 90000;">
     Push a drawer
+    <i slot="suffix">➕</i>
+  </oai-button>
+  <oai-button id="drawerPopBtn" color="secondary" style="position: relative; z-index: 90000;">
+    Pop a drawer
     <i slot="suffix">➕</i>
   </oai-button>
   <!-- <input type="checkbox" name="drawerSelect"> -->
@@ -74,10 +78,13 @@
 
     // console.log(drawersStack)
 
-    document.getElementById('drawerBtn')
+    document.getElementById('drawerPushBtn')
       .addEventListener('click', () => drawerStack.push(null, {
-        width: '40%'
-      }))
+        width: '35%'
+      }));
+
+    document.getElementById('drawerPopBtn')
+      .addEventListener('click', () => drawerStack.pop());
 
     // (() => {
     //   const selector = document.getElementsByName('drawerSelect')[0];

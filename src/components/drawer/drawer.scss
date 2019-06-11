@@ -8,7 +8,7 @@
   inset-inline-end: 0;
   right: 0;
   inset-block-start: 0;
-  border-radius: var(--border-radius) 0 0 var(--border-radius);
+  // border-radius: var(--border-radius) 0 0 var(--border-radius);
   padding: var(--size-block);
   // border: 0;
   margin: inherit;
@@ -17,15 +17,19 @@
   box-sizing: border-box;
   transition: transform 450ms ease;
   animation: show 350ms ease;
-  border-style: solid;
-  border-color: var(--oai-color-pale-shade);
-  border-width: 1px 0 1px 1px;
+  // border-style: solid;
+  // border-color: var(--oai-color-pale-shade);
+  // border-width: 1px 0 1px 1px;
   will-change: transform;
-  // &[open] {
+  box-shadow: 4px 4px 30px rgb(0, 0, 0, .2); // &[open] {
+
   //   animation: show 400ms ease;
   // }
-
+  &::before {
+    content: '';
+  }
 }
+
 
 // .drawer {
 //   // position: absolute;
@@ -45,8 +49,10 @@
   0% {
     transform: translateX(100%);
   }
+}
 
-  // 100% {
-  //   transform: translateX(0);
-  // }
+@keyframes hide {
+  100% {
+    transform: translateX(100%);
+  }
 }
