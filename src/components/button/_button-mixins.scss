@@ -57,10 +57,10 @@ $outlined: '[type="outlined"i]';
       background-color;
 
     &:not(:disabled):not(:active) {
-      box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 
       &:hover {
-        box-shadow: 0px 10px 19px rgba(0, 0, 0, 0.24);
+        box-shadow: 0 0 2px rgba(0, 0, 0, 0.24);
       }
     }
   }

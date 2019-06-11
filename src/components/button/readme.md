@@ -16,14 +16,23 @@ name: OAI Button
 | `state`  | `state`   | (optional) The minimum size of the button (xs / sm / lg / xl) (optional) The type of the button (default = filled / outlined (stroked)) (optional) The state of the button (default / disabled / pending) | `"default" \| "disabled" \| "pending"`                 | `'default'` |
 
 
-## CSS Custom Properties
+## Dependencies
 
-| Name                   | Description                                 |
-| ---------------------- | ------------------------------------------- |
-| `--button-size-inline` | Minimum inline size (width) of the button   |
-| `--contrast`           | Contrast (usually text) color of the button |
-| `--theme`              | Theme color of the button                   |
+### Used by
 
+ - [oai-drawer](../drawer)
+
+### Depends on
+
+- [oai-progress-indicator](../progress-indicator)
+
+### Graph
+```mermaid
+graph TD;
+  oai-button --> oai-progress-indicator
+  oai-drawer --> oai-button
+  style oai-button fill:#f9f,stroke:#333,stroke-width:4px
+```
 
 ----------------------------------------------
 

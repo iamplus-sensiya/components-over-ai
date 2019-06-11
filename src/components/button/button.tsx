@@ -1,4 +1,5 @@
-import { Component, h, Prop } from '@stencil/core';
+import { Component, h, Prop, Listen } from '@stencil/core';
+// import { rippleMe } from '../../utils/ripple';
 
 @Component({
     tag: 'oai-button',
@@ -14,13 +15,19 @@ export class OAIButton {
     @Prop({ reflectToAttr: true }) state: 'default' | 'disabled' | 'pending' = 'default';
     @Prop({ reflectToAttr: true }) color: 'pale' | 'primary' | 'accent' | 'error' | 'warn' = 'primary';
 
+    @Listen('click', { capture: true })
+    handleClick(ev: MouseEvent) {
+        console.log('click', ev);
+        // rippleMe(ev);
+    }
+
     render() {
 
         let pendingIndicator = this.state === 'pending' ?
             <oai-progress-indicator class="pending-indicator" color={this.color} /> : null;
 
         return (
-            <button disabled={this.state === 'disabled' || this.state === 'pending'}>
+            <button class="ripple" disabled={this.state === 'disabled' || this.state === 'pending'}>
                 {pendingIndicator}
                 <slot name="prefix" />
                 <slot />

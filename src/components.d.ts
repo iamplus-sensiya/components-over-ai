@@ -6,7 +6,9 @@
 
 
 import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
-
+import {
+  OAIDrawersStack,
+} from './components/drawer/drawer-stack';
 
 export namespace Components {
   interface OaiButton {
@@ -17,6 +19,7 @@ export namespace Components {
     'state': 'default' | 'disabled' | 'pending';
   }
   interface OaiDrawer {
+    'stack': OAIDrawersStack;
     'width': string;
   }
   interface OaiDrawerStack {
@@ -75,6 +78,7 @@ declare namespace LocalJSX {
     'state'?: 'default' | 'disabled' | 'pending';
   }
   interface OaiDrawer extends JSXBase.HTMLAttributes<HTMLOaiDrawerElement> {
+    'stack': OAIDrawersStack;
     'width'?: string;
   }
   interface OaiDrawerStack extends JSXBase.HTMLAttributes<HTMLOaiDrawerStackElement> {}

@@ -29,7 +29,7 @@ import { Component, h, Element, State, Method } from '@stencil/core';
 })
 export class OAIDrawersStack {
     @Element()
-    el!: HTMLElement;
+    el!: OAIDrawersStack;
     @State() drawers: { html: any; width: string }[] = [];
 
     @Method()
@@ -40,7 +40,8 @@ export class OAIDrawersStack {
 
     @Method()
     async pop() {
-        const drawers = (this.el.shadowRoot as ShadowRoot).querySelectorAll('oai-drawer');
+        console.log(17)
+        const drawers = ((this.el as any).shadowRoot as ShadowRoot).querySelectorAll('oai-drawer');
         const itemToRemove = drawers.item(drawers.length - 1);
         const restOfDrawers = Array.from(drawers).slice(0, drawers.length - 1);
         this.positionDrawers(restOfDrawers);
@@ -53,7 +54,7 @@ export class OAIDrawersStack {
 
     componentDidRender() {
 
-        const drawers = (this.el.shadowRoot as ShadowRoot).querySelectorAll('oai-drawer');
+        const drawers = ((this.el as any).shadowRoot as ShadowRoot).querySelectorAll('oai-drawer');
         this.positionDrawers(Array.from(drawers));
 
     }
@@ -106,18 +107,13 @@ export class OAIDrawersStack {
     }
 
     render() {
-        return <aside>
-            {
-                this.drawers.map(({ html, width }) =>
-                    [
-                        <div class="backdrop"></div>,
-                        <oai-drawer width={width}>
-                            {html}
-                        </oai-drawer>
-                    ]
-                )
-            }
-        </aside>
-
+        return (this.drawers.map(({ html, width }) =>
+            [
+                <div class="backdrop" onClick={this.pop.bind(this)}></div>,
+                <oai-drawer width={width} stack={this.el}>
+                    {html}
+                </oai-drawer>
+            ]
+        ))
     }
 }
