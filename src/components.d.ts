@@ -24,7 +24,7 @@ export namespace Components {
   }
   interface OaiDrawerStack {
     'pop': () => Promise<void>;
-    'push': (tmpl: HTMLTemplateElement, config: { width: string; }) => Promise<void>;
+    'push': (html: string, config: { width: string; }) => Promise<void>;
   }
   interface OaiProgressIndicator {
     'color': 'pale' | 'primary' | 'accent' | 'error' | 'warn';

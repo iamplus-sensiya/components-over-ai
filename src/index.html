@@ -83,8 +83,15 @@
 
     // console.log(drawersStack)
 
+    const randomHTML = `
+      <h1>Hello world</h1>
+      <img src="https://picsum.photos/200/300">
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa voluptates deleniti, sunt enim,
+        accusamus eveniet dolor nobis consectetur nesciunt aperiam dolore architecto. Itaque repudiandae quo
+        quasi alias eum sed consequuntur!</p>
+    `;
     document.getElementById('drawerPushBtn')
-      .addEventListener('click', () => drawerStack.push(null, {
+      .addEventListener('click', () => drawerStack.push(randomHTML, {
         width: '35%'
       }));
 

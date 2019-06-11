@@ -21,8 +21,7 @@ export class OAIDrawer {
         // console.log('render drawer. offset is', this.offset)
         return <Host style={{ width: this.width }}>
             <oai-button onClick={this.pop.bind(this)}>Ｘ</oai-button>
-            <h1>Hello world</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa voluptates deleniti, sunt enim, accusamus eveniet dolor nobis consectetur nesciunt aperiam dolore architecto. Itaque repudiandae quo quasi alias eum sed consequuntur!</p>
+            <slot />
         </Host>
     }
 }

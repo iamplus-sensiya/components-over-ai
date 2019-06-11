@@ -33,9 +33,8 @@ export class OAIDrawersStack {
     @State() drawers: { html: any; width: string }[] = [];
 
     @Method()
-    async push(tmpl: HTMLTemplateElement, config: { width: string }) {
-        console.log(tmpl)
-        this.drawers = [...this.drawers, { html: <h2>Flower</h2>, ...config }];
+    async push(html: string, config: { width: string }) {
+        this.drawers = [...this.drawers, { html, ...config }];
     }
 
     @Method()
@@ -109,8 +108,7 @@ export class OAIDrawersStack {
         return (this.drawers.map(({ html, width }) =>
             [
                 <div class="backdrop" onClick={this.pop.bind(this)}></div>,
-                <oai-drawer width={width} stack={this.el}>
-                    {html}
+                <oai-drawer width={width} stack={this.el} innerHTML={html}>
                 </oai-drawer>
             ]
         ))
