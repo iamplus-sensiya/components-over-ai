@@ -1,4 +1,4 @@
-import { Component, Host, h, Prop } from '@stencil/core';
+import { Component, Host, h, Element, Prop } from '@stencil/core';
 import { OAIDrawersStack } from './drawer-stack';
 
 @Component({
@@ -7,14 +7,14 @@ import { OAIDrawersStack } from './drawer-stack';
     shadow: true
 })
 export class OAIDrawer {
-    // @Prop() open = false;
-    // @Prop() index: number | undefined;
-    // @Prop() offset: string | undefined;
+    @Element()
+    el!: OAIDrawersStack;
+
     @Prop() stack!: OAIDrawersStack;
     @Prop() inlineSize: string = '50%';
 
     pop() {
-        this.stack.pop();
+        (this.el as any).parentElement.pop();
     }
 
     render() {

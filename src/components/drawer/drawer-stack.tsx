@@ -4,7 +4,7 @@ import { Component, h, Element, Prop, Method } from '@stencil/core';
     tag: 'oai-drawer-stack',
     styles: `
         .backdrop {
-            background-color: rgba(0, 0, 0, .2);
+            background-color: rgba(0, 0, 0, .4);
             position: fixed;
             left: 0;
             top: 0;

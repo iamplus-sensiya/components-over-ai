@@ -67,6 +67,7 @@ $outlined: '[type="outlined"i]';
 
   :host(#{$outlined}) & {
     color: var(--theme);
+    background-color: transparent;
     border-color: currentColor;
     border-style: solid;
     border-width: 1px;

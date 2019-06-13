@@ -31,6 +31,6 @@ export const config: Config = {
   bundles: [
     { components: ['oai-progress-indicator'] },
     { components: ['oai-button'] },
-    { components: ['oai-drawer', 'oai-drawer-stack'] },
+    { components: ['oai-drawer-stack'] },
   ]
 };
