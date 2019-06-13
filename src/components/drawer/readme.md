@@ -5,6 +5,13 @@
 <!-- Auto Generated Below -->
 
 
+## Properties
+
+| Property | Attribute | Description | Type     | Default |
+| -------- | --------- | ----------- | -------- | ------- |
+| `stack`  | `stack`   |             | `string` | `''`    |
+
+
 ## Methods
 
 ### `pop() => Promise<void>`
@@ -17,7 +24,7 @@ Type: `Promise<void>`
 
 
 
-### `push(html: string, config: { width: string; }) => Promise<void>`
+### `push(name: string) => Promise<void>`
 
 
 
@@ -27,21 +34,6 @@ Type: `Promise<void>`
 
 
 
-
-## Dependencies
-
-### Depends on
-
-- [oai-drawer]()
-
-### Graph
-```mermaid
-graph TD;
-  oai-drawer-stack --> oai-drawer
-  oai-drawer --> oai-button
-  oai-button --> oai-progress-indicator
-  style oai-drawer-stack fill:#f9f,stroke:#333,stroke-width:4px
-```
 
 ----------------------------------------------
 

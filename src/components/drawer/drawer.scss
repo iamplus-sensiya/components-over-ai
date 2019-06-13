@@ -16,7 +16,8 @@
   transition: transform 450ms ease;
   animation: show 350ms ease;
   will-change: transform;
-  box-shadow: 4px 4px 30px rgb(0, 0, 0, .4); // &[open] {
+  box-shadow: 4px 4px 30px rgb(0, 0, 0, .4);
+  overflow: auto;
 }
 
 @keyframes show {
