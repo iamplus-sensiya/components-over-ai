@@ -1,67 +1,84 @@
-import { Component, h, Element, State, Method } from '@stencil/core';
+import { Component, h, Element, Prop, Method } from '@stencil/core';
 
 @Component({
     tag: 'oai-drawer-stack',
     styles: `
-    .backdrop {
-        background-color: rgba(0, 0, 0, .2);
-        position: fixed;
-        left: 0;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        width: 100%;
-        height: 100%;
-        animation: show 350ms ease;
-    }
-    @keyframes show {
-        0% {
-            opacity: 0;
+        .backdrop {
+            background-color: rgba(0, 0, 0, .2);
+            position: fixed;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+            animation: show 350ms ease;
         }
-    }
-    @keyframes hide {
-        100% {
-            opacity: 0;
+        @keyframes show {
+            0% {
+                opacity: 0;
+            }
         }
-    }
+        @keyframes hide {
+            100% {
+                opacity: 0;
+            }
+        }
     `,
     shadow: true
 })
 export class OAIDrawersStack {
+    @Prop({ reflectToAttr: true }) stack: string = '';
+
     @Element()
-    el!: OAIDrawersStack;
-    @State() drawers: { html: any; width: string }[] = [];
+    el!: HTMLElement;
 
     @Method()
-    async push(html: string, config: { width: string }) {
-        this.drawers = [...this.drawers, { html, ...config }];
+    async push(name: string) {
+        this.stack += `, ${name}`;
     }
 
     @Method()
     async pop() {
-        const drawers = ((this.el as any).shadowRoot as ShadowRoot).querySelectorAll('oai-drawer');
-        const itemToRemove = drawers.item(drawers.length - 1);
-        const restOfDrawers = Array.from(drawers).slice(0, drawers.length - 1);
-        this.positionDrawers(restOfDrawers);
-        setTimeout(() => {
-            itemToRemove.style.animationName = 'hide';
-            (itemToRemove as any).previousSibling.style.animationName = 'hide';
-            itemToRemove.addEventListener('animationend', () => this.drawers = this.drawers.splice(0, this.drawers.length - 1), false);
-        }, 100);
+
+        const i = this.stackDomElements.length - 1;
+        const item = this.stackDomElements[i];
+        const siblings = this.stackDomElements.slice(0, i);
+        const backdropItem: HTMLElement | null = this.el.shadowRoot && this.el.shadowRoot.querySelector(`.backdrop.${this.stackNames[i]}`);
+
+        this.positionDrawers(siblings);
+
+        await new Promise(resolve => setTimeout(resolve, 100));
+        item.style.animationName = 'hide';
+        if (backdropItem) { backdropItem.style.animationName = 'hide'; }
+
+        await new Promise(resolve => item.addEventListener('animationend', resolve, false));
+        this.stack = this.stack.substring(0, this.stack.lastIndexOf(','));
+        item.style.animationName = '';
+
+    }
+
+    get stackNames(): string[] {
+        return this.stack.split(',')
+            .map(s => s.trim())
+            .filter(Boolean) || [];
+    }
+
+    get stackDomElements(): HTMLOaiDrawerElement[] {
+        return this.stackNames
+            .map(name => this.el.querySelector(`oai-drawer[slot=${name}]`) as HTMLOaiDrawerElement)
+            .filter(Boolean) || [];
     }
 
     componentDidRender() {
-
-        const drawers = ((this.el as any).shadowRoot as ShadowRoot).querySelectorAll('oai-drawer');
-        this.positionDrawers(Array.from(drawers));
-
+        this.positionDrawers(this.stackDomElements);
     }
 
-    getXfromMatrix(transform: string): string | null {
-        const numberPattern = /\d+\.?\d+|\d+/g;
-        const values = transform.match(numberPattern);
-        return values && values[4];
-    }
+    // getXfromMatrix(transform: string): string | null {
+    //     const numberPattern = /\d+\.?\d+|\d+/g;
+    //     const values = transform.match(numberPattern);
+    //     return values && values[4];
+    // }
 
     positionDrawers(drawers: HTMLOaiDrawerElement[]): void {
         let offsetsArr: string[] = [];
@@ -105,12 +122,9 @@ export class OAIDrawersStack {
     }
 
     render() {
-        return (this.drawers.map(({ html, width }) =>
-            [
-                <div class="backdrop" onClick={this.pop.bind(this)}></div>,
-                <oai-drawer width={width} stack={this.el} innerHTML={html}>
-                </oai-drawer>
-            ]
-        ))
+        return this.stackNames.map(name => [
+            <div class={'backdrop ' + name} onClick={this.pop.bind(this)} />,
+            <slot name={name.trim()} />
+        ])
     }
 }

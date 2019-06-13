@@ -19,12 +19,13 @@ export namespace Components {
     'state': 'default' | 'disabled' | 'pending';
   }
   interface OaiDrawer {
+    'inlineSize': string;
     'stack': OAIDrawersStack;
-    'width': string;
   }
   interface OaiDrawerStack {
     'pop': () => Promise<void>;
-    'push': (html: string, config: { width: string; }) => Promise<void>;
+    'push': (name: string) => Promise<void>;
+    'stack': string;
   }
   interface OaiProgressIndicator {
     'color': 'pale' | 'primary' | 'accent' | 'error' | 'warn';
@@ -78,10 +79,12 @@ declare namespace LocalJSX {
     'state'?: 'default' | 'disabled' | 'pending';
   }
   interface OaiDrawer extends JSXBase.HTMLAttributes<HTMLOaiDrawerElement> {
+    'inlineSize'?: string;
     'stack': OAIDrawersStack;
-    'width'?: string;
   }
-  interface OaiDrawerStack extends JSXBase.HTMLAttributes<HTMLOaiDrawerStackElement> {}
+  interface OaiDrawerStack extends JSXBase.HTMLAttributes<HTMLOaiDrawerStackElement> {
+    'stack'?: string;
+  }
   interface OaiProgressIndicator extends JSXBase.HTMLAttributes<HTMLOaiProgressIndicatorElement> {
     'color'?: 'pale' | 'primary' | 'accent' | 'error' | 'warn';
     /**

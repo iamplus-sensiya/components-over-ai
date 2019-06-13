@@ -17,7 +17,7 @@ Type: `Promise<void>`
 
 
 
-### `push(tmpl: HTMLTemplateElement, config: { width: string; }) => Promise<void>`
+### `push(html: string, config: { width: string; }) => Promise<void>`
 
 
 

@@ -75,25 +75,43 @@
   <!-- <template>
   </template> -->
 
-  <oai-drawer-stack></oai-drawer-stack>
-
-  <script>
-    // const temp = document.querySelector("oai-drawer");
-    const drawerStack = document.querySelector("oai-drawer-stack");
-
-    // console.log(drawersStack)
-
-    const randomHTML = `
+  <oai-drawer-stack stack="drawer1, drawer2, drawer3">
+    <oai-drawer slot="drawer1" inline-size="35%">
       <h1>Hello world</h1>
       <img src="https://picsum.photos/200/300">
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa voluptates deleniti, sunt enim,
         accusamus eveniet dolor nobis consectetur nesciunt aperiam dolore architecto. Itaque repudiandae quo
         quasi alias eum sed consequuntur!</p>
-    `;
+    </oai-drawer>
+    <oai-drawer slot="drawer2" inline-size="20%">
+      <h1>Hello world</h1>
+      <img src="https://picsum.photos/400/300">
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa voluptates deleniti, sunt enim,
+        accusamus eveniet dolor nobis consectetur nesciunt aperiam dolore architecto. Itaque repudiandae quo
+        quasi alias eum sed consequuntur!</p>
+    </oai-drawer>
+    <oai-drawer slot="drawer3" inline-size="25%">
+      <h1>Hello world</h1>
+      <img src="https://picsum.photos/200/150">
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa voluptates deleniti, sunt enim,
+        accusamus eveniet dolor nobis consectetur nesciunt aperiam dolore architecto. Itaque repudiandae quo
+        quasi alias eum sed consequuntur!</p>
+    </oai-drawer>
+    <oai-drawer slot="drawer4" inline-size="50%">
+      <h1>Hello world</h1>
+      <img src="https://picsum.photos/200/150">
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa voluptates deleniti, sunt enim,
+        accusamus eveniet dolor nobis consectetur nesciunt aperiam dolore architecto. Itaque repudiandae quo
+        quasi alias eum sed consequuntur!</p>
+    </oai-drawer>
+  </oai-drawer-stack>
+
+  <script>
+    // const temp = document.querySelector("oai-drawer");
+    const drawerStack = document.querySelector("oai-drawer-stack");
+
     document.getElementById('drawerPushBtn')
-      .addEventListener('click', () => drawerStack.push(randomHTML, {
-        width: '35%'
-      }));
+      .addEventListener('click', () => drawerStack.push('drawer4'));
 
     document.getElementById('drawerPopBtn')
       .addEventListener('click', () => drawerStack.pop());

@@ -11,7 +11,7 @@ export class OAIDrawer {
     // @Prop() index: number | undefined;
     // @Prop() offset: string | undefined;
     @Prop() stack!: OAIDrawersStack;
-    @Prop() width: string = '70%';
+    @Prop() inlineSize: string = '50%';
 
     pop() {
         this.stack.pop();
@@ -19,7 +19,7 @@ export class OAIDrawer {
 
     render() {
         // console.log('render drawer. offset is', this.offset)
-        return <Host style={{ width: this.width }}>
+        return <Host style={{ inlineSize: this.inlineSize }}>
             <oai-button onClick={this.pop.bind(this)}>Ｘ</oai-button>
             <slot />
         </Host>
