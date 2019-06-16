@@ -38,16 +38,22 @@ export class OAIDrawer {
     }
 
     disconnectedCallback() {
-        if (this.observer) { this.observer.disconnect(); }
+        this.disconnectObserver();
+    }
+
+    private disconnectObserver() {
+        if (this.observer) {
+            this.observer.disconnect();
+        }
     }
 
     handleIntersect(entries: IntersectionObserverEntry[]) {
         entries.forEach((entry: IntersectionObserverEntry) => {
             if (entry.isIntersecting) {
                 if (this.template) {
-                    console.log('is in')
                     this.el.append(this.template.content);
                     this.template.remove();
+                    this.disconnectObserver();
                 }
             }
         });
