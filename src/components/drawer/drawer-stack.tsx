@@ -71,14 +71,13 @@ export class OAIDrawersStack {
     }
 
     componentDidRender() {
+        // const template: HTMLTemplateElement | null = this.el.querySelector('template');
+        // if (template) {
+        //     const drawers = Array.from(template.content.children).filter(c => c.matches('[slot]'));
+        //     console.log(drawers);
+        // }
         this.positionDrawers(this.stackDomElements);
     }
-
-    // getXfromMatrix(transform: string): string | null {
-    //     const numberPattern = /\d+\.?\d+|\d+/g;
-    //     const values = transform.match(numberPattern);
-    //     return values && values[4];
-    // }
 
     positionDrawers(drawers: HTMLOaiDrawerElement[]): void {
         let offsetsArr: string[] = [];
