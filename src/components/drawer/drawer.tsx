@@ -61,7 +61,7 @@ export class OAIDrawer {
     render() {
         // console.log('render drawer. offset is', this.offset)
         return <Host style={{ inlineSize: this.inlineSize }}>
-            <oai-button onClick={this.pop.bind(this)}>Ｘ</oai-button>
+            {/* <oai-button onClick={this.pop.bind(this)}>Ｘ</oai-button> */}
             <slot />
         </Host>
     }
