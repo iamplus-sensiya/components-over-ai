@@ -23,7 +23,7 @@ export class OAIDrawer {
 
     connectedCallback() {
 
-        if (this.template) {
+        if (this.template && this.template.content) {
 
             const options = {
                 root: null,
@@ -51,7 +51,8 @@ export class OAIDrawer {
         entries.forEach((entry: IntersectionObserverEntry) => {
             if (entry.isIntersecting) {
                 if (this.template) {
-                    this.el.append(this.template.content);
+                    const node = document.adoptNode(this.template.content);
+                    this.el.appendChild(node);
                     this.template.remove();
                     this.disconnectObserver();
                 }
