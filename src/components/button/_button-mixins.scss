@@ -22,6 +22,7 @@ $outlined: '[type="outlined"i]';
   justify-content: center;
   white-space: nowrap;
   cursor: pointer;
+  user-select: none;
 }
 
 @mixin button-host {

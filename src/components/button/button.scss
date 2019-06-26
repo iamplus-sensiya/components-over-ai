@@ -14,7 +14,15 @@
   // --ripple-easing: cubic-bezier(0, .5, .5, 1);
 }
 
-button {
+button,
+a {
   @include button;
-  @include ripple;
+
+  &:any-link {
+    text-decoration: none;
+  }
+
+  &:not(:any-link) {
+    @include ripple;
+  }
 }

@@ -15,6 +15,27 @@
 
 <body>
 
+  <oai-button class="button" color="primary">
+    <svg slot="prefix" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="arcs">
+      <path d="M14 2H6a2 2 0 0 0-2 2v16c0 1.1.9 2 2 2h12a2 2 0 0 0 2-2V8l-6-6z" />
+      <path d="M14 3v5h5M12 18v-6M9 15h6" /></svg>
+    This is a button
+    <!-- <i slot="suffix">📝</i> -->
+  </oai-button>
+
+  <oai-button href="/">
+    <svg slot="prefix" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="arcs">
+      <path d="M14 2H6a2 2 0 0 0-2 2v16c0 1.1.9 2 2 2h12a2 2 0 0 0 2-2V8l-6-6z" />
+      <path d="M14 3v5h5M12 18v-6M9 15h6" /></svg>
+    This is an anchor button
+    <!-- <i slot="suffix">📝</i> -->
+  </oai-button>
+
+  <br>
+  <br>
+
   <select name="minSize">
     <option value="" selected>Default Min Size</option>
     <option value="xs">XS</option>
@@ -44,18 +65,6 @@
   <br>
   <br>
 
-  <oai-button class="button">
-    <svg slot="prefix" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-      stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="arcs">
-      <path d="M14 2H6a2 2 0 0 0-2 2v16c0 1.1.9 2 2 2h12a2 2 0 0 0 2-2V8l-6-6z" />
-      <path d="M14 3v5h5M12 18v-6M9 15h6" /></svg>
-    This is a button
-    <!-- <i slot="suffix">📝</i> -->
-  </oai-button>
-
-  <br>
-  <br>
-
   <hr>
   <div style="position: relative; z-index: 90000;">
 
@@ -75,7 +84,7 @@
   <!-- <template>
   </template> -->
 
-  <oai-drawer-stack stack="drawer2, drawer1, drawer3">
+  <!-- <oai-drawer-stack stack="drawer2, drawer1, drawer3">
     <oai-drawer slot="drawer1" inline-size="35%">
       <oai-button class="drawerPopBtn">Ｘ</oai-button>
       <h1>Drawer 1</h1>
@@ -110,7 +119,7 @@
           quasi alias eum sed consequuntur!</p>
       </template>
     </oai-drawer>
-  </oai-drawer-stack>
+  </oai-drawer-stack> -->
 
   <script>
     // const temp = document.querySelector("oai-drawer");
