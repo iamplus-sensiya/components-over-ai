@@ -1,6 +1,6 @@
 {
   "name": "@over.ai/components",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Stencil Component Starter",
   "module": "dist/index.mjs",
   "main": "dist/index.js",
@@ -14,7 +14,8 @@
     "build": "stencil build --docs",
     "start": "stencil build --dev --watch --serve",
     "test": "stencil test --spec --e2e",
-    "test.watch": "stencil test --spec --e2e --watchAll"
+    "test.watch": "stencil test --spec --e2e --watchAll",
+    "deploy": "npm run build && npm version patch --force  && npm publish"
   },
   "dependencies": {
     "@stencil/sass": "^0.2.3"
