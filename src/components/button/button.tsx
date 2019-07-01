@@ -53,6 +53,10 @@ export class OAIButton {
         }
     }
 
+    connectedCallback() {
+        this.el.setAttribute('role', 'button');
+    }
+
     render() {
         const { href, rel, target } = this;
         const TagType = href === undefined ? 'button' : 'a' as any;

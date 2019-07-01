@@ -35,7 +35,9 @@ export class OAIDrawersStack {
 
     @Method()
     async push(name: string) {
-        this.stack += `, ${name}`;
+        const newStack = this.stackAsArray;
+        newStack.push(name)
+        this.stack = newStack.join();
     }
 
     @Method()
@@ -44,7 +46,7 @@ export class OAIDrawersStack {
         const i = this.stackDomElements.length - 1;
         const item = this.stackDomElements[i];
         const siblings = this.stackDomElements.slice(0, i);
-        const backdropItem: HTMLElement | null = this.el.shadowRoot && this.el.shadowRoot.querySelector(`.backdrop.${this.stackNames[i]}`);
+        const backdropItem: HTMLElement | null = this.el.shadowRoot && this.el.shadowRoot.querySelector(`.backdrop.${this.stackAsArray[i]}`);
 
         this.positionDrawers(siblings);
 
@@ -58,14 +60,14 @@ export class OAIDrawersStack {
 
     }
 
-    get stackNames(): string[] {
+    get stackAsArray(): string[] {
         return this.stack.split(',')
             .map(s => s.trim())
             .filter(Boolean) || [];
     }
 
     get stackDomElements(): HTMLOaiDrawerElement[] {
-        return this.stackNames
+        return this.stackAsArray
             .map(name => this.el.querySelector(`oai-drawer[slot=${name}]`) as HTMLOaiDrawerElement)
             .filter(Boolean) || [];
     }
@@ -121,7 +123,7 @@ export class OAIDrawersStack {
     }
 
     render() {
-        return this.stackNames.map(name => [
+        return this.stackAsArray.map(name => [
             <div class={'backdrop ' + name} onClick={this.pop.bind(this)} />,
             <slot name={name.trim()} />
         ])
