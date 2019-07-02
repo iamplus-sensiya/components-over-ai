@@ -17,7 +17,7 @@
     animation: dash 1.5s ease-in-out infinite;
 
     :host-context(oai-button) & {
-      stroke: var(--theme);
+      stroke: var(--oai-color-base);
     }
   }
 
