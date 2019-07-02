@@ -1,5 +1,5 @@
-@import './abstracts/progress-indicator-size.scss';
-@import './abstracts/progress-indicator-color-theme';
+@import '../../utils/theme/color-theme.scss';
+@import './progress-indicator-size.scss';
 
 :host {
   inline-size: var(--progress-indicator-size);
@@ -12,9 +12,13 @@
   block-size: inherit;
 
   & .path {
-    stroke: var(--theme);
+    stroke: currentColor;
     stroke-linecap: round;
     animation: dash 1.5s ease-in-out infinite;
+
+    :host-context(oai-button) & {
+      stroke: var(--theme);
+    }
   }
 
 }

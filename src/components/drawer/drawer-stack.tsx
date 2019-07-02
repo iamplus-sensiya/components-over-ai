@@ -54,7 +54,7 @@ export class OAIDrawersStack {
         item.style.animationName = 'hide';
         if (backdropItem) { backdropItem.style.animationName = 'hide'; }
 
-        await new Promise(resolve => item.addEventListener('animationend', resolve, false));
+        await new Promise(resolve => item.addEventListener('animationend', resolve, { capture: false, once: true }));
         this.stack = this.stack.substring(0, this.stack.lastIndexOf(','));
         item.style.animationName = '';
 

@@ -1,4 +1,6 @@
-import { Component, h, Prop, Element, Listen } from '@stencil/core';
+import { Component, h, Prop, Element } from '@stencil/core';
+import { Color } from '../../interface';
+
 
 @Component({
     tag: 'oai-button',
@@ -11,10 +13,10 @@ export class OAIButton {
     /** (optional) The minimum size of the button (xs / sm / lg / xl) */
     /** (optional) The type of the button (default = filled / outlined (stroked)) */
 
-    /** (optional) The state of the button (default / disabled / pending) */
-    @Prop({ reflectToAttr: true }) state: 'default' | 'disabled' | 'pending' = 'default';
-    /** (optional) The color of the button (pale / primary / accent / error / warn) */
-    @Prop({ reflectToAttr: true }) color: 'pale' | 'primary' | 'accent' | 'error' | 'warn' = 'pale';
+    /** (optional) The state of the button (disabled / pending / undefined = default) */
+    @Prop({ reflectToAttr: true }) state?: 'disabled' | 'pending';
+    /** (optional) The color of the button (pale / primary (default) / accent / error / warn) */
+    @Prop({ reflectToAttr: true }) color?: Color;
 
     /**
      * This attribute instructs browsers to download a URL instead of navigating to
@@ -43,7 +45,8 @@ export class OAIButton {
      */
     @Prop() target: string | undefined;
 
-    @Listen('click', { capture: true })
+    // adds ripple effect
+    // @Listen('click', { capture: true })
     handleClick(ev: MouseEvent | TouchEvent) {
         const event = 'touches' in ev ? ev.touches.item(0) : ev;
         if (event) {
@@ -73,7 +76,8 @@ export class OAIButton {
             <oai-progress-indicator class="pending-indicator" color={this.color} /> : null;
 
         return (
-            <TagType {...attrs} disabled={this.state === 'disabled' || this.state === 'pending'}>
+            <TagType {...attrs} disabled={this.state === 'disabled' || this.state === 'pending'}
+                onClick={TagType === 'button' ? this.handleClick.bind(this) : null}>
                 {pendingIndicator}
                 <slot name="prefix" />
                 <slot />

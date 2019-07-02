@@ -17,12 +17,12 @@
 button,
 a {
   @include button;
+}
 
-  &:any-link {
-    text-decoration: none;
-  }
+button {
+  @include ripple;
+}
 
-  &:not(:any-link) {
-    @include ripple;
-  }
+:any-link {
+  text-decoration: none;
 }

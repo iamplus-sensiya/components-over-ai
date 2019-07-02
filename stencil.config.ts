@@ -15,10 +15,9 @@ export const config: Config = {
   plugins: [
     sass(
       {
-        injectGlobalPaths: [
-          // 'src/styles/abstracts/index.scss'
-          'src/utils/components-utils.scss'
-        ]
+        // injectGlobalPaths: [
+        //   'src/utils/style-injects/main.scss'
+        // ]
       }
     )
   ],
@@ -32,5 +31,6 @@ export const config: Config = {
     { components: ['oai-progress-indicator'] },
     { components: ['oai-button'] },
     { components: ['oai-drawer-stack'] },
+    { components: ['oai-toolbar'] },
   ]
 };

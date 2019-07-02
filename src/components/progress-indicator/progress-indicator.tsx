@@ -1,4 +1,5 @@
 import { Component, h, Prop } from '@stencil/core';
+import { Color } from '../../interface';
 
 @Component({
     tag: 'oai-progress-indicator',
@@ -9,7 +10,7 @@ export class OAIProgressIndicator {
     /** (optional) The size of the progress indicator (xs (default) / sm / lg / xl) */
 
     @Prop({ reflectToAttr: true }) size: 'xs' | 'sm' | 'lg' | 'xl' = 'xs';
-    @Prop({ reflectToAttr: true }) color: 'pale' | 'primary' | 'accent' | 'error' | 'warn' = 'pale';
+    @Prop({ reflectToAttr: true }) color?: Color;
 
     render() {
         return (

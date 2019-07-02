@@ -24,7 +24,7 @@ $main-colors: ('pale': #B0B0B0,
     --oai-color-#{$color-name}-tint: #{mix(white, $color, 12%)};
     --oai-color-#{$color-name}-shade: #{mix(black, $color, 12%)};
     // --oai-color-#{$color-name}-light: #{mix(white, $color, 18%)};
-    --oai-color-#{$color-name}-disabled: #{mix(white, $color, 62%)};
+    --oai-color-#{$color-name}-dim: #{mix(white, $color, 62%)};
   }
 
 }

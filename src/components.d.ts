@@ -7,15 +7,18 @@
 
 import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 import {
+  Color,
+} from './interface';
+import {
   OAIDrawersStack,
 } from './components/drawer/drawer-stack';
 
 export namespace Components {
   interface OaiButton {
     /**
-    * (optional) The color of the button (pale / primary / accent / error / warn)
+    * (optional) The color of the button (pale / primary (default) / accent / error / warn)
     */
-    'color': 'pale' | 'primary' | 'accent' | 'error' | 'warn';
+    'color'?: Color;
     /**
     * This attribute instructs browsers to download a URL instead of navigating to it, so the user will be prompted to save it as a local file. If the attribute has a value, it is used as the pre-filled file name in the Save prompt (the user can still change the file name if they want).
     */
@@ -29,9 +32,9 @@ export namespace Components {
     */
     'rel': string | undefined;
     /**
-    * (optional) The minimum size of the button (xs / sm / lg / xl) (optional) The type of the button (default = filled / outlined (stroked)) (optional) The state of the button (default / disabled / pending)
+    * (optional) The minimum size of the button (xs / sm / lg / xl) (optional) The type of the button (default = filled / outlined (stroked)) (optional) The state of the button (disabled / pending / undefined = default)
     */
-    'state': 'default' | 'disabled' | 'pending';
+    'state'?: 'disabled' | 'pending';
     /**
     * Specifies where to display the linked URL. Only applies when an `href` is provided. Special keywords: `"_blank"`, `"_self"`, `"_parent"`, `"_top"`.
     */
@@ -47,11 +50,17 @@ export namespace Components {
     'stack': string;
   }
   interface OaiProgressIndicator {
-    'color': 'pale' | 'primary' | 'accent' | 'error' | 'warn';
+    'color'?: Color;
     /**
     * (optional) The size of the progress indicator (xs (default) / sm / lg / xl)
     */
     'size': 'xs' | 'sm' | 'lg' | 'xl';
+  }
+  interface OaiToolbar {
+    /**
+    * The color to use from your application's color palette. Default options are: `"primary"`, `"secondary"`, `"tertiary"`, `"success"`, `"warning"`, `"danger"`, `"light"`, `"medium"`, and `"dark"`. For more information on colors, see [theming](/docs/theming/basics).
+    */
+    'color'?: Color;
   }
 }
 
@@ -81,20 +90,27 @@ declare global {
     prototype: HTMLOaiProgressIndicatorElement;
     new (): HTMLOaiProgressIndicatorElement;
   };
+
+  interface HTMLOaiToolbarElement extends Components.OaiToolbar, HTMLStencilElement {}
+  var HTMLOaiToolbarElement: {
+    prototype: HTMLOaiToolbarElement;
+    new (): HTMLOaiToolbarElement;
+  };
   interface HTMLElementTagNameMap {
     'oai-button': HTMLOaiButtonElement;
     'oai-drawer': HTMLOaiDrawerElement;
     'oai-drawer-stack': HTMLOaiDrawerStackElement;
     'oai-progress-indicator': HTMLOaiProgressIndicatorElement;
+    'oai-toolbar': HTMLOaiToolbarElement;
   }
 }
 
 declare namespace LocalJSX {
   interface OaiButton extends JSXBase.HTMLAttributes<HTMLOaiButtonElement> {
     /**
-    * (optional) The color of the button (pale / primary / accent / error / warn)
+    * (optional) The color of the button (pale / primary (default) / accent / error / warn)
     */
-    'color'?: 'pale' | 'primary' | 'accent' | 'error' | 'warn';
+    'color'?: Color;
     /**
     * This attribute instructs browsers to download a URL instead of navigating to it, so the user will be prompted to save it as a local file. If the attribute has a value, it is used as the pre-filled file name in the Save prompt (the user can still change the file name if they want).
     */
@@ -108,9 +124,9 @@ declare namespace LocalJSX {
     */
     'rel'?: string | undefined;
     /**
-    * (optional) The minimum size of the button (xs / sm / lg / xl) (optional) The type of the button (default = filled / outlined (stroked)) (optional) The state of the button (default / disabled / pending)
+    * (optional) The minimum size of the button (xs / sm / lg / xl) (optional) The type of the button (default = filled / outlined (stroked)) (optional) The state of the button (disabled / pending / undefined = default)
     */
-    'state'?: 'default' | 'disabled' | 'pending';
+    'state'?: 'disabled' | 'pending';
     /**
     * Specifies where to display the linked URL. Only applies when an `href` is provided. Special keywords: `"_blank"`, `"_self"`, `"_parent"`, `"_top"`.
     */
@@ -124,11 +140,17 @@ declare namespace LocalJSX {
     'stack'?: string;
   }
   interface OaiProgressIndicator extends JSXBase.HTMLAttributes<HTMLOaiProgressIndicatorElement> {
-    'color'?: 'pale' | 'primary' | 'accent' | 'error' | 'warn';
+    'color'?: Color;
     /**
     * (optional) The size of the progress indicator (xs (default) / sm / lg / xl)
     */
     'size'?: 'xs' | 'sm' | 'lg' | 'xl';
+  }
+  interface OaiToolbar extends JSXBase.HTMLAttributes<HTMLOaiToolbarElement> {
+    /**
+    * The color to use from your application's color palette. Default options are: `"primary"`, `"secondary"`, `"tertiary"`, `"success"`, `"warning"`, `"danger"`, `"light"`, `"medium"`, and `"dark"`. For more information on colors, see [theming](/docs/theming/basics).
+    */
+    'color'?: Color;
   }
 
   interface IntrinsicElements {
@@ -136,6 +158,7 @@ declare namespace LocalJSX {
     'oai-drawer': OaiDrawer;
     'oai-drawer-stack': OaiDrawerStack;
     'oai-progress-indicator': OaiProgressIndicator;
+    'oai-toolbar': OaiToolbar;
   }
 }
 

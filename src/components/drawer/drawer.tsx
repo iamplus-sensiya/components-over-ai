@@ -1,7 +1,6 @@
 import { Component, Host, h, Element, Prop } from '@stencil/core';
 import { OAIDrawersStack } from './drawer-stack';
 
-
 @Component({
     tag: 'oai-drawer',
     styleUrl: './drawer.scss',

@@ -15,7 +15,13 @@
 
 <body>
 
-  <oai-button class="button" color="primary">
+  <oai-toolbar color="primary">
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero aspernatur harum aliquam, illo optio fugiat iusto
+    veniam culpa commodi neque placeat in possimus recusandae, necessitatibus repellendus repellat, at tenetur
+    repudiandae?
+  </oai-toolbar>
+
+  <oai-button class="button">
     <svg slot="prefix" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
       stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="arcs">
       <path d="M14 2H6a2 2 0 0 0-2 2v16c0 1.1.9 2 2 2h12a2 2 0 0 0 2-2V8l-6-6z" />
@@ -46,6 +52,7 @@
 
   <select name="color">
     <option value="" selected>Default Color</option>
+    <option value="pale">Pale</option>
     <option value="primary">Primary</option>
     <option value="secondary">Secondary</option>
     <option value="error">Error</option>
@@ -79,12 +86,9 @@
 
   </div>
 
-  <!-- <input type="checkbox" name="drawerSelect"> -->
 
-  <!-- <template>
-  </template> -->
-
-  <oai-drawer-stack stack="drawer2, drawer1, drawer3">
+  <!-- drawer2, drawer1, drawer3 -->
+  <oai-drawer-stack stack="">
     <oai-drawer slot="drawer1" inline-size="35%">
       <oai-button class="drawerPopBtn">Ｘ</oai-button>
       <h1>Drawer 1</h1>

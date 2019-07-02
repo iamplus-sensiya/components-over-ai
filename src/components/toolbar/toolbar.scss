@@ -1,0 +1,10 @@
+@import '../../utils/theme/color-theme.scss';
+
+:host {
+  display: flex;
+  min-block-size: 6rem;
+  align-items: center;
+  place-content: center start;
+  background-color: var(--theme);
+  color: var(--contrast);
+}
