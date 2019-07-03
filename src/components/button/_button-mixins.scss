@@ -17,15 +17,41 @@ $outlined: '[type="outlined"i]';
   outline: none;
   padding-inline-start: var(--button-padding-inline-size);
   padding-inline-end: var(--button-padding-inline-size);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
   white-space: nowrap;
   cursor: pointer;
-  user-select: none;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  display: block;
+  position: relative;
+  line-height: 1;
+  contain: layout style;
+  z-index: 0;
+  appearance: none;
+
+  >.button-inner {
+    display: flex;
+    flex-flow: row nowrap;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+  }
 }
 
 @mixin button-host {
+  user-select: none;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: inline-block;
+  vertical-align: top;
+  pointer-events: auto;
+  font-kerning: none;
+  margin-inline-start: 2px;
+  margin-inline-end: 2px;
+  margin-block-start: 4px;
+  margin-block-end: 4px;
+
   // @include oai-font-body-2;
   font: var(--font-body-2);
 

@@ -78,10 +78,12 @@ export class OAIButton {
         return (
             <TagType {...attrs} disabled={this.state === 'disabled' || this.state === 'pending'}
                 onClick={TagType === 'button' ? this.handleClick.bind(this) : null}>
-                {pendingIndicator}
-                <slot name="prefix" />
-                <slot />
-                <slot name="suffix" />
+                <span class="button-inner">
+                    {pendingIndicator}
+                    <slot name="prefix" />
+                    <slot />
+                    <slot name="suffix" />
+                </span>
             </TagType>
         )
 
