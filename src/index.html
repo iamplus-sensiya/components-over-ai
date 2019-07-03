@@ -21,70 +21,78 @@
     repudiandae?
   </oai-toolbar>
 
-  <oai-button class="button">
-    <svg slot="prefix" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-      stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="arcs">
-      <path d="M14 2H6a2 2 0 0 0-2 2v16c0 1.1.9 2 2 2h12a2 2 0 0 0 2-2V8l-6-6z" />
-      <path d="M14 3v5h5M12 18v-6M9 15h6" /></svg>
-    This is a button
-    <!-- <i slot="suffix">📝</i> -->
-  </oai-button>
+  <oai-toolbar color="pale">
 
-  <oai-button href="/">
-    <svg slot="prefix" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-      stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="arcs">
-      <path d="M14 2H6a2 2 0 0 0-2 2v16c0 1.1.9 2 2 2h12a2 2 0 0 0 2-2V8l-6-6z" />
-      <path d="M14 3v5h5M12 18v-6M9 15h6" /></svg>
-    This is an anchor button
-    <!-- <i slot="suffix">📝</i> -->
-  </oai-button>
+    <oai-buttons slot="end">
 
-  <br>
-  <br>
+      <oai-button class="button">
+        <svg slot="prefix" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="arcs">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16c0 1.1.9 2 2 2h12a2 2 0 0 0 2-2V8l-6-6z" />
+          <path d="M14 3v5h5M12 18v-6M9 15h6" /></svg>
+        This is a button
+        <!-- <i slot="suffix">📝</i> -->
+      </oai-button>
 
-  <select name="minSize">
-    <option value="" selected>Default Min Size</option>
-    <option value="xs">XS</option>
-    <option value="sm">SM</option>
-    <option value="lg">LG</option>
-    <option value="xl">XL</option>
-  </select>
+      <oai-button href="/">
+        <svg slot="prefix" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="arcs">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16c0 1.1.9 2 2 2h12a2 2 0 0 0 2-2V8l-6-6z" />
+          <path d="M14 3v5h5M12 18v-6M9 15h6" /></svg>
+        This is an anchor button
+        <!-- <i slot="suffix">📝</i> -->
+      </oai-button>
 
-  <select name="color">
-    <option value="" selected>Default Color</option>
-    <option value="pale">Pale</option>
-    <option value="primary">Primary</option>
-    <option value="secondary">Secondary</option>
-    <option value="error">Error</option>
-    <option value="warn">Warn</option>
-  </select>
+    </oai-buttons>
 
-  <select name="state">
-    <option value="" selected>Default State</option>
-    <option value="disabled">Disabled</option>
-    <option value="pending">Pending</option>
-  </select>
 
-  <select name="type">
-    <option value="" selected>Default Type</option>
-    <option value="outlined">Outlined</option>
-  </select>
-  <br>
-  <br>
+    <select name="minSize">
+      <option value="" selected>Default Min Size</option>
+      <option value="xs">XS</option>
+      <option value="sm">SM</option>
+      <option value="lg">LG</option>
+      <option value="xl">XL</option>
+    </select>
 
-  <hr>
-  <div style="position: relative; z-index: 90000;">
+    <select name="color">
+      <option value="" selected>Default Color</option>
+      <option value="pale">Pale</option>
+      <option value="primary">Primary</option>
+      <option value="secondary">Secondary</option>
+      <option value="error">Error</option>
+      <option value="warn">Warn</option>
+    </select>
 
-    <oai-button id="drawerPushBtn" color="warn">
-      Push a drawer
-      <i slot="suffix">➕</i>
-    </oai-button>
-    <oai-button class="drawerPopBtn" color="secondary">
-      Pop a drawer
-      <i slot="suffix">➖</i>
-    </oai-button>
+    <select name="state">
+      <option value="" selected>Default State</option>
+      <option value="disabled">Disabled</option>
+      <option value="pending">Pending</option>
+    </select>
 
-  </div>
+    <select name="type">
+      <option value="" selected>Default Type</option>
+      <option value="outlined">Outlined</option>
+    </select>
+
+  </oai-toolbar>
+
+  <oai-toolbar>
+
+    <oai-buttons slot="end" style="position: relative; z-index: 90000;">
+
+      <oai-button id="drawerPushBtn" color="warn">
+        Push a drawer
+        <i slot="suffix">➕</i>
+      </oai-button>
+      <oai-button class="drawerPopBtn" color="secondary">
+        Pop a drawer
+        <i slot="suffix">➖</i>
+      </oai-button>
+
+    </oai-buttons>
+
+  </oai-toolbar>
+
 
 
   <!-- drawer2, drawer1, drawer3 -->
@@ -136,7 +144,6 @@
       .forEach(bt => bt.addEventListener('click', () => drawerStack.pop()));
 
   </script>
-  <hr>
 
   <div>
     <pre>.display-4</pre>
