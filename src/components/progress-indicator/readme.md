@@ -11,10 +11,18 @@ name: OAI Progress Indicator
 
 ## Properties
 
-| Property | Attribute | Description                                                                 | Type                                                   | Default  |
-| -------- | --------- | --------------------------------------------------------------------------- | ------------------------------------------------------ | -------- |
-| `color`  | `color`   |                                                                             | `"accent" \| "error" \| "pale" \| "primary" \| "warn"` | `'pale'` |
-| `size`   | `size`    | (optional) The size of the progress indicator (xs (default) / sm / lg / xl) | `"lg" \| "sm" \| "xl" \| "xs"`                         | `'xs'`   |
+| Property | Attribute | Description                                                                 | Type                           | Default     |
+| -------- | --------- | --------------------------------------------------------------------------- | ------------------------------ | ----------- |
+| `color`  | `color`   |                                                                             | `string \| undefined`          | `undefined` |
+| `size`   | `size`    | (optional) The size of the progress indicator (xs (default) / sm / lg / xl) | `"lg" \| "sm" \| "xl" \| "xs"` | `'xs'`      |
+
+
+## CSS Custom Properties
+
+| Name         | Description                                 |
+| ------------ | ------------------------------------------- |
+| `--contrast` | Contrast (usually text) color of the button |
+| `--theme`    | Theme color of the button                   |
 
 
 ## Dependencies

@@ -1,4 +1,4 @@
-import { Component, h, Element, Prop, Method } from '@stencil/core';
+import { Component, h, Element, Prop, Method, Listen } from '@stencil/core';
 
 @Component({
     tag: 'oai-drawer-stack',
@@ -32,6 +32,15 @@ export class OAIDrawersStack {
 
     @Element()
     el!: HTMLElement;
+
+    @Listen('click', { capture: true })
+    handleClickOutside({ target }: Event) {
+        console.log(2)
+
+        const topDrawer = this.stackAsArray.slice(-1)[0];
+        const isOutside = !(target as Element).closest(`[slot="${topDrawer}"]`);
+        isOutside && this.pop();
+    }
 
     @Method()
     async push(name: string) {
@@ -124,7 +133,7 @@ export class OAIDrawersStack {
 
     render() {
         return this.stackAsArray.map(name => [
-            <div class={'backdrop ' + name} onClick={this.pop.bind(this)} />,
+            <div class={'backdrop ' + name} />,
             <slot name={name.trim()} />
         ])
     }

@@ -96,7 +96,7 @@
 
 
   <!-- drawer2, drawer1, drawer3 -->
-  <oai-drawer-stack stack="">
+  <oai-drawer-stack stack="drawer2, drawer3">
     <oai-drawer slot="drawer1" inline-size="35%">
       <oai-button class="drawerPopBtn">Ｘ</oai-button>
       <h1>Drawer 1</h1>
@@ -141,7 +141,7 @@
       .addEventListener('click', () => drawerStack.push('drawer4'));
 
     document.querySelectorAll('.drawerPopBtn')
-      .forEach(bt => bt.addEventListener('click', () => drawerStack.pop()));
+      .forEach(bt => bt.addEventListener('click', e => drawerStack.pop()));
 
   </script>
 
