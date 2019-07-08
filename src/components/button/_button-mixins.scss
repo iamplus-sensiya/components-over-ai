@@ -3,6 +3,8 @@
 
 // $filled: '[type="filled"i]';
 $outlined: '[type="outlined"i]';
+$colors: map-get($fallback-variables, "colors");
+$sizes: map-get($fallback-variables, "sizes");
 
 %button {
   --button-inline-space-between-size: 1rem;
@@ -10,9 +12,11 @@ $outlined: '[type="outlined"i]';
   font: inherit;
   font-variation-settings: inherit;
   position: relative;
-  block-size: var(--size-block, initial);
+  block-size: var(--size-block,
+      map-get($sizes, "block"));
   min-inline-size: var(--button-size-inline, initial);
-  border-radius: var(--border-radius);
+  border-radius: var(--border-radius,
+      map-get($sizes, "border-radius"));
   box-sizing: border-box;
   outline: none;
   padding-inline-start: var(--button-padding-inline-size);
@@ -79,8 +83,10 @@ $outlined: '[type="outlined"i]';
   // filled is the default
   :host(:not(#{$outlined})) & {
     border: 0 none;
-    background-color: var(--oai-color-base);
-    color: var(--oai-color-contrast);
+    background-color: var(--oai-color-base,
+        map-get($colors, "base"));
+    color: var(--oai-color-contrast,
+        map-get($colors, "contrast"));
     transition: box-shadow .2s,
       background-color .5s;
     will-change: box-shadow,
@@ -90,19 +96,22 @@ $outlined: '[type="outlined"i]';
       box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 
       &:hover {
-        background-color: var(--oai-color-tint);
+        background-color: var(--oai-color-tint,
+            map-get($colors, "tint"));
         box-shadow: 0 0 2px rgba(0, 0, 0, 0.24);
       }
     }
 
     &:disabled {
-      background-color: var(--oai-color-dim);
+      background-color: var(--oai-color-dim,
+          map-get($colors, "dim"));
     }
 
   }
 
   :host(#{$outlined}) & {
-    color: var(--oai-color-base);
+    color: var(--oai-color-base,
+        map-get($colors, "base"));
     background-color: transparent;
     border-color: currentColor;
     border-style: solid;
@@ -112,8 +121,10 @@ $outlined: '[type="outlined"i]';
     will-change: background-color, color;
 
     &:focus {
-      background-color: var(--oai-color-shade);
-      color: var(--oai-color-contrast);
+      background-color: var(--oai-color-shade,
+          map-get($colors, "shade"));
+      color: var(--oai-color-contrast,
+          map-get($colors, "contrast"));
     }
 
     // &:not(:disabled):hover {
@@ -123,14 +134,17 @@ $outlined: '[type="outlined"i]';
 
     &:focus,
     &:not(:disabled):hover {
-      $tintColor: var(--oai-color-tint);
-      color: var(--oai-color-contrast);
+      $tintColor: var(--oai-color-tint,
+          map-get($colors, "tint"));
+      color: var(--oai-color-contrast,
+          map-get($colors, "contrast"));
       background-color: #{$tintColor};
       border-color: #{$tintColor};
     }
 
     &:disabled {
-      color: var(--oai-color-dim);
+      color: var(--oai-color-dim,
+          map-get($colors, "dim"));
     }
 
   }

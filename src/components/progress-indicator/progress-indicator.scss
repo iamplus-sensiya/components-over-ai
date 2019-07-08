@@ -1,6 +1,8 @@
 @import '../../utils/theme/color-theme.scss';
 @import './progress-indicator-size.scss';
 
+$colors: map-get($fallback-variables, "colors");
+
 :host {
   inline-size: var(--progress-indicator-size);
   block-size: var(--progress-indicator-size);
@@ -17,7 +19,7 @@
     animation: dash 1.5s ease-in-out infinite;
 
     :host-context(oai-button) & {
-      stroke: var(--oai-color-base);
+      stroke: var(--oai-color-base, map-get($colors, "base"));
     }
   }
 

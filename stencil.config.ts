@@ -15,9 +15,9 @@ export const config: Config = {
   plugins: [
     sass(
       {
-        // injectGlobalPaths: [
-        //   'src/utils/style-injects/main.scss'
-        // ]
+        injectGlobalPaths: [
+          'src/utils/theme/fallback-variables.scss'
+        ]
       }
     )
   ],
