@@ -45,7 +45,7 @@ export namespace Components {
     'stack': OAIDrawersStack;
   }
   interface OaiDrawerStack {
-    'pop': () => Promise<void>;
+    'pop': (payload?: any) => Promise<void>;
     'push': (name: string) => Promise<void>;
     'stack': string;
   }
@@ -137,6 +137,7 @@ declare namespace LocalJSX {
     'stack': OAIDrawersStack;
   }
   interface OaiDrawerStack extends JSXBase.HTMLAttributes<HTMLOaiDrawerStackElement> {
+    'onDrawerPoped'?: (event: CustomEvent<any>) => void;
     'stack'?: string;
   }
   interface OaiProgressIndicator extends JSXBase.HTMLAttributes<HTMLOaiProgressIndicatorElement> {

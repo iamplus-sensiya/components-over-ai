@@ -136,12 +136,17 @@
   <script>
     // const temp = document.querySelector("oai-drawer");
     const drawerStack = document.querySelector("oai-drawer-stack");
+    drawerStack.addEventListener('drawerPoped', event => {
+      console.log(event)
+    });
 
     document.getElementById('drawerPushBtn')
       .addEventListener('click', () => drawerStack.push('drawer4'));
 
     document.querySelectorAll('.drawerPopBtn')
-      .forEach(bt => bt.addEventListener('click', e => drawerStack.pop()));
+      .forEach(bt => bt.addEventListener('click', e => drawerStack.pop({
+        someStuff: 'whateverrrr'
+      })));
 
   </script>
 

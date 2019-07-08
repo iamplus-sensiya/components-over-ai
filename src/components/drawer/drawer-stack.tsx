@@ -1,4 +1,13 @@
-import { Component, h, Element, Prop, Method, Listen } from '@stencil/core';
+import {
+    Component, h, Element, Prop,
+    Method, Listen, Event, EventEmitter
+} from '@stencil/core';
+
+type popedEventDetails = {
+    drawer: string;
+    payload?: any;
+};
+
 
 @Component({
     tag: 'oai-drawer-stack',
@@ -35,11 +44,15 @@ export class OAIDrawersStack {
 
     @Listen('click', { capture: true })
     handleClickOutside({ target }: Event) {
-        console.log(2)
-
         const topDrawer = this.stackAsArray.slice(-1)[0];
         const isOutside = !(target as Element).closest(`[slot="${topDrawer}"]`);
         isOutside && this.pop();
+    }
+
+    @Event() drawerPoped!: EventEmitter;
+
+    drawerPopedHandler(details: popedEventDetails) {
+        this.drawerPoped.emit(details);
     }
 
     @Method()
@@ -50,7 +63,7 @@ export class OAIDrawersStack {
     }
 
     @Method()
-    async pop() {
+    async pop(payload?: any) {
 
         const i = this.stackDomElements.length - 1;
         const item = this.stackDomElements[i];
@@ -64,8 +77,13 @@ export class OAIDrawersStack {
         if (backdropItem) { backdropItem.style.animationName = 'hide'; }
 
         await new Promise(resolve => item.addEventListener('animationend', resolve, { capture: false, once: true }));
-        this.stack = this.stack.substring(0, this.stack.lastIndexOf(','));
+        const popedDrawer = this.stackAsArray[this.stackAsArray.length - 1];
+        this.stack = this.stackAsArray.slice(0, this.stackAsArray.length - 1).join();
         item.style.animationName = '';
+        this.drawerPopedHandler({
+            payload,
+            drawer: popedDrawer
+        });
 
     }
 
