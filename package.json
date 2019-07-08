@@ -1,6 +1,6 @@
 {
   "name": "@over.ai/components",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "Stencil Component Starter",
   "module": "dist/index.mjs",
   "main": "dist/index.js",
