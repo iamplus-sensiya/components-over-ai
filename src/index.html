@@ -96,7 +96,7 @@
 
 
   <!-- drawer2, drawer1, drawer3 -->
-  <oai-drawer-stack stack="drawer2, drawer3">
+  <oai-drawer-stack [stack]="drawer2, drawer3">
     <oai-drawer slot="drawer1" inline-size="35%">
       <oai-button class="drawerPopBtn">𝓧</oai-button>
       <h1>Drawer 1</h1>
@@ -136,7 +136,7 @@
   <script>
     // const temp = document.querySelector("oai-drawer");
     const drawerStack = document.querySelector("oai-drawer-stack");
-    drawerStack.addEventListener('drawerPoped', event => {
+    drawerStack.addEventListener('drawerPopped', event => {
       console.log(event)
     });
 

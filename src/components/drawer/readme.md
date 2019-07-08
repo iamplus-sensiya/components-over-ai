@@ -14,9 +14,16 @@ content will eagerly load unless is wrapped by a template tag
 | `stack`  | `stack`   |             | `string` | `''`    |
 
 
+## Events
+
+| Event          | Description | Type               |
+| -------------- | ----------- | ------------------ |
+| `drawerPopped` |             | `CustomEvent<any>` |
+
+
 ## Methods
 
-### `pop() => Promise<void>`
+### `pop(payload?: any) => Promise<void>`
 
 
 

@@ -137,7 +137,7 @@ declare namespace LocalJSX {
     'stack': OAIDrawersStack;
   }
   interface OaiDrawerStack extends JSXBase.HTMLAttributes<HTMLOaiDrawerStackElement> {
-    'onDrawerPoped'?: (event: CustomEvent<any>) => void;
+    'onDrawerPopped'?: (event: CustomEvent<any>) => void;
     'stack'?: string;
   }
   interface OaiProgressIndicator extends JSXBase.HTMLAttributes<HTMLOaiProgressIndicatorElement> {

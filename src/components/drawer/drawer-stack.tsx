@@ -3,7 +3,7 @@ import {
     Method, Listen, Event, EventEmitter
 } from '@stencil/core';
 
-type popedEventDetails = {
+type poppedEventDetails = {
     drawer: string;
     payload?: any;
 };
@@ -49,10 +49,10 @@ export class OAIDrawersStack {
         isOutside && this.pop();
     }
 
-    @Event() drawerPoped!: EventEmitter;
+    @Event() drawerPopped!: EventEmitter;
 
-    drawerPopedHandler(details: popedEventDetails) {
-        this.drawerPoped.emit(details);
+    drawerPoppedHandler(details: poppedEventDetails) {
+        this.drawerPopped.emit(details);
     }
 
     @Method()
@@ -77,18 +77,18 @@ export class OAIDrawersStack {
         if (backdropItem) { backdropItem.style.animationName = 'hide'; }
 
         await new Promise(resolve => item.addEventListener('animationend', resolve, { capture: false, once: true }));
-        const popedDrawer = this.stackAsArray[this.stackAsArray.length - 1];
+        const poppedDrawer = this.stackAsArray[this.stackAsArray.length - 1];
         this.stack = this.stackAsArray.slice(0, this.stackAsArray.length - 1).join();
         item.style.animationName = '';
-        this.drawerPopedHandler({
+        this.drawerPoppedHandler({
             payload,
-            drawer: popedDrawer
+            drawer: poppedDrawer
         });
 
     }
 
     get stackAsArray(): string[] {
-        return this.stack.split(',')
+        return typeof this.stack == 'string' && this.stack.split(',')
             .map(s => s.trim())
             .filter(Boolean) || [];
     }
