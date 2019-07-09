@@ -96,7 +96,7 @@
 
 
   <!-- drawer2, drawer1, drawer3 -->
-  <oai-drawer-stack [stack]="drawer2, drawer3">
+  <oai-drawer-stack stack="drawer2">
     <oai-drawer slot="drawer1" inline-size="35%">
       <oai-button class="drawerPopBtn">𝓧</oai-button>
       <h1>Drawer 1</h1>
@@ -123,13 +123,15 @@
     </oai-drawer>
     <oai-drawer slot="drawer4" inline-size="50%">
       <oai-button class="drawerPopBtn">𝓧</oai-button>
-      <template>
-        <h1>Drawer 4</h1>
-        <img src="https://picsum.photos/364/357">
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa voluptates deleniti, sunt enim,
-          accusamus eveniet dolor nobis consectetur nesciunt aperiam dolore architecto. Itaque repudiandae quo
-          quasi alias eum sed consequuntur!</p>
-      </template>
+      <oai-lazy-content>
+        <template>
+          <h1>Drawer 4</h1>
+          <img src="https://picsum.photos/364/357">
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa voluptates deleniti, sunt enim,
+            accusamus eveniet dolor nobis consectetur nesciunt aperiam dolore architecto. Itaque repudiandae quo
+            quasi alias eum sed consequuntur!</p>
+        </template>
+      </oai-lazy-content>
     </oai-drawer>
   </oai-drawer-stack>
 

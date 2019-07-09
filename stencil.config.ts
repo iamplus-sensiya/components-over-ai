@@ -32,5 +32,6 @@ export const config: Config = {
     { components: ['oai-button'] },
     { components: ['oai-drawer-stack'] },
     { components: ['oai-toolbar'] },
+    { components: ['oai-lazy-content'] },
   ]
 };
