@@ -18,7 +18,7 @@
     "deploy": "npm run build && npm version patch --force  && npm publish"
   },
   "dependencies": {
-    "@stencil/sass": "^0.2.3"
+    "@stencil/sass": "^1.0.1"
   },
   "devDependencies": {
     "@stencil/core": "^1.1.6"

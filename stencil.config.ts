@@ -29,11 +29,12 @@ export const config: Config = {
     openBrowser: false
   },
   bundles: [
-    { components: ['oai-progress-indicator'] },
     { components: ['oai-button'] },
-    { components: ['oai-drawer-stack', 'oai-drawer'] },
     { components: ['oai-toolbar'] },
-    { components: ['oai-lazy-content'] },
+    { components: ['oai-progress-indicator'] },
+    { components: ['oai-drawer-stack', 'oai-drawer'] },
     { components: ['oai-select', 'oai-select-bind'] },
+    { components: ['oai-include'] },
+    { components: ['oai-lazy-content'] },
   ]
 };

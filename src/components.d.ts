@@ -49,6 +49,9 @@ export namespace Components {
     'push': (name: string) => Promise<void>;
     'stack': string[];
   }
+  interface OaiInclude {
+    'src': string;
+  }
   interface OaiLazyContent {}
   interface OaiProgressIndicator {
     'color'?: Color;
@@ -92,6 +95,12 @@ declare global {
     new (): HTMLOaiDrawerStackElement;
   };
 
+  interface HTMLOaiIncludeElement extends Components.OaiInclude, HTMLStencilElement {}
+  var HTMLOaiIncludeElement: {
+    prototype: HTMLOaiIncludeElement;
+    new (): HTMLOaiIncludeElement;
+  };
+
   interface HTMLOaiLazyContentElement extends Components.OaiLazyContent, HTMLStencilElement {}
   var HTMLOaiLazyContentElement: {
     prototype: HTMLOaiLazyContentElement;
@@ -125,6 +134,7 @@ declare global {
     'oai-button': HTMLOaiButtonElement;
     'oai-drawer': HTMLOaiDrawerElement;
     'oai-drawer-stack': HTMLOaiDrawerStackElement;
+    'oai-include': HTMLOaiIncludeElement;
     'oai-lazy-content': HTMLOaiLazyContentElement;
     'oai-progress-indicator': HTMLOaiProgressIndicatorElement;
     'oai-select': HTMLOaiSelectElement;
@@ -168,6 +178,9 @@ declare namespace LocalJSX {
     'onDrawerPopped'?: (event: CustomEvent<any>) => void;
     'stack'?: string[];
   }
+  interface OaiInclude extends JSXBase.HTMLAttributes<HTMLOaiIncludeElement> {
+    'src': string;
+  }
   interface OaiLazyContent extends JSXBase.HTMLAttributes<HTMLOaiLazyContentElement> {}
   interface OaiProgressIndicator extends JSXBase.HTMLAttributes<HTMLOaiProgressIndicatorElement> {
     'color'?: Color;
@@ -194,6 +207,7 @@ declare namespace LocalJSX {
     'oai-button': OaiButton;
     'oai-drawer': OaiDrawer;
     'oai-drawer-stack': OaiDrawerStack;
+    'oai-include': OaiInclude;
     'oai-lazy-content': OaiLazyContent;
     'oai-progress-indicator': OaiProgressIndicator;
     'oai-select': OaiSelect;
