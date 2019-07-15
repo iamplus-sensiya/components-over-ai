@@ -10,7 +10,7 @@ export class OAIDrawer {
     @Element()
     el!: HTMLElement;
 
-    @Prop() stack!: OAIDrawersStack;
+    @Prop() drawerStack!: OAIDrawersStack;
     @Prop() inlineSize: string = '50%';
 
     pop() {

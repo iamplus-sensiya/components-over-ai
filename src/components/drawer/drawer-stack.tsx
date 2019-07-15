@@ -12,39 +12,21 @@ type poppedEventDetails = {
 @Component({
     tag: 'oai-drawer-stack',
     styles: `
-        .backdrop {
-            background-color: rgba(0, 0, 0, .4);
-            position: fixed;
-            left: 0;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            width: 100%;
-            height: 100%;
-            animation: show 350ms ease;
-        }
-        @keyframes show {
-            0% {
-                opacity: 0;
-            }
-        }
-        @keyframes hide {
-            100% {
-                opacity: 0;
-            }
-        }
+        .backdrop { background-color: rgba(0, 0, 0, .4); position: fixed; left: 0; top: 0; right: 0; bottom: 0; width: 100%; height: 100%; animation: show 350ms ease; }
+        @keyframes show { 0% { opacity: 0; } }
+        @keyframes hide { 100% { opacity: 0; } }
     `,
     shadow: true
 })
 export class OAIDrawersStack {
-    @Prop({ reflectToAttr: true }) stack: string = '';
+    @Prop({ reflectToAttr: true }) stack: string[] = [];
 
     @Element()
     el!: HTMLElement;
 
     @Listen('click', { capture: true })
     handleClickOutside({ target }: Event) {
-        const topDrawer = this.stackAsArray.slice(-1)[0];
+        const topDrawer = this.stack.slice(-1)[0];
         const isOutside = !(target as Element).closest(`[slot="${topDrawer}"]`);
         isOutside && this.pop();
     }
@@ -57,18 +39,26 @@ export class OAIDrawersStack {
 
     @Method()
     async push(name: string) {
-        const newStack = this.stackAsArray;
-        newStack.push(name)
-        this.stack = newStack.join();
+
+        if (this.stack.includes(name)) {
+            console.warn('drawer name already exist in stack');
+            return;
+        }
+
+        this.stack = [...this.stack, name];
     }
 
     @Method()
     async pop(payload?: any) {
 
+        if (!this.stack.length) { return; }
+
         const i = this.stackDomElements.length - 1;
         const item = this.stackDomElements[i];
         const siblings = this.stackDomElements.slice(0, i);
-        const backdropItem: HTMLElement | null = this.el.shadowRoot && this.el.shadowRoot.querySelector(`.backdrop.${this.stackAsArray[i]}`);
+        const backdropItem: HTMLElement | null =
+            this.el.shadowRoot &&
+            this.el.shadowRoot.querySelector(`.backdrop.${this.stack[i]}`);
 
         this.positionDrawers(siblings);
 
@@ -77,8 +67,8 @@ export class OAIDrawersStack {
         if (backdropItem) { backdropItem.style.animationName = 'hide'; }
 
         await new Promise(resolve => item.addEventListener('animationend', resolve, { capture: false, once: true }));
-        const poppedDrawer = this.stackAsArray[this.stackAsArray.length - 1];
-        this.stack = this.stackAsArray.slice(0, this.stackAsArray.length - 1).join();
+        const poppedDrawer = this.stack[this.stack.length - 1];
+        this.stack = this.stack.slice(0, this.stack.length - 1);
         item.style.animationName = '';
         this.drawerPoppedHandler({
             payload,
@@ -87,14 +77,14 @@ export class OAIDrawersStack {
 
     }
 
-    get stackAsArray(): string[] {
-        return typeof this.stack == 'string' && this.stack.split(',')
-            .map(s => s.trim())
-            .filter(Boolean) || [];
-    }
+    // get stackAsArray(): string[] {
+    //     return typeof this.stack == 'string' && this.stack.split(',')
+    //         .map(s => s.trim())
+    //         .filter(Boolean) || [];
+    // }
 
     get stackDomElements(): HTMLOaiDrawerElement[] {
-        return this.stackAsArray
+        return this.stack
             .map(name => this.el.querySelector(`oai-drawer[slot=${name}]`) as HTMLOaiDrawerElement)
             .filter(Boolean) || [];
     }
@@ -150,7 +140,7 @@ export class OAIDrawersStack {
     }
 
     render() {
-        return this.stackAsArray.map(name => [
+        return this.stack.map(name => [
             <div class={'backdrop ' + name} />,
             <slot name={name.trim()} />
         ])
