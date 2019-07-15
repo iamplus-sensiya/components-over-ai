@@ -31,7 +31,6 @@ export class OAIInclude {
     }
 
     loadScript(script: HTMLScriptElement) {
-        console.log(script.textContent)
         var newScript = document.createElement('script');
         var inlineScript = document.createTextNode(script.innerHTML);
         newScript.appendChild(inlineScript);

@@ -1,0 +1,35 @@
+<oai-toolbar>
+  <br>
+  <oai-select></oai-select>
+</oai-toolbar>
+
+<script>
+  const select = document.querySelector('oai-select');
+  select.addEventListener('textSelected', selected);
+
+  select.data = [{
+      text: 'Lorem '
+    },
+    {
+      text: 'ipsum',
+      value: 'param-1'
+    },
+    {
+      text: ' dolor sit amet '
+    },
+    {
+      text: 'consectetur',
+      value: 'param-2'
+    },
+    {
+      text: ' adipisicing elit'
+    },
+  ];
+
+  function selected(e) {
+    setTimeout(() =>
+      e.detail.bindSelectedText('toooooo'), 1000)
+    // console.log(e.detail)
+  }
+
+</script>

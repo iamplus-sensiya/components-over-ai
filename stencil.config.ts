@@ -33,7 +33,7 @@ export const config: Config = {
     { components: ['oai-toolbar'] },
     { components: ['oai-progress-indicator'] },
     { components: ['oai-drawer-stack', 'oai-drawer'] },
-    { components: ['oai-select', 'oai-select-bind'] },
+    { components: ['oai-select'/*, 'oai-select-bind'*/] },
     { components: ['oai-include'] },
     { components: ['oai-lazy-content'] },
   ]

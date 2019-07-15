@@ -15,43 +15,7 @@
 
 <body>
 
-  <br>
-  <br>
-  <br>
-  <oai-select></oai-select>
-  <script>
-    const s = document.querySelector('oai-select');
-    s.addEventListener('textSelected', selected);
-
-    s.data = [{
-        text: 'Lorem '
-      },
-      {
-        text: 'ipsum',
-        value: 'param-1'
-      },
-      {
-        text: ' dolor sit amet '
-      },
-      {
-        text: 'consectetur',
-        value: 'param-2'
-      },
-      {
-        text: ' adipisicing elit'
-      },
-    ];
-
-    function selected(e) {
-      console.log(e)
-    }
-
-  </script>
-  <br>
-  <br>
-  <br>
-
-
+  <oai-include src="sections/select.html"></oai-include>
   <oai-include src="sections/toolbar.html"></oai-include>
   <oai-include src="sections/buttons.html"></oai-include>
   <oai-include src="sections/drawers.html"></oai-include>

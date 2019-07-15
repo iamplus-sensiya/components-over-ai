@@ -192,6 +192,7 @@ declare namespace LocalJSX {
   interface OaiSelect extends JSXBase.HTMLAttributes<HTMLOaiSelectElement> {
     'data'?: never[];
     'onTextSelected'?: (event: CustomEvent<any>) => void;
+    'onUpdate'?: (event: CustomEvent<any>) => void;
   }
   interface OaiSelectBind extends JSXBase.HTMLAttributes<HTMLOaiSelectBindElement> {
     'name': string;
