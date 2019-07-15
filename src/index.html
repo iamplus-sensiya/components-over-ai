@@ -15,222 +15,88 @@
 
 <body>
 
-  <oai-toolbar color="primary">
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero aspernatur harum aliquam, illo optio fugiat iusto
-    veniam culpa commodi neque placeat in possimus recusandae, necessitatibus repellendus repellat, at tenetur
-    repudiandae?
-  </oai-toolbar>
-
-  <oai-toolbar color="pale">
-
-    <oai-buttons slot="end">
-
-      <oai-button class="button">
-        <svg slot="prefix" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-          stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="arcs">
-          <path d="M14 2H6a2 2 0 0 0-2 2v16c0 1.1.9 2 2 2h12a2 2 0 0 0 2-2V8l-6-6z" />
-          <path d="M14 3v5h5M12 18v-6M9 15h6" /></svg>
-        This is a button
-        <!-- <i slot="suffix">📝</i> -->
-      </oai-button>
-
-      <oai-button href="/">
-        <svg slot="prefix" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-          stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="arcs">
-          <path d="M14 2H6a2 2 0 0 0-2 2v16c0 1.1.9 2 2 2h12a2 2 0 0 0 2-2V8l-6-6z" />
-          <path d="M14 3v5h5M12 18v-6M9 15h6" /></svg>
-        This is an anchor button
-        <!-- <i slot="suffix">📝</i> -->
-      </oai-button>
-
-    </oai-buttons>
-
-
-    <select name="minSize">
-      <option value="" selected>Default Min Size</option>
-      <option value="xs">XS</option>
-      <option value="sm">SM</option>
-      <option value="lg">LG</option>
-      <option value="xl">XL</option>
-    </select>
-
-    <select name="color">
-      <option value="" selected>Default Color</option>
-      <option value="pale">Pale</option>
-      <option value="primary">Primary</option>
-      <option value="secondary">Secondary</option>
-      <option value="error">Error</option>
-      <option value="warn">Warn</option>
-    </select>
-
-    <select name="state">
-      <option value="" selected>Default State</option>
-      <option value="disabled">Disabled</option>
-      <option value="pending">Pending</option>
-    </select>
-
-    <select name="type">
-      <option value="" selected>Default Type</option>
-      <option value="outlined">Outlined</option>
-    </select>
-
-  </oai-toolbar>
-
-  <oai-toolbar>
-
-    <oai-buttons slot="end" style="position: relative; z-index: 90000;">
-
-      <oai-button id="drawerPushBtn" color="warn">
-        Push a drawer
-        <span slot="suffix">➕</span>
-      </oai-button>
-      <oai-button class="drawerPopBtn" color="secondary">
-        Pop a drawer
-        <span slot="suffix">➖</span>
-      </oai-button>
-
-    </oai-buttons>
-
-  </oai-toolbar>
-
-
-
-  <!-- drawer2, drawer1, drawer3 -->
-  <oai-drawer-stack stack="drawer2">
-    <oai-drawer slot="drawer1" inline-size="35%">
-      <oai-button class="drawerPopBtn">𝓧</oai-button>
-      <h1>Drawer 1</h1>
-      <img src="https://picsum.photos/200/300">
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa voluptates deleniti, sunt enim,
-        accusamus eveniet dolor nobis consectetur nesciunt aperiam dolore architecto. Itaque repudiandae quo
-        quasi alias eum sed consequuntur!</p>
-    </oai-drawer>
-    <oai-drawer slot="drawer2" inline-size="20%">
-      <oai-button class="drawerPopBtn">𝓧</oai-button>
-      <h1>Drawer 2</h1>
-      <img src="https://picsum.photos/400/300">
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa voluptates deleniti, sunt enim,
-        accusamus eveniet dolor nobis consectetur nesciunt aperiam dolore architecto. Itaque repudiandae quo
-        quasi alias eum sed consequuntur!</p>
-    </oai-drawer>
-    <oai-drawer slot="drawer3" inline-size="25%">
-      <oai-button class="drawerPopBtn">𝓧</oai-button>
-      <h1>Drawer 3</h1>
-      <img src="https://picsum.photos/522/364">
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa voluptates deleniti, sunt enim,
-        accusamus eveniet dolor nobis consectetur nesciunt aperiam dolore architecto. Itaque repudiandae quo
-        quasi alias eum sed consequuntur!</p>
-    </oai-drawer>
-    <oai-drawer slot="drawer4" inline-size="50%">
-      <oai-button class="drawerPopBtn">𝓧</oai-button>
-      <oai-lazy-content>
-        <template>
-          <h1>Drawer 4</h1>
-          <img src="https://picsum.photos/364/357">
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa voluptates deleniti, sunt enim,
-            accusamus eveniet dolor nobis consectetur nesciunt aperiam dolore architecto. Itaque repudiandae quo
-            quasi alias eum sed consequuntur!</p>
-        </template>
-      </oai-lazy-content>
-    </oai-drawer>
-  </oai-drawer-stack>
-
+  <br>
+  <br>
+  <br>
+  <oai-select></oai-select>
   <script>
-    // const temp = document.querySelector("oai-drawer");
-    const drawerStack = document.querySelector("oai-drawer-stack");
-    drawerStack.addEventListener('drawerPopped', event => {
-      console.log(event)
-    });
+    const s = document.querySelector('oai-select');
+    s.addEventListener('textSelected', selected);
 
-    document.getElementById('drawerPushBtn')
-      .addEventListener('click', () => drawerStack.push('drawer4'));
+    s.data = [{
+        text: 'Lorem '
+      },
+      {
+        text: 'ipsum',
+        value: 'param-1'
+      },
+      {
+        text: ' dolor sit amet '
+      },
+      {
+        text: 'consectetur',
+        value: 'param-2'
+      },
+      {
+        text: ' adipisicing elit'
+      },
+    ];
 
-    document.querySelectorAll('.drawerPopBtn')
-      .forEach(bt => bt.addEventListener('click', e => drawerStack.pop({
-        someStuff: 'whateverrrr'
-      })));
+    function selected(e) {
+      console.log(e)
+    }
 
   </script>
+  <br>
+  <br>
+  <br>
 
-  <div>
-    <pre>.display-4</pre>
-    <h1 class="display-4">Playfair-Regular 112px</h1>
-  </div>
 
-  <div>
-    <pre>.display-3</pre>
-    <h1 class="display-3">Playfair-Bold 64px</h1>
-  </div>
 
-  <div>
-    <pre>.display-2</pre>
-    <h1 class="display-2">Playfair-Bold 48px</h1>
-  </div>
 
-  <div>
-    <pre>.display-1</pre>
-    <h1 class="display-1">Sharp sanse - Semibold 48px</h1>
-  </div>
 
-  <div>
-    <pre>&#x3C;h1&#x3E; | .headline</pre>
-    <h1 class="headline">Playfair-Regular 36px</h1>
-  </div>
 
-  <div>
-    <pre>&#x3C;h2&#x3E; | .title</pre>
-    <h2 class="title">Sharp sanse - Semibold 24px</h2>
-  </div>
+  <div w3-include-html="sections/toolbar.html"></div>
+  <div w3-include-html="sections/buttons.html"></div>
+  <div w3-include-html="sections/drawers.html"></div>
+  <div w3-include-html="sections/typography.html"></div>
 
-  <div>
-    <pre>&#x3C;h3&#x3E; | .subheading</pre>
-    <h3 class="subheading">Sharp sanse - Semibold 18px</h3>
-  </div>
-
-  <div>
-    <pre>&#x3C;em&#x3E; | .body-2</pre>
-    <em class="subheading">Sharp sanse - Semibold 16px</em>
-  </div>
-
-  <div>
-    <pre>body * | .body-1</pre>
-    <span class="body-1">Sharp sanse - Medium 14px</span>
-  </div>
-
-  <div>
-    <pre>&#x3C;strong&#x3E;</pre>
-    <strong>Sharp sanse - Semibold 14px</strong>
-  </div>
-
-  <div>
-    <pre>&#x3C;small&#x3E; | .caption</pre>
-    <small class="caption">Sharp sanse - Medium 12px</small>
-  </div>
-
-  <div>
-    <pre>&#x3C;a&#x3E;</pre>
-    <a href="#">Link</a>
-  </div>
 
   <script>
-    const buttons = document.querySelectorAll('.button');
-
-    const setAttr = e => {
-      const {
-        name,
-        value
-      } = e.target;
-      console.log(!value)
-      if (!value) {
-        return buttons.forEach(b => b.removeAttribute(name));
+    function includeHTML() {
+      var z, i, elmnt, file, xhttp;
+      /* Loop through a collection of all HTML elements: */
+      z = document.getElementsByTagName("*");
+      for (i = 0; i < z.length; i++) {
+        elmnt = z[i];
+        /*search for elements with a certain atrribute:*/
+        file = elmnt.getAttribute("w3-include-html");
+        if (file) {
+          /* Make an HTTP request using the attribute value as the file name: */
+          xhttp = new XMLHttpRequest();
+          xhttp.onreadystatechange = function () {
+            if (this.readyState == 4) {
+              if (this.status == 200) {
+                elmnt.innerHTML = this.responseText;
+              }
+              if (this.status == 404) {
+                elmnt.innerHTML = "Page not found.";
+              }
+              /* Remove the attribute, and call this function once more: */
+              elmnt.removeAttribute("w3-include-html");
+              includeHTML();
+            }
+          }
+          xhttp.open("GET", file, true);
+          xhttp.send();
+          /* Exit the function: */
+          return;
+        }
       }
-      buttons.forEach(b => b.setAttribute(name, value));
-    };
+    }
 
-    ['minSize', 'color', 'state', 'type'].forEach(attr =>
-      document.getElementsByName(attr)[0]
-      .addEventListener('change', setAttr)
-    );
+
+    includeHTML();
 
   </script>
 

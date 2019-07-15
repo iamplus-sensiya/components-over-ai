@@ -22,7 +22,8 @@ export const config: Config = {
     )
   ],
   copy: [
-    { src: 'assets' }
+    { src: 'assets' },
+    { src: 'sections' }
   ],
   devServer: {
     openBrowser: false
@@ -30,8 +31,9 @@ export const config: Config = {
   bundles: [
     { components: ['oai-progress-indicator'] },
     { components: ['oai-button'] },
-    { components: ['oai-drawer-stack'] },
+    { components: ['oai-drawer-stack', 'oai-drawer'] },
     { components: ['oai-toolbar'] },
     { components: ['oai-lazy-content'] },
+    { components: ['oai-select', 'oai-select-bind'] },
   ]
 };

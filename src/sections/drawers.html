@@ -1,0 +1,76 @@
+<oai-toolbar>
+
+  <oai-buttons slot="end" style="position: relative; z-index: 90000;">
+
+    <oai-button id="drawerPushBtn" color="warn">
+      Push a drawer
+      <span slot="suffix">➕</span>
+    </oai-button>
+    <oai-button class="drawerPopBtn" color="secondary">
+      Pop a drawer
+      <span slot="suffix">➖</span>
+    </oai-button>
+
+  </oai-buttons>
+
+</oai-toolbar>
+
+<oai-drawer-stack>
+  <oai-drawer slot="drawer1" inline-size="35%">
+    <oai-button class="drawerPopBtn">𝓧</oai-button>
+    <h1>Drawer 1</h1>
+    <img src="https://picsum.photos/200/300">
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa voluptates deleniti, sunt enim,
+      accusamus eveniet dolor nobis consectetur nesciunt aperiam dolore architecto. Itaque repudiandae quo
+      quasi alias eum sed consequuntur!</p>
+  </oai-drawer>
+  <oai-drawer slot="drawer2" inline-size="20%">
+    <oai-button class="drawerPopBtn">𝓧</oai-button>
+    <h1>Drawer 2</h1>
+    <img src="https://picsum.photos/400/300">
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa voluptates deleniti, sunt enim,
+      accusamus eveniet dolor nobis consectetur nesciunt aperiam dolore architecto. Itaque repudiandae quo
+      quasi alias eum sed consequuntur!</p>
+  </oai-drawer>
+  <oai-drawer slot="drawer3" inline-size="25%">
+    <oai-button class="drawerPopBtn">𝓧</oai-button>
+    <h1>Drawer 3</h1>
+    <img src="https://picsum.photos/522/364">
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa voluptates deleniti, sunt enim,
+      accusamus eveniet dolor nobis consectetur nesciunt aperiam dolore architecto. Itaque repudiandae quo
+      quasi alias eum sed consequuntur!</p>
+  </oai-drawer>
+  <oai-drawer slot="drawer4" inline-size="50%">
+    <oai-button class="drawerPopBtn">𝓧</oai-button>
+    <oai-lazy-content>
+      <template>
+        <h1>Drawer 4</h1>
+        <img src="https://picsum.photos/364/357">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa voluptates deleniti, sunt enim,
+          accusamus eveniet dolor nobis consectetur nesciunt aperiam dolore architecto. Itaque repudiandae quo
+          quasi alias eum sed consequuntur!</p>
+      </template>
+    </oai-lazy-content>
+  </oai-drawer>
+</oai-drawer-stack>
+
+
+
+<script>
+  const drawerStack = document.querySelector("oai-drawer-stack");
+
+  drawerStack.stack = ['drawer4'], 1500;
+
+  drawerStack.addEventListener('drawerPopped', event => {
+    console.log(event)
+  });
+
+  document.getElementById('drawerPushBtn')
+    .addEventListener('click', () => drawerStack.push('drawer4'));
+
+  document.querySelectorAll('.drawerPopBtn')
+    .forEach(bt => bt.addEventListener('click', e => drawerStack.pop({
+      someStuff: 'whateverrrr'
+    })));
+
+</script>

@@ -41,13 +41,13 @@ export namespace Components {
     'target': string | undefined;
   }
   interface OaiDrawer {
+    'drawerStack': OAIDrawersStack;
     'inlineSize': string;
-    'stack': OAIDrawersStack;
   }
   interface OaiDrawerStack {
     'pop': (payload?: any) => Promise<void>;
     'push': (name: string) => Promise<void>;
-    'stack': string;
+    'stack': string[];
   }
   interface OaiLazyContent {}
   interface OaiProgressIndicator {
@@ -56,6 +56,12 @@ export namespace Components {
     * (optional) The size of the progress indicator (xs (default) / sm / lg / xl)
     */
     'size': 'xs' | 'sm' | 'lg' | 'xl';
+  }
+  interface OaiSelect {
+    'data': never[];
+  }
+  interface OaiSelectBind {
+    'name': string;
   }
   interface OaiToolbar {
     /**
@@ -98,6 +104,18 @@ declare global {
     new (): HTMLOaiProgressIndicatorElement;
   };
 
+  interface HTMLOaiSelectElement extends Components.OaiSelect, HTMLStencilElement {}
+  var HTMLOaiSelectElement: {
+    prototype: HTMLOaiSelectElement;
+    new (): HTMLOaiSelectElement;
+  };
+
+  interface HTMLOaiSelectBindElement extends Components.OaiSelectBind, HTMLStencilElement {}
+  var HTMLOaiSelectBindElement: {
+    prototype: HTMLOaiSelectBindElement;
+    new (): HTMLOaiSelectBindElement;
+  };
+
   interface HTMLOaiToolbarElement extends Components.OaiToolbar, HTMLStencilElement {}
   var HTMLOaiToolbarElement: {
     prototype: HTMLOaiToolbarElement;
@@ -109,6 +127,8 @@ declare global {
     'oai-drawer-stack': HTMLOaiDrawerStackElement;
     'oai-lazy-content': HTMLOaiLazyContentElement;
     'oai-progress-indicator': HTMLOaiProgressIndicatorElement;
+    'oai-select': HTMLOaiSelectElement;
+    'oai-select-bind': HTMLOaiSelectBindElement;
     'oai-toolbar': HTMLOaiToolbarElement;
   }
 }
@@ -141,12 +161,12 @@ declare namespace LocalJSX {
     'target'?: string | undefined;
   }
   interface OaiDrawer extends JSXBase.HTMLAttributes<HTMLOaiDrawerElement> {
+    'drawerStack': OAIDrawersStack;
     'inlineSize'?: string;
-    'stack': OAIDrawersStack;
   }
   interface OaiDrawerStack extends JSXBase.HTMLAttributes<HTMLOaiDrawerStackElement> {
     'onDrawerPopped'?: (event: CustomEvent<any>) => void;
-    'stack'?: string;
+    'stack'?: string[];
   }
   interface OaiLazyContent extends JSXBase.HTMLAttributes<HTMLOaiLazyContentElement> {}
   interface OaiProgressIndicator extends JSXBase.HTMLAttributes<HTMLOaiProgressIndicatorElement> {
@@ -155,6 +175,13 @@ declare namespace LocalJSX {
     * (optional) The size of the progress indicator (xs (default) / sm / lg / xl)
     */
     'size'?: 'xs' | 'sm' | 'lg' | 'xl';
+  }
+  interface OaiSelect extends JSXBase.HTMLAttributes<HTMLOaiSelectElement> {
+    'data'?: never[];
+    'onTextSelected'?: (event: CustomEvent<any>) => void;
+  }
+  interface OaiSelectBind extends JSXBase.HTMLAttributes<HTMLOaiSelectBindElement> {
+    'name': string;
   }
   interface OaiToolbar extends JSXBase.HTMLAttributes<HTMLOaiToolbarElement> {
     /**
@@ -169,6 +196,8 @@ declare namespace LocalJSX {
     'oai-drawer-stack': OaiDrawerStack;
     'oai-lazy-content': OaiLazyContent;
     'oai-progress-indicator': OaiProgressIndicator;
+    'oai-select': OaiSelect;
+    'oai-select-bind': OaiSelectBind;
     'oai-toolbar': OaiToolbar;
   }
 }
