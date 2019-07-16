@@ -5,7 +5,7 @@ import { Component, h, Prop } from '@stencil/core';
     styleUrl: 'select-bind.scss',
     // shadow: true
 })
-export class OAISelect {
+export class OAISelectBind {
     @Prop() name!: string;
 
     render() {

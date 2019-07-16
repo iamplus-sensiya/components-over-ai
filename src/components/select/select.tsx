@@ -3,10 +3,10 @@ import {
     Event, EventEmitter, Prop, Host
 } from '@stencil/core';
 
-type Offsets = {
-    startOffset: number;
-    endOffset: number;
-};
+// type Offsets = {
+//     startOffset: number;
+//     endOffset: number;
+// };
 
 @Component({
     tag: 'oai-select',
@@ -19,19 +19,28 @@ export class OAISelect {
 
     @Listen('mouseup')
     handleMouseup() {
-        const { startOffset, endOffset } = this.commonAncestorRange;
-        if (Boolean(endOffset - startOffset)) {
-            this.textSelectedHandler({ startOffset, endOffset });
-        }
-    }
+        // const { startOffset, endOffset } = this.commonAncestorRange;
+        // if (Boolean(endOffset - startOffset)) {
+        //     this.textSelectedHandler({ startOffset, endOffset });
+        // }
 
-    @Event({ cancelable: true }) textSelected!: EventEmitter;
-    textSelectedHandler({ startOffset, endOffset }: Offsets) {
-        // const { startContainer, startOffset, endContainer, endOffset } = this.range;
-        console.log(startOffset, endOffset)
-        this.textSelected.emit({
-            bindSelectedText: this.bindSelectedTextFactory({ startOffset, endOffset })
-        });
+
+
+        const selection = window.getSelection();
+        const range = selection && selection.getRangeAt(0);
+
+        const text = range && range.cloneContents().textContent;
+        if (text) {
+            this.textSelectedHandler(range, selection);
+        }
+
+        // const textNode = document.createTextNode(text)
+        // const selectBind = document.createElement('oai-select-bind');
+        // selectBind.appendChild(textNode)
+
+        // range.insertNode(selectBind)
+        // range.deleteContents()
+
     }
 
     @Event() update!: EventEmitter;
@@ -40,58 +49,38 @@ export class OAISelect {
         this.update.emit('hellloooo');
     }
 
-    get commonAncestorRange() {
-        var selection = window.getSelection();
-        const range = selection!.getRangeAt(0);
-        const clone = range.cloneRange();
-        clone.selectNodeContents(this.el);
-        clone.setEnd(range.endContainer, range.endOffset);
-        const length = range.toString().length;
-        const endOffset = clone.toString().length;
-        const startOffset = endOffset - length;
-        return { startOffset, endOffset };
+    @Event({ cancelable: true }) textSelected!: EventEmitter;
+    textSelectedHandler(range: Range | null, selection: Selection | null) {
+
+        this.textSelected.emit({
+            bindSelectedText: this.bindSelectedTextFactory(range, selection)
+        });
     }
 
-    // unWrapBindings(range: Range) {
-
-    //     console.log(9);
-
-    //     [].forEach.call(this.el.querySelectorAll('oai-select-bind'), (node: any) =>
-    //         range.intersectsNode(node) && node.replaceWith(node.innerText)
-    //     );
-    //     // const contents = range.cloneContents();
-    //     // const bindNodes = contents.querySelectorAll('oai-select-bind');
-    //     // console.log()
-    //     // bindNodes.forEach(node => node.replaceWith(document.createTextNode(node.textContent || '')))
-    // }
-
-    bindSelectedTextFactory({ startOffset, endOffset }: Offsets) {
-        //TODO remove ranges if any
-        var newRange = document.createRange();
-        newRange.selectNodeContents(this.el);
-        newRange.setStart(this.el, startOffset);
-        newRange.setEnd(this.el, endOffset);
+    bindSelectedTextFactory(range: Range | null, selection: Selection | null) {
 
         return (name: string) => {
 
-            // this.unWrapBindings(newRange);
+            // unwrap if same parent is a bound part
+            // (meaning it is within a bound tag already)
+            unWrap(range, selection);
 
-            const bindNode = document.createElement('oai-select-bind');
-            bindNode.setAttribute('name', name);
-            const text = document.createTextNode(
-                newRange.extractContents()
-                    .textContent!);
-            bindNode.appendChild(text);
+            // range && range.surroundContents(bindElem(name)); // surroundContents will not strip down tags to plain text
+            range && range.insertNode(
+                bindElem(name, range.extractContents().textContent || '')
+            );
 
-            // newRange.insertNode(bindNode);
+            // clean up:
+            //
+            // remove ranges if any
+            selection && selection.removeAllRanges();
 
-            // // clean up: concat text nodes within parent element
-            // this.el.normalize();
+            // concat text nodes within parent element
+            this.el.normalize();
 
-            // newRange.collapse();
+            // call update event
+            this.updateHandler();
 
-            // // fire update event
-            // this.updateHandler();
         }
     }
 
@@ -106,4 +95,38 @@ export class OAISelect {
             </Host>
         );
     }
+}
+
+function unWrap(range: Range | null, selection: Selection | null) {
+
+    const boundElem = range && range.startContainer === range.endContainer &&
+        range.startContainer.parentElement &&
+        range.startContainer.parentElement.closest('oai-select-bind');
+
+    if (range && boundElem && boundElem.textContent) {
+        // keep offsets to reassign selection
+        // upon element replacement
+        const { startOffset, endOffset } = range;
+
+        // selection && selection.removeAllRanges();
+        range.collapse();
+
+        // replace bound tag with plain textNode
+        const textNode = document.createTextNode(boundElem.textContent);
+        boundElem.replaceWith(textNode);
+
+        // Reselect user's selection
+        // const newRange = document.createRange();
+        range.setStart(textNode, startOffset);
+        range.setEnd(textNode, endOffset);
+        selection && selection.addRange(range);
+    }
+
+}
+
+function bindElem(name: string, text: string = '') {
+    const elem = document.createElement('oai-select-bind');
+    elem.setAttribute('name', name);
+    elem.textContent = text;
+    return elem;
 }

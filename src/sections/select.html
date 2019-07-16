@@ -28,7 +28,7 @@
 
   function selected(e) {
     setTimeout(() =>
-      e.detail.bindSelectedText('toooooo'), 1000)
+      e.detail.bindSelectedText(`name-${Math.floor(Math.random() * Math.floor(3))}`), 1000)
     // console.log(e.detail)
   }
 
