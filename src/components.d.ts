@@ -62,6 +62,10 @@ export namespace Components {
   }
   interface OaiSelect {
     'data': never[];
+    /**
+    * (optional) auto expand selection (default = false)
+    */
+    'expand': boolean;
   }
   interface OaiSelectBind {
     'name': string;
@@ -191,6 +195,10 @@ declare namespace LocalJSX {
   }
   interface OaiSelect extends JSXBase.HTMLAttributes<HTMLOaiSelectElement> {
     'data'?: never[];
+    /**
+    * (optional) auto expand selection (default = false)
+    */
+    'expand'?: boolean;
     'onTextSelected'?: (event: CustomEvent<any>) => void;
     'onUpdate'?: (event: CustomEvent<any>) => void;
   }

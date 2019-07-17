@@ -13,18 +13,16 @@ import {
     // shadow: true
 })
 export class OAISelect {
+    @Prop() data = [];
+
+    /** (optional) auto expand selection (default = false) */
+    @Prop() expand: boolean = true;
+
     @Element()
     el!: HTMLElement;
-    @Prop() data = [];
 
     @Listen('mouseup')
     handleMouseup() {
-        // const { startOffset, endOffset } = this.commonAncestorRange;
-        // if (Boolean(endOffset - startOffset)) {
-        //     this.textSelectedHandler({ startOffset, endOffset });
-        // }
-
-
 
         const selection = window.getSelection();
         const range = selection && selection.getRangeAt(0);
@@ -33,13 +31,6 @@ export class OAISelect {
         if (text) {
             this.textSelectedHandler(range, selection);
         }
-
-        // const textNode = document.createTextNode(text)
-        // const selectBind = document.createElement('oai-select-bind');
-        // selectBind.appendChild(textNode)
-
-        // range.insertNode(selectBind)
-        // range.deleteContents()
 
     }
 
@@ -51,6 +42,16 @@ export class OAISelect {
 
     @Event({ cancelable: true }) textSelected!: EventEmitter;
     textSelectedHandler(range: Range | null, selection: Selection | null) {
+
+        if (range && this.expand) {
+
+            const { startContainer, startOffset } = range;
+            range.setStart(startContainer, getTextBoundry(startContainer, startOffset, -1));
+
+            const { endContainer, endOffset } = range;
+            range.setEnd(endContainer, getTextBoundry(endContainer, endOffset, 1) + 1);
+
+        }
 
         this.textSelected.emit({
             bindSelectedText: this.bindSelectedTextFactory(range, selection)
@@ -129,4 +130,16 @@ function bindElem(name: string, text: string = '') {
     elem.setAttribute('name', name);
     elem.textContent = text;
     return elem;
+}
+
+function getTextBoundry(node: Node, i: number, increment: number): number {
+
+    if (Boolean(
+        node.textContent &&
+        node.textContent[i + increment] &&
+        node.textContent[i + increment].trim()
+    )) { return getTextBoundry(node, i + increment, increment); }
+
+    return i;
+
 }

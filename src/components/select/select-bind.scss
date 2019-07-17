@@ -2,4 +2,49 @@ mark {
   border-radius: 4px;
   color: currentColor;
   background-color: rgb(186, 230, 173, .4);
+  position: relative;
+
+  &::before,
+  &::after {
+    content: '\2022';
+    width: 0;
+    position: absolute;
+    top: 0;
+    offset-block-start: 0;
+    // border-right: 1px solid currentColor;
+    font-size: 25px;
+    height: 100%;
+    display: flex;
+    place-content: center;
+  }
+
+  &::before {
+    transform: translateX(-100%);
+    left: 0;
+    offset-inline-start: 0;
+    line-height: 0;
+  }
+
+  &::after {
+    transform: translateX(100%);
+    right: 0;
+    offset-inline-end: 0;
+    line-height: 1.5;
+  }
+
+  &:not(:hover) {
+
+    &::before,
+    &::after {
+      display: none;
+    }
+  }
+
+  &:not(:active) {
+
+    &::before,
+    &::after {
+      //   opacity: .5;
+    }
+  }
 }
