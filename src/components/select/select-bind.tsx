@@ -21,22 +21,24 @@ export class OAISelectBind {
     }
 
     // @Listen('mousedown', { capture: true })
-    handleDragStart() {
+    handleDrag() {
 
         let prevOffsetX = 0;
         const select: OAISelect = this.select;
         const index = this.index;
 
+
         return function dragStart(e: DragEvent) {
 
             const { offsetX } = e;
-            // Distinct until change && drag offset is larger than =>
-            if (prevOffsetX == offsetX &&
-                Math.abs(prevOffsetX - offsetX) < 4) {
-                return;
-            } else {
-                prevOffsetX = offsetX
-            };
+            console.log('going at it', offsetX)
+
+            // Distinct until changed
+            if (prevOffsetX == offsetX) { return; }
+
+            prevOffsetX = offsetX;
+            // Distinct until drag offset is larger than =>
+            // if (Math.abs(offsetX) < getNextCharWidth(el)) { return; }
 
             const { target } = e;
             const { offsetWidth } = (target as HTMLElement).parentElement as HTMLElement;
@@ -48,20 +50,14 @@ export class OAISelectBind {
             } else if (offsetX < offsetWidth) {
                 console.log('handle resize after start (within boundries)');
             }
-            // if (offsetX > charWidth * 2 && offsetX < offsetWidth - charWidth) {
-            //     const mark = (this as any).parentNode;
-            //     mark.normalize();
-            //     const [, textNode] = mark.childNodes
-            //     textNode.textContent = textNode.textContent.substring(1);
-            //     // ((target as HTMLElement).parentElement as HTMLElement).textContent = ((target as HTMLElement).parentElement as HTMLElement).textContent || ''.substring(1);
-            // }
+
         }
     }
 
     render() {
         return (
             <mark>
-                <a onDrag={this.handleDragStart()} draggable />
+                <a onDrag={this.handleDrag()} draggable />
                 <slot />
                 <a draggable />
             </mark >
