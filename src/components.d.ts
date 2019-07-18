@@ -12,6 +12,9 @@ import {
 import {
   OAIDrawersStack,
 } from './components/drawer/drawer-stack';
+import {
+  Segment,
+} from './components/select/select';
 
 export namespace Components {
   interface OaiButton {
@@ -61,14 +64,16 @@ export namespace Components {
     'size': 'xs' | 'sm' | 'lg' | 'xl';
   }
   interface OaiSelect {
-    'data': never[];
     /**
     * (optional) auto expand selection (default = false)
     */
-    'expand': boolean;
+    'autoExpand': boolean;
+    'resizeOffsetStart': (i: number) => Promise<void>;
+    'segments': Segment[];
   }
   interface OaiSelectBind {
-    'name': string;
+    'index': number;
+    'value': string | undefined;
   }
   interface OaiToolbar {
     /**
@@ -194,16 +199,17 @@ declare namespace LocalJSX {
     'size'?: 'xs' | 'sm' | 'lg' | 'xl';
   }
   interface OaiSelect extends JSXBase.HTMLAttributes<HTMLOaiSelectElement> {
-    'data'?: never[];
     /**
     * (optional) auto expand selection (default = false)
     */
-    'expand'?: boolean;
+    'autoExpand'?: boolean;
     'onTextSelected'?: (event: CustomEvent<any>) => void;
     'onUpdate'?: (event: CustomEvent<any>) => void;
+    'segments'?: Segment[];
   }
   interface OaiSelectBind extends JSXBase.HTMLAttributes<HTMLOaiSelectBindElement> {
-    'name': string;
+    'index': number;
+    'value'?: string | undefined;
   }
   interface OaiToolbar extends JSXBase.HTMLAttributes<HTMLOaiToolbarElement> {
     /**

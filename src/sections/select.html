@@ -1,4 +1,4 @@
-<oai-toolbar>
+<oai-toolbar color="pale" style="font-size: 40px;">
   <br>
   <oai-select></oai-select>
 </oai-toolbar>
@@ -7,7 +7,7 @@
   const select = document.querySelector('oai-select');
   select.addEventListener('textSelected', selected);
 
-  select.data = [{
+  select.segments = [{
       text: 'Lorem '
     },
     {

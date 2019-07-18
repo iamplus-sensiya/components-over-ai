@@ -1,7 +1,12 @@
 import {
     Component, h, Listen, Element,
-    Event, EventEmitter, Prop, Host
+    Event, EventEmitter, Prop, Host, Method
 } from '@stencil/core';
+
+export interface Segment {
+    text: string;
+    value?: string;
+};
 
 // type Offsets = {
 //     startOffset: number;
@@ -10,13 +15,14 @@ import {
 
 @Component({
     tag: 'oai-select',
-    // shadow: true
+    styles: `:host { word-wrap: break-word; word-break: break-word; white-space: pre-wrap; }`,
+    shadow: true
 })
 export class OAISelect {
-    @Prop() data = [];
+    @Prop() segments: Segment[] = [];
 
     /** (optional) auto expand selection (default = false) */
-    @Prop() expand: boolean = true;
+    @Prop() autoExpand: boolean = true;
 
     @Element()
     el!: HTMLElement;
@@ -24,13 +30,15 @@ export class OAISelect {
     @Listen('mouseup')
     handleMouseup() {
 
-        const selection = window.getSelection();
-        const range = selection && selection.getRangeAt(0);
+        const selection = this.el.shadowRoot!.getSelection();
+        try {
+            const range = selection && selection.getRangeAt(0);
+            const text = range && range.cloneContents().textContent;
+            if (text) {
+                this.textSelectedHandler(range, selection);
+            }
+        } catch{ }
 
-        const text = range && range.cloneContents().textContent;
-        if (text) {
-            this.textSelectedHandler(range, selection);
-        }
 
     }
 
@@ -43,7 +51,7 @@ export class OAISelect {
     @Event({ cancelable: true }) textSelected!: EventEmitter;
     textSelectedHandler(range: Range | null, selection: Selection | null) {
 
-        if (range && this.expand) {
+        if (range && this.autoExpand) {
 
             const { startContainer, startOffset } = range;
             range.setStart(startContainer, getTextBoundry(startContainer, startOffset, -1));
@@ -85,19 +93,34 @@ export class OAISelect {
         }
     }
 
+    @Method()
+    async resizeOffsetStart(i: number) {
+        const prevSegment = this.segments[i - 1];
+        const { text: prevText } = prevSegment;
+        prevSegment.text = prevText.substring(0, prevText.length - 1)
+        const segment = this.segments[i];
+        segment.text = `${prevText.substring(prevText.length - 1)}${segment.text}`;
+
+        // reassign data for invoking a change detection
+        this.segments = [...this.segments];
+    }
+
     render() {
         return (
-            <Host>
-                {this.data.map(({ text, value }) => value ?
-                    <oai-select-bind name={value}>
+            <Host spellcheck>
+                {this.segments.map(({ text, value }, i) => value ?
+                    <oai-select-bind value={value} index={i}>
                         {text}
                     </oai-select-bind> :
-                    text)}
+                    text
+                )}
             </Host>
         );
     }
 }
-
+////////////////////////////////
+////////////////////////////////
+////////////////////////////////
 function unWrap(range: Range | null, selection: Selection | null) {
 
     const boundElem = range && range.startContainer === range.endContainer &&
@@ -136,8 +159,8 @@ function getTextBoundry(node: Node, i: number, increment: number): number {
 
     if (Boolean(
         node.textContent &&
-        node.textContent[i + increment] &&
-        node.textContent[i + increment].trim()
+        node.textContent.charAt(i + increment) &&
+        node.textContent.charAt(i + increment).trim()
     )) { return getTextBoundry(node, i + increment, increment); }
 
     return i;
