@@ -68,7 +68,10 @@ export namespace Components {
     * (optional) auto expand selection (default = false)
     */
     'autoExpand': boolean;
-    'resizeOffsetStart': (i: number) => Promise<void>;
+    'resizeOffsetAfterEnd': (i: number, offsetX: number) => Promise<void>;
+    'resizeOffsetAfterStart': (i: number, offsetX: number) => Promise<void>;
+    'resizeOffsetBeforeEnd': (i: number, offsetX: number) => Promise<void>;
+    'resizeOffsetBeforeStart': (i: number, offsetX: number) => Promise<void>;
     'segments': Segment[];
   }
   interface OaiSelectBind {

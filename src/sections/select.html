@@ -1,13 +1,14 @@
-<oai-toolbar color="pale" style="font-size: 40px;line-height: .5;">
-  <br>
+<oai-toolbar color="pale" style="font-size: 40px; line-height: 2; letter-spacing: 10px;">
+  <oai-select></oai-select>
+</oai-toolbar>
+
+<oai-toolbar color="pale" style="line-height: 2;">
   <oai-select></oai-select>
 </oai-toolbar>
 
 <script>
-  const select = document.querySelector('oai-select');
-  select.addEventListener('textSelected', selected);
-
-  select.segments = [{
+  const selectors = document.querySelectorAll('oai-select');
+  const segmentsExample = [{
       text: 'Lorem '
     },
     {
@@ -25,6 +26,13 @@
       text: ' adipisicing elit'
     },
   ];
+
+  Array.from(selectors).forEach(select => {
+
+    select.addEventListener('textSelected', selected);
+
+    select.segments = segmentsExample
+  });
 
   function selected(e) {
     setTimeout(() =>

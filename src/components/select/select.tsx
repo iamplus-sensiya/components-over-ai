@@ -24,8 +24,7 @@ export class OAISelect {
     /** (optional) auto expand selection (default = false) */
     @Prop() autoExpand: boolean = true;
 
-    @Element()
-    el!: HTMLElement;
+    @Element() el!: HTMLElement;
 
     @Listen('mouseup')
     handleMouseup() {
@@ -94,15 +93,73 @@ export class OAISelect {
     }
 
     @Method()
-    async resizeOffsetStart(i: number) {
+    async resizeOffsetBeforeStart(i: number, offsetX: number) {
         const prevSegment = this.segments[i - 1];
         const { text: prevText } = prevSegment;
-        prevSegment.text = prevText.substring(0, prevText.length - 1)
-        const segment = this.segments[i];
-        segment.text = `${prevText.substring(prevText.length - 1)}${segment.text}`;
+        const candiadateChar = prevText.substring(prevText.length - 1);
 
+        if (this.distinctCharOffset(offsetX, candiadateChar)) { return; }
+
+        prevSegment.text = prevText.substring(0, prevText.length - 1);
+        const segment = this.segments[i];
+        segment.text = `${candiadateChar}${segment.text}`;
         // reassign data for invoking a change detection
         this.segments = [...this.segments];
+        this.updateHandler();
+    }
+
+    @Method()
+    async resizeOffsetAfterStart(i: number, offsetX: number) {
+        const segment = this.segments[i];
+
+        const candiadateChar = segment.text.substring(0, 1);
+        if (this.distinctCharOffset(offsetX, candiadateChar)) { return; }
+
+        const prevSegment = this.segments[i - 1];
+        // const { text: prevText } = prevSegment;
+
+        segment.text = segment.text.substring(1);
+        prevSegment.text = `${prevSegment.text}${candiadateChar}`;
+        // reassign data for invoking a change detection
+        this.segments = [...this.segments];
+        this.updateHandler();
+    }
+
+    @Method()
+    async resizeOffsetAfterEnd(i: number, offsetX: number) {
+        const nextSegment = this.segments[i + 1];
+        const { text: nextText } = nextSegment;
+        const candiadateChar = nextText.substring(0, 1);
+
+        if (this.distinctCharOffset(offsetX, candiadateChar)) { return; }
+
+        nextSegment.text = nextText.substring(1);
+        const segment = this.segments[i];
+        segment.text = `${segment.text}${candiadateChar}`;
+        // reassign data for invoking a change detection
+        this.segments = [...this.segments];
+        this.updateHandler();
+    }
+
+    @Method()
+    async resizeOffsetBeforeEnd(i: number, offsetX: number) {
+        const segment = this.segments[i];
+
+        const candiadateChar = segment.text.substring(segment.text.length - 1);
+        if (this.distinctCharOffset(offsetX, candiadateChar)) { return; }
+
+        const nextSegment = this.segments[i + 1];
+
+        segment.text = segment.text.substring(0, segment.text.length - 1);
+        nextSegment.text = `${candiadateChar}${nextSegment.text}`;
+        // reassign data for invoking a change detection
+        this.segments = [...this.segments];
+        this.updateHandler();
+    }
+
+    // Distinct until drag offset is larger than =>
+    private distinctCharOffset(offsetX: number, candiadateChar: string) {
+        return Math.abs(offsetX) < calculateCharWidth(this.el, candiadateChar);
     }
 
     render() {
@@ -165,4 +222,20 @@ function getTextBoundry(node: Node, i: number, increment: number): number {
 
     return i;
 
+}
+
+function calculateCharWidth(select: HTMLElement, char: string) {
+    const fontSize = getComputedStyle(select as any).getPropertyValue('font-size');
+    const fontFamily = getComputedStyle(select as any).getPropertyValue('font-family');
+    const letterSpacing = getComputedStyle(select as any).getPropertyValue('letter-spacing');
+
+    var c = document.createElement("canvas");
+    var ctx = c.getContext("2d");
+
+    if (!ctx) { throw ('could not get CanvasRenderingContext2D'); }
+
+    c.style.letterSpacing = letterSpacing;
+    ctx.font = `${fontSize} ${fontFamily}`;
+
+    return ctx.measureText(char).width;
 }

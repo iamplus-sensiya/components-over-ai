@@ -15,51 +15,55 @@ export class OAISelectBind {
         return (this.el.parentNode as ShadowRoot).host as any;
     }
 
-    constructor() {
-        // console.log(this.segment && this.segment.text)
-        // this.value = this.segment.text;
-    }
 
     // @Listen('mousedown', { capture: true })
-    handleDrag() {
+    handleDrag(start: boolean) {
 
         let prevOffsetX = 0;
-        const select: OAISelect = this.select;
+        const select = this.select;
         const index = this.index;
 
-
-        return function dragStart(e: DragEvent) {
+        return function onDrag(e: DragEvent) {
 
             const { offsetX } = e;
-            console.log('going at it', offsetX)
 
             // Distinct until changed
             if (prevOffsetX == offsetX) { return; }
 
             prevOffsetX = offsetX;
-            // Distinct until drag offset is larger than =>
-            // if (Math.abs(offsetX) < getNextCharWidth(el)) { return; }
 
             const { target } = e;
             const { offsetWidth } = (target as HTMLElement).parentElement as HTMLElement;
-            // const nextCharWidth = (offsetWidth / textContent!.length);
-            // console.log({ offsetX, offsetWidth, textContent, nextCharWidth });
-            if (offsetX < 0) {
-                console.log('handle resize before start');
-                select && select.resizeOffsetStart(index);
-            } else if (offsetX < offsetWidth) {
-                console.log('handle resize after start (within boundries)');
+
+            if (!select) { throw 'no select found'; }
+
+            if (start) {
+
+                if (offsetX < 0) {
+                    select.resizeOffsetBeforeStart(index, offsetX);
+                } else if (offsetX < offsetWidth) {
+                    select.resizeOffsetAfterStart(index, offsetX);
+                }
+
+            } else {
+
+                if (offsetX > 0) {
+                    select.resizeOffsetAfterEnd(index, offsetX);
+                } else if (Math.abs(offsetX) < offsetWidth) {
+                    select.resizeOffsetBeforeEnd(index, offsetX);
+                }
             }
 
         }
+
     }
 
     render() {
         return (
             <mark>
-                <a onDrag={this.handleDrag()} draggable />
+                <a draggable onDrag={this.handleDrag(true)} />
                 <slot />
-                <a draggable />
+                <a draggable onDrag={this.handleDrag(false)} />
             </mark >
         );
     }
