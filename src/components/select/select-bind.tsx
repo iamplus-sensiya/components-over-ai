@@ -10,11 +10,11 @@ export class OAISelectBind {
     // @Prop() segment!: Segment;
     @Prop({ reflectToAttr: true, mutable: true }) value: string | undefined;
     @Prop({ reflectToAttr: true, mutable: true }) index!: number;
+    @Prop({ reflectToAttr: true, mutable: true }) color!: string;
     @Element() el!: HTMLElement;
     get select(): OAISelect {
         return (this.el.parentNode as ShadowRoot).host as any;
     }
-
 
     // @Listen('mousedown', { capture: true })
     handleDrag(start: boolean) {
@@ -40,17 +40,17 @@ export class OAISelectBind {
             if (start) {
 
                 if (offsetX < 0) {
-                    select.resizeOffsetBeforeStart(index, offsetX);
+                    select.expandStart(index, offsetX);
                 } else if (offsetX < offsetWidth) {
-                    select.resizeOffsetAfterStart(index, offsetX);
+                    select.condenseStart(index, offsetX);
                 }
 
             } else {
 
                 if (offsetX > 0) {
-                    select.resizeOffsetAfterEnd(index, offsetX);
+                    select.expandEnd(index, offsetX);
                 } else if (Math.abs(offsetX) < offsetWidth) {
-                    select.resizeOffsetBeforeEnd(index, offsetX);
+                    select.condenseEnd(index, offsetX);
                 }
             }
 
@@ -60,10 +60,8 @@ export class OAISelectBind {
 
     render() {
         return (
-            <mark>
-                <a draggable onDrag={this.handleDrag(true)} />
+            <mark style={{ 'backgroundColor': this.color }}>
                 <slot />
-                <a draggable onDrag={this.handleDrag(false)} />
             </mark >
         );
     }

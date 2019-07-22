@@ -2,6 +2,7 @@ import {
     Component, h, Listen, Element,
     Event, EventEmitter, Prop, Host, Method
 } from '@stencil/core';
+import { BindingColors } from './color-stack';
 
 export interface Segment {
     text: string;
@@ -22,9 +23,11 @@ export class OAISelect {
     @Prop() segments: Segment[] = [];
 
     /** (optional) auto expand selection (default = false) */
-    @Prop() autoExpand: boolean = true;
+    @Prop() autoExpand: boolean = false;
 
     @Element() el!: HTMLElement;
+
+    colors = new BindingColors();
 
     @Listen('mouseup')
     handleMouseup() {
@@ -44,7 +47,8 @@ export class OAISelect {
     @Event() update!: EventEmitter;
     updateHandler() {
         console.log('updated');
-        this.update.emit('hellloooo');
+
+        this.update.emit(segmentsRepresentationFromDomElement(this.el));
     }
 
     @Event({ cancelable: true }) textSelected!: EventEmitter;
@@ -68,14 +72,15 @@ export class OAISelect {
     bindSelectedTextFactory(range: Range | null, selection: Selection | null) {
 
         return (name: string) => {
-
+            if (!range) { return; }
             // unwrap if same parent is a bound part
             // (meaning it is within a bound tag already)
             unWrap(range, selection);
 
             // range && range.surroundContents(bindElem(name)); // surroundContents will not strip down tags to plain text
-            range && range.insertNode(
-                bindElem(name, range.extractContents().textContent || '')
+            const text = range.extractContents().textContent || ''
+            range.insertNode(
+                bindElem(name, text)
             );
 
             // clean up:
@@ -93,7 +98,7 @@ export class OAISelect {
     }
 
     @Method()
-    async resizeOffsetBeforeStart(i: number, offsetX: number) {
+    async expandStart(i: number, offsetX: number) {
         const prevSegment = this.segments[i - 1];
         const { text: prevText } = prevSegment;
         const candiadateChar = prevText.substring(prevText.length - 1);
@@ -109,7 +114,7 @@ export class OAISelect {
     }
 
     @Method()
-    async resizeOffsetAfterStart(i: number, offsetX: number) {
+    async condenseStart(i: number, offsetX: number) {
         const segment = this.segments[i];
 
         const candiadateChar = segment.text.substring(0, 1);
@@ -126,7 +131,7 @@ export class OAISelect {
     }
 
     @Method()
-    async resizeOffsetAfterEnd(i: number, offsetX: number) {
+    async expandEnd(i: number, offsetX: number) {
         const nextSegment = this.segments[i + 1];
         const { text: nextText } = nextSegment;
         const candiadateChar = nextText.substring(0, 1);
@@ -142,7 +147,7 @@ export class OAISelect {
     }
 
     @Method()
-    async resizeOffsetBeforeEnd(i: number, offsetX: number) {
+    async condenseEnd(i: number, offsetX: number) {
         const segment = this.segments[i];
 
         const candiadateChar = segment.text.substring(segment.text.length - 1);
@@ -166,18 +171,20 @@ export class OAISelect {
         return (
             <Host spellcheck>
                 {this.segments.map(({ text, value }, i) => value ?
-                    <oai-select-bind value={value} index={i}>
-                        {text}
-                    </oai-select-bind> :
+                    <oai-select-resizer>
+                        <oai-select-bind value={value} index={i} color={this.colors.newColor()}>
+                            {text}
+                        </oai-select-bind>
+                    </oai-select-resizer> :
                     text
                 )}
             </Host>
         );
     }
 }
-////////////////////////////////
-////////////////////////////////
-////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////
 function unWrap(range: Range | null, selection: Selection | null) {
 
     const boundElem = range && range.startContainer === range.endContainer &&
@@ -205,9 +212,9 @@ function unWrap(range: Range | null, selection: Selection | null) {
 
 }
 
-function bindElem(name: string, text: string = '') {
+function bindElem(value: string, text: string = '') {
     const elem = document.createElement('oai-select-bind');
-    elem.setAttribute('name', name);
+    elem.setAttribute('value', value);
     elem.textContent = text;
     return elem;
 }
@@ -238,4 +245,33 @@ function calculateCharWidth(select: HTMLElement, char: string) {
     ctx.font = `${fontSize} ${fontFamily}`;
 
     return ctx.measureText(char).width;
+}
+
+function segmentsRepresentationFromDomElement(el: HTMLElement): Segment[] {
+    const sr = el.shadowRoot
+    const nodes = sr && sr.childNodes && Array.from(sr.childNodes) || [];
+
+    const ObjectRepresentation = nodes
+        .filter(({ nodeType, nodeName, textContent }) =>
+            typeof textContent == 'string' &&
+            !!textContent.length &&
+            nodeType === Node.TEXT_NODE ||
+            nodeName === 'OAI-SELECT-BIND'
+        )
+        .map(({ textContent: text, value }: any) => ({ text, value }))
+
+
+    // .map(({ textContent: text }) => ({ text }))
+
+    console.log(ObjectRepresentation)
+
+    // .reduce((a, b) => a + b.textContent, '')
+    // nodes&& [...nodes].map(node => { text: node.textContent })
+    // Object.fromEntries(
+    //     Object
+    //         .entries(ObjectRepresentation)
+    //         .filter(([, v]) => Boolean(v))
+    // )
+
+    return ObjectRepresentation;//(ObjectRepresentation || []) as Segment[];
 }

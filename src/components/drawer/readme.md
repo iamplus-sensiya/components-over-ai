@@ -9,9 +9,9 @@ content will eagerly load unless is wrapped by a template tag
 
 ## Properties
 
-| Property | Attribute | Description | Type     | Default |
-| -------- | --------- | ----------- | -------- | ------- |
-| `stack`  | `stack`   |             | `string` | `''`    |
+| Property | Attribute | Description | Type       | Default |
+| -------- | --------- | ----------- | ---------- | ------- |
+| `stack`  | --        |             | `string[]` | `[]`    |
 
 
 ## Events

@@ -68,16 +68,18 @@ export namespace Components {
     * (optional) auto expand selection (default = false)
     */
     'autoExpand': boolean;
-    'resizeOffsetAfterEnd': (i: number, offsetX: number) => Promise<void>;
-    'resizeOffsetAfterStart': (i: number, offsetX: number) => Promise<void>;
-    'resizeOffsetBeforeEnd': (i: number, offsetX: number) => Promise<void>;
-    'resizeOffsetBeforeStart': (i: number, offsetX: number) => Promise<void>;
+    'condenseEnd': (i: number, offsetX: number) => Promise<void>;
+    'condenseStart': (i: number, offsetX: number) => Promise<void>;
+    'expandEnd': (i: number, offsetX: number) => Promise<void>;
+    'expandStart': (i: number, offsetX: number) => Promise<void>;
     'segments': Segment[];
   }
   interface OaiSelectBind {
+    'color': string;
     'index': number;
     'value': string | undefined;
   }
+  interface OaiSelectResizer {}
   interface OaiToolbar {
     /**
     * The color to use from your application's color palette. Default options are: `"primary"`, `"secondary"`, `"tertiary"`, `"success"`, `"warning"`, `"danger"`, `"light"`, `"medium"`, and `"dark"`. For more information on colors, see [theming](/docs/theming/basics).
@@ -137,6 +139,12 @@ declare global {
     new (): HTMLOaiSelectBindElement;
   };
 
+  interface HTMLOaiSelectResizerElement extends Components.OaiSelectResizer, HTMLStencilElement {}
+  var HTMLOaiSelectResizerElement: {
+    prototype: HTMLOaiSelectResizerElement;
+    new (): HTMLOaiSelectResizerElement;
+  };
+
   interface HTMLOaiToolbarElement extends Components.OaiToolbar, HTMLStencilElement {}
   var HTMLOaiToolbarElement: {
     prototype: HTMLOaiToolbarElement;
@@ -151,6 +159,7 @@ declare global {
     'oai-progress-indicator': HTMLOaiProgressIndicatorElement;
     'oai-select': HTMLOaiSelectElement;
     'oai-select-bind': HTMLOaiSelectBindElement;
+    'oai-select-resizer': HTMLOaiSelectResizerElement;
     'oai-toolbar': HTMLOaiToolbarElement;
   }
 }
@@ -211,9 +220,11 @@ declare namespace LocalJSX {
     'segments'?: Segment[];
   }
   interface OaiSelectBind extends JSXBase.HTMLAttributes<HTMLOaiSelectBindElement> {
+    'color': string;
     'index': number;
     'value'?: string | undefined;
   }
+  interface OaiSelectResizer extends JSXBase.HTMLAttributes<HTMLOaiSelectResizerElement> {}
   interface OaiToolbar extends JSXBase.HTMLAttributes<HTMLOaiToolbarElement> {
     /**
     * The color to use from your application's color palette. Default options are: `"primary"`, `"secondary"`, `"tertiary"`, `"success"`, `"warning"`, `"danger"`, `"light"`, `"medium"`, and `"dark"`. For more information on colors, see [theming](/docs/theming/basics).
@@ -230,6 +241,7 @@ declare namespace LocalJSX {
     'oai-progress-indicator': OaiProgressIndicator;
     'oai-select': OaiSelect;
     'oai-select-bind': OaiSelectBind;
+    'oai-select-resizer': OaiSelectResizer;
     'oai-toolbar': OaiToolbar;
   }
 }
