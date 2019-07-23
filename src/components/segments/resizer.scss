@@ -1,0 +1,31 @@
+oai-resizer {
+  position: relative;
+  background: lightsalmon;
+}
+
+.marker {
+  width: 2px;
+  height: 100%;
+  background-color: #36a0e1;
+  position: absolute;
+  top: 0;
+  cursor: pointer;
+}
+
+.handle {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: #36a0e1;
+  border-radius: 10px;
+}
+
+.handle-start {
+  right: -4px;
+  top: -9px;
+}
+
+.handle-end {
+  left: -4px;
+  bottom: -9px;
+}

@@ -63,6 +63,10 @@ export namespace Components {
     */
     'size': 'xs' | 'sm' | 'lg' | 'xl';
   }
+  interface OaiResizer {}
+  interface OaiSegments {
+    'segments': Segment[];
+  }
   interface OaiSelect {
     /**
     * (optional) auto expand selection (default = false)
@@ -79,7 +83,9 @@ export namespace Components {
     'index': number;
     'value': string | undefined;
   }
-  interface OaiSelectResizer {}
+  interface OaiSelectResizer {
+    'index': number;
+  }
   interface OaiToolbar {
     /**
     * The color to use from your application's color palette. Default options are: `"primary"`, `"secondary"`, `"tertiary"`, `"success"`, `"warning"`, `"danger"`, `"light"`, `"medium"`, and `"dark"`. For more information on colors, see [theming](/docs/theming/basics).
@@ -127,6 +133,18 @@ declare global {
     new (): HTMLOaiProgressIndicatorElement;
   };
 
+  interface HTMLOaiResizerElement extends Components.OaiResizer, HTMLStencilElement {}
+  var HTMLOaiResizerElement: {
+    prototype: HTMLOaiResizerElement;
+    new (): HTMLOaiResizerElement;
+  };
+
+  interface HTMLOaiSegmentsElement extends Components.OaiSegments, HTMLStencilElement {}
+  var HTMLOaiSegmentsElement: {
+    prototype: HTMLOaiSegmentsElement;
+    new (): HTMLOaiSegmentsElement;
+  };
+
   interface HTMLOaiSelectElement extends Components.OaiSelect, HTMLStencilElement {}
   var HTMLOaiSelectElement: {
     prototype: HTMLOaiSelectElement;
@@ -157,6 +175,8 @@ declare global {
     'oai-include': HTMLOaiIncludeElement;
     'oai-lazy-content': HTMLOaiLazyContentElement;
     'oai-progress-indicator': HTMLOaiProgressIndicatorElement;
+    'oai-resizer': HTMLOaiResizerElement;
+    'oai-segments': HTMLOaiSegmentsElement;
     'oai-select': HTMLOaiSelectElement;
     'oai-select-bind': HTMLOaiSelectBindElement;
     'oai-select-resizer': HTMLOaiSelectResizerElement;
@@ -210,6 +230,10 @@ declare namespace LocalJSX {
     */
     'size'?: 'xs' | 'sm' | 'lg' | 'xl';
   }
+  interface OaiResizer extends JSXBase.HTMLAttributes<HTMLOaiResizerElement> {}
+  interface OaiSegments extends JSXBase.HTMLAttributes<HTMLOaiSegmentsElement> {
+    'segments'?: Segment[];
+  }
   interface OaiSelect extends JSXBase.HTMLAttributes<HTMLOaiSelectElement> {
     /**
     * (optional) auto expand selection (default = false)
@@ -224,7 +248,9 @@ declare namespace LocalJSX {
     'index': number;
     'value'?: string | undefined;
   }
-  interface OaiSelectResizer extends JSXBase.HTMLAttributes<HTMLOaiSelectResizerElement> {}
+  interface OaiSelectResizer extends JSXBase.HTMLAttributes<HTMLOaiSelectResizerElement> {
+    'index': number;
+  }
   interface OaiToolbar extends JSXBase.HTMLAttributes<HTMLOaiToolbarElement> {
     /**
     * The color to use from your application's color palette. Default options are: `"primary"`, `"secondary"`, `"tertiary"`, `"success"`, `"warning"`, `"danger"`, `"light"`, `"medium"`, and `"dark"`. For more information on colors, see [theming](/docs/theming/basics).
@@ -239,6 +265,8 @@ declare namespace LocalJSX {
     'oai-include': OaiInclude;
     'oai-lazy-content': OaiLazyContent;
     'oai-progress-indicator': OaiProgressIndicator;
+    'oai-resizer': OaiResizer;
+    'oai-segments': OaiSegments;
     'oai-select': OaiSelect;
     'oai-select-bind': OaiSelectBind;
     'oai-select-resizer': OaiSelectResizer;

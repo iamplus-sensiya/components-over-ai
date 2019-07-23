@@ -171,7 +171,7 @@ export class OAISelect {
         return (
             <Host spellcheck>
                 {this.segments.map(({ text, value }, i) => value ?
-                    <oai-select-resizer>
+                    <oai-select-resizer index={i}>
                         <oai-select-bind value={value} index={i} color={this.colors.newColor()}>
                             {text}
                         </oai-select-bind>

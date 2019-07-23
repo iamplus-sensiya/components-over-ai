@@ -34,6 +34,7 @@ export const config: Config = {
     { components: ['oai-progress-indicator'] },
     { components: ['oai-drawer-stack', 'oai-drawer'] },
     { components: ['oai-select'/*, 'oai-select-bind'*/] },
+    { components: ['oai-segments'] },
     { components: ['oai-include'] },
     { components: ['oai-lazy-content'] },
   ]
