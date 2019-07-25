@@ -1,5 +1,10 @@
-import { Component, h, Element } from '@stencil/core';
-
+import { Component, h, Element, Listen, State } from '@stencil/core';
+const MARKER_CLASS = 'marker';
+const HANDLE_CLASS = 'handle';
+enum Alignment {
+    Start = 'start',
+    End = 'end'
+}
 @Component({
     tag: 'oai-resizer',
     styleUrl: './resizer.scss',
@@ -11,23 +16,20 @@ export class OAIResizer {
         const shadowRoot = this.container.parentNode as ShadowRoot;
         return shadowRoot.getSelection();
     }
+    @State() showMarkers = true;
 
-    get extractedContent() {
-        const selection = this.selection;
-        if (selection) {
-            // console.log(selection.anchorNode)
-            return selection.getRangeAt(0).extractContents();
-        }
-    };
+    @Listen('mouseenter')
+    mouseEnterHandler() { this.showMarkers = true; }
+    // @Listen('mouseleave')
+    // mouseLeaveHandler() { this.showMarkers = false; }
 
     private reset() {
         if (this.selection)
             this.selection.removeAllRanges();
     }
 
-    onMouseDown() {
-        this.reset();
-        this.container.onmousemove = this.onMouseMove().bind(this);
+    onMouseDown(markerHandler: Function) {
+        this.container.onmousemove = this.onMouseMove(markerHandler).bind(this);
         this.container.onmouseup = this.removeMouseEvents.bind(this);
         this.container.onmouseleave = this.removeMouseEvents.bind(this);
     }
@@ -40,52 +42,80 @@ export class OAIResizer {
         this.reset();
     }
 
-    onMouseMove() {
-        let x = 0;
+    onMouseMove(markerHandler: Function) {
+        // return () => {
+        //     const selection = this.selection;
+        //     if (!selection) { return; }
+        //     const range = selection.getRangeAt(0);
 
-        return (e: MouseEvent) => {
+        //     console.log(range.intersectsNode(this.el.querySelector('.selection')!))
+        // }
+        // let x = 0;
 
-            const rect = this.el.getBoundingClientRect();
-            x = e.clientX - rect.left;
+        return () => {
+            // const rect = this.el.getBoundingClientRect();
+            // x = e.clientX - rect.left;
 
-            if (x > rect.width) {
-                // console.log('going right')
-                this.expandEnd(this.extractedContent);
-            } else if (e.movementX < 0) {
-                // console.log('going left')
-                this.condenseEnd(this.extractedContent);
-            }
+            const selection = this.selection;
+
+            if (!selection || !selection.toString() || selection.toString().length < 1) { return; }
+            const range = selection.getRangeAt(0);
+
+            markerHandler.call(this, range);
+
+            range.collapse();
 
         }
 
     }
 
-    expandEnd(extractedContent: DocumentFragment | undefined) {
-        if (extractedContent && extractedContent.textContent) {
-            (this.el.querySelector('.selection') as HTMLElement)
-                .innerText += extractedContent.textContent
-        };
+    markerStartHandler(range: Range) {
+        console.log('START', range.intersectsNode(this.el.querySelector('.selection')!))
     }
 
-    condenseEnd(extractedContent: DocumentFragment | undefined) {
-        if (extractedContent && extractedContent.textContent) {
-            this.el.after(document.createTextNode(extractedContent!.textContent))
-        };
+    markerEndHandler(range: Range) {
+        // console.log('END', range.intersectsNode(this.el.querySelector('.selection')!))
+
+        const isCondense = range.intersectsNode(this.el.querySelector('.selection')!);
+
+        if (isCondense) {
+            // condense
+            range.setEndBefore(this.el.querySelector(`.${HANDLE_CLASS}-end`)!.parentNode!);
+            const contents = range.extractContents();
+            if (contents && contents.textContent) {
+                this.el.after(document.createTextNode(contents!.textContent))
+            };
+        } else {
+            // expand
+            range.setStartAfter(this.el);
+            const contents = range.extractContents();
+            (this.el.querySelector('.selection') as HTMLElement)
+                .innerText += contents.textContent;
+        }
+
     }
 
     render() {
 
-        const marker = (align: string) => <span class="marker">
-            <span class={`handle handle-${align}`}
-                onMouseDown={this.onMouseDown.bind(this)} />
+        const marker = (align: string) => <span class={MARKER_CLASS}
+            onMouseDown={this.onMouseDown.bind(
+                this,
+                align == Alignment.Start
+                    ? this.markerStartHandler
+                    : this.markerEndHandler
+            )} >
+            <span class={`${HANDLE_CLASS} ${HANDLE_CLASS}-${align}`} />
         </span>;
 
         return ([
-            marker('start'),
-            <span class="selection">
+            this.showMarkers ? marker('start') : null,
+            <mark class="selection">
                 <slot />
-            </span>,
-            marker('end')
+            </mark>,
+            this.showMarkers ? marker('end') : null
         ]);
+
     }
 }
+
+

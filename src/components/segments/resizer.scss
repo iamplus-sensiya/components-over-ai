@@ -1,15 +1,28 @@
 oai-resizer {
   position: relative;
-  background: lightsalmon;
+  //   background: lightsalmon;
 }
 
 .marker {
   width: 2px;
-  height: 100%;
+  height: 18px;
   background-color: #36a0e1;
   position: absolute;
-  top: 0;
   cursor: pointer;
+
+  &:first-of-type {
+    left: -1px;
+    offset-inline-start: -1px;
+    top: 0;
+    offset-block-start: 0;
+  }
+
+  &:last-of-type {
+    right: -1px;
+    offset-inline-end: -1px;
+    bottom: 0;
+    offset-block-end: 0;
+  }
 }
 
 .handle {
@@ -22,10 +35,19 @@ oai-resizer {
 
 .handle-start {
   right: -4px;
+  offset-inline-end: -4px;
   top: -9px;
+  offset-block-start: -9px;
 }
 
 .handle-end {
   left: -4px;
+  offset-inline-start: -4px;
   bottom: -9px;
+  offset-block-end: -9px;
 }
+
+// .selection {
+//   text-decoration-line: underline;
+//   text-decoration-style: wavy;
+// }
