@@ -69,18 +69,38 @@ export class OAIResizer {
 
     }
 
+
+    private isCondense(range: Range) {
+        return range.intersectsNode(this.el.querySelector('.selection')!);
+    }
+
     markerStartHandler(range: Range) {
-        console.log('START', range.intersectsNode(this.el.querySelector('.selection')!))
+
+        if (this.isCondense(range)) {
+            // condense
+            range.setStartAfter(this.el.querySelector(`.${HANDLE_CLASS}-${Alignment.Start}`)!.parentNode!);
+            const contents = range.extractContents();
+            if (contents && contents.textContent) {
+                this.el.before(document.createTextNode(contents!.textContent))
+            };
+        } else {
+            // expand
+            range.setEndBefore(this.el);
+            const contents = range.extractContents();
+            if (contents && contents.textContent) {
+                const selectionNode = (this.el.querySelector('.selection') as HTMLElement);
+                selectionNode.innerText = contents.textContent + selectionNode.innerText;
+            }
+        }
+
     }
 
     markerEndHandler(range: Range) {
-        // console.log('END', range.intersectsNode(this.el.querySelector('.selection')!))
 
-        const isCondense = range.intersectsNode(this.el.querySelector('.selection')!);
 
-        if (isCondense) {
+        if (this.isCondense(range)) {
             // condense
-            range.setEndBefore(this.el.querySelector(`.${HANDLE_CLASS}-end`)!.parentNode!);
+            range.setEndBefore(this.el.querySelector(`.${HANDLE_CLASS}-${Alignment.End}`)!.parentNode!);
             const contents = range.extractContents();
             if (contents && contents.textContent) {
                 this.el.after(document.createTextNode(contents!.textContent))
@@ -108,11 +128,11 @@ export class OAIResizer {
         </span>;
 
         return ([
-            this.showMarkers ? marker('start') : null,
+            this.showMarkers ? marker(Alignment.Start) : null,
             <mark class="selection">
                 <slot />
             </mark>,
-            this.showMarkers ? marker('end') : null
+            this.showMarkers ? marker(Alignment.End) : null
         ]);
 
     }
