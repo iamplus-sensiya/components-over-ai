@@ -63,7 +63,9 @@ export namespace Components {
     */
     'size': 'xs' | 'sm' | 'lg' | 'xl';
   }
-  interface OaiResizer {}
+  interface OaiResizer {
+    'color': string;
+  }
   interface OaiSegments {
     'segments': Segment[];
   }
@@ -230,7 +232,9 @@ declare namespace LocalJSX {
     */
     'size'?: 'xs' | 'sm' | 'lg' | 'xl';
   }
-  interface OaiResizer extends JSXBase.HTMLAttributes<HTMLOaiResizerElement> {}
+  interface OaiResizer extends JSXBase.HTMLAttributes<HTMLOaiResizerElement> {
+    'color': string;
+  }
   interface OaiSegments extends JSXBase.HTMLAttributes<HTMLOaiSegmentsElement> {
     'segments'?: Segment[];
   }

@@ -1,4 +1,4 @@
-import { Component, h, Element, Listen, State } from '@stencil/core';
+import { Component, h, Element, Listen, State, Prop } from '@stencil/core';
 const MARKER_CLASS = 'marker';
 const HANDLE_CLASS = 'handle';
 enum Alignment {
@@ -11,6 +11,7 @@ enum Alignment {
 })
 export class OAIResizer {
     @Element() el!: HTMLElement;
+    @Prop({ reflectToAttr: true, mutable: true }) color!: string;
     get container(): HTMLElement { return this.el.parentElement as HTMLElement; }
     get selection() {
         const shadowRoot = this.container.parentNode as ShadowRoot;
@@ -129,7 +130,7 @@ export class OAIResizer {
 
         return ([
             this.showMarkers ? marker(Alignment.Start) : null,
-            <mark class="selection">
+            <mark class="selection" style={{ 'backgroundColor': this.color }}>
                 <slot />
             </mark>,
             this.showMarkers ? marker(Alignment.End) : null

@@ -1,4 +1,5 @@
 import { Component, h, Prop, Listen, Element } from '@stencil/core';
+import { BindingColors } from './color-stack';
 
 @Component({
     tag: 'oai-segments',
@@ -15,12 +16,14 @@ export class OAISegments {
         console.log('select', event);
     }
 
+    colors = new BindingColors();
+
     render() {
         return (
             <div class="segments" spellcheck>
                 {this.segments.map(({ text, value }) =>
                     value ?
-                        <oai-resizer>
+                        <oai-resizer color={this.colors.getColor(value)}>
                             {text}
                         </oai-resizer> :
                         text
