@@ -2,7 +2,7 @@ import { Component, h, Prop, Listen, Element } from '@stencil/core';
 
 @Component({
     tag: 'oai-segments',
-    styles: `.segments { word-wrap: break-word; word-break: break-word; white-space: pre-wrap; }`,
+    styles: `.segments { word-wrap: break-word; word-break: break-word; white-space: pre-wrap; padding: 10px 0;}`,
     shadow: true
 })
 export class OAISegments {
