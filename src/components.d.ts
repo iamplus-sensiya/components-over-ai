@@ -65,8 +65,13 @@ export namespace Components {
   }
   interface OaiResizer {
     'color': string;
+    'value': string;
   }
   interface OaiSegments {
+    /**
+    * (optional) auto expand selection (default = false)
+    */
+    'autoExpand': boolean;
     'segments': Segment[];
   }
   interface OaiSelect {
@@ -234,8 +239,14 @@ declare namespace LocalJSX {
   }
   interface OaiResizer extends JSXBase.HTMLAttributes<HTMLOaiResizerElement> {
     'color': string;
+    'value': string;
   }
   interface OaiSegments extends JSXBase.HTMLAttributes<HTMLOaiSegmentsElement> {
+    /**
+    * (optional) auto expand selection (default = false)
+    */
+    'autoExpand'?: boolean;
+    'onTextSelected'?: (event: CustomEvent<any>) => void;
     'segments'?: Segment[];
   }
   interface OaiSelect extends JSXBase.HTMLAttributes<HTMLOaiSelectElement> {

@@ -1,17 +1,20 @@
 import { Component, h, Element, Listen, State, Prop } from '@stencil/core';
 const MARKER_CLASS = 'marker';
 const HANDLE_CLASS = 'handle';
+
 enum Alignment {
     Start = 'start',
     End = 'end'
 }
+
 @Component({
     tag: 'oai-resizer',
     styleUrl: './resizer.scss',
 })
 export class OAIResizer {
     @Element() el!: HTMLElement;
-    @Prop({ reflectToAttr: true, mutable: true }) color!: string;
+    @Prop({ reflectToAttr: true, mutable: true }) value!: string;
+    @Prop({ mutable: true }) color!: string;
     get container(): HTMLElement { return this.el.parentElement as HTMLElement; }
     get selection() {
         const shadowRoot = this.container.parentNode as ShadowRoot;
@@ -97,7 +100,6 @@ export class OAIResizer {
     }
 
     markerEndHandler(range: Range) {
-
 
         if (this.isCondense(range)) {
             // condense

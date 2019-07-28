@@ -16,14 +16,14 @@
       value: 'param-1'
     },
     {
-      text: ' dolor sit amet psum ipsum ipsum ipsum i'
+      text: ' dolor sit amet psum ipsum ipsum ipsum '
     },
     {
       text: 'consectetur',
       value: 'param-2'
     },
     {
-      text: 'Lorem '
+      text: ' Lorem '
     },
     {
       text: 'consectetur',
@@ -36,15 +36,15 @@
 
   Array.from(selectors).forEach(select => {
 
+    select.segments = segmentsExample
     select.addEventListener('textSelected', selected);
 
-    select.segments = segmentsExample
   });
 
   function selected(e) {
     setTimeout(() =>
       e.detail.bindSelectedText(`param-${Math.floor(Math.random() * Math.floor(3))}`), 1000)
-    // console.log(e.detail)
+    console.log(e.detail)
   }
 
 </script>
