@@ -1,9 +1,10 @@
 @import '../../utils/theme/color-theme.scss';
 
 :host {
+  --toolbar-size-block: 4.8rem;
   display: flex;
   place-content: center flex-start;
-  min-block-size: 4.8rem;
+  min-block-size: var(--toolbar-size-block);
   align-items: center;
   background-color: var(--oai-color-base);
   color: var(--oai-color-contrast);

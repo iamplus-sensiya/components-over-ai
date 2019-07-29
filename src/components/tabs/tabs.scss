@@ -1,3 +1,13 @@
-nav {
+:host {
+  min-block-size: var(--size-block);
+  max-block-size: 100%;
+  //   display: grid;
+  //   grid-template-areas: 'list''content';
+  //   grid-template-columns: 1fr;
+  //   grid-template-rows: auto 1fr;
   display: flex;
+  align-items: flex-end;
+  justify-items: flex-start;
+  place-content: flex-end flex-start;
+  overflow: hidden;
 }
