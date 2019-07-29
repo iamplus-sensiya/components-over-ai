@@ -7,10 +7,9 @@
 
 ## Properties
 
-| Property             | Attribute | Description | Type                  | Default     |
-| -------------------- | --------- | ----------- | --------------------- | ----------- |
-| `index` _(required)_ | `index`   |             | `number`              | `undefined` |
-| `value`              | `value`   |             | `string \| undefined` | `undefined` |
+| Property             | Attribute | Description | Type     | Default     |
+| -------------------- | --------- | ----------- | -------- | ----------- |
+| `index` _(required)_ | `index`   |             | `number` | `undefined` |
 
 
 ## Dependencies
@@ -22,8 +21,8 @@
 ### Graph
 ```mermaid
 graph TD;
-  oai-select --> oai-select-bind
-  style oai-select-bind fill:#f9f,stroke:#333,stroke-width:4px
+  oai-select --> oai-select-resizer
+  style oai-select-resizer fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

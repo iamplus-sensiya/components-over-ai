@@ -18,9 +18,7 @@ export class OAIToolbar {
 
     render() {
         return (
-            <Host
-                class={{ ...createColorClasses(this.color), }}
-            >
+            <Host class={{ ...createColorClasses(this.color), }}>
                 <div class="toolbar-background"></div>
                 <div class="toolbar-container">
                     <slot name="start"></slot>

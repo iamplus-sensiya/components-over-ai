@@ -10,6 +10,8 @@ import { Color } from '../../interface';
 export class OAIButton {
     @Element() el!: HTMLElement;
 
+    @Prop({ mutable: true }) disableRipple = false;
+
     /** (optional) The minimum size of the button (xs / sm / lg / xl) */
     /** (optional) The type of the button (default = filled / outlined (stroked)) */
 
@@ -47,14 +49,15 @@ export class OAIButton {
 
     // adds ripple effect
     // @Listen('click', { capture: true })
-    handleClick(ev: MouseEvent | TouchEvent) {
-        const event = 'touches' in ev ? ev.touches.item(0) : ev;
-        if (event) {
-            const r = this.el.getBoundingClientRect(), d = Math.sqrt(Math.pow(r.width, 2) + Math.pow(r.height, 2)) * 2;
-            this.el.style.cssText = `--s: 0; --o: 1;`; this.el.offsetTop;
-            this.el.style.cssText = `--t: 1; --o: 0; --d: ${d}; --x:${event.clientX - r.left}; --y:${event.clientY - r.top};`
-        }
-    }
+    // handleClick(ev: MouseEvent | TouchEvent) {
+    //     console.log(this.el)
+    //     const event = 'touches' in ev ? ev.touches.item(0) : ev;
+    //     if (event) {
+    //         const r = this.el.getBoundingClientRect(), d = Math.sqrt(Math.pow(r.width, 2) + Math.pow(r.height, 2)) * 2;
+    //         this.el.style.cssText = `--s: 0; --o: 1;`; this.el.offsetTop;
+    //         this.el.style.cssText = `--t: 1; --o: 0; --d: ${d}; --x:${event.clientX - r.left}; --y:${event.clientY - r.top};`
+    //     }
+    // }
 
     connectedCallback() {
         this.el.setAttribute('role', 'button');
@@ -77,13 +80,17 @@ export class OAIButton {
 
         return (
             <TagType {...attrs} disabled={this.state === 'disabled' || this.state === 'pending'}
-                onClick={TagType === 'button' ? this.handleClick.bind(this) : null}>
+            // onClick={TagType === 'button' ? this.handleClick.bind(this) : null}
+            >
                 <span class="button-inner">
                     {pendingIndicator}
                     <slot name="prefix" />
                     <slot />
                     <slot name="suffix" />
                 </span>
+                {this.disableRipple
+                    ? null
+                    : <oai-ripple el={this.el} />}
             </TagType>
         )
 

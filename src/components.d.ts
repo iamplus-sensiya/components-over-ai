@@ -22,6 +22,7 @@ export namespace Components {
     * (optional) The color of the button (pale / primary (default) / accent / error / warn)
     */
     'color'?: Color;
+    'disableRipple': boolean;
     /**
     * This attribute instructs browsers to download a URL instead of navigating to it, so the user will be prompted to save it as a local file. If the attribute has a value, it is used as the pre-filled file name in the Save prompt (the user can still change the file name if they want).
     */
@@ -67,6 +68,9 @@ export namespace Components {
     'color': string;
     'value': string;
   }
+  interface OaiRipple {
+    'el': HTMLElement;
+  }
   interface OaiSegments {
     /**
     * (optional) auto expand selection (default = false)
@@ -93,6 +97,10 @@ export namespace Components {
   interface OaiSelectResizer {
     'index': number;
   }
+  interface OaiTab {
+    'disableRipple': boolean;
+  }
+  interface OaiTabs {}
   interface OaiToolbar {
     /**
     * The color to use from your application's color palette. Default options are: `"primary"`, `"secondary"`, `"tertiary"`, `"success"`, `"warning"`, `"danger"`, `"light"`, `"medium"`, and `"dark"`. For more information on colors, see [theming](/docs/theming/basics).
@@ -146,6 +154,12 @@ declare global {
     new (): HTMLOaiResizerElement;
   };
 
+  interface HTMLOaiRippleElement extends Components.OaiRipple, HTMLStencilElement {}
+  var HTMLOaiRippleElement: {
+    prototype: HTMLOaiRippleElement;
+    new (): HTMLOaiRippleElement;
+  };
+
   interface HTMLOaiSegmentsElement extends Components.OaiSegments, HTMLStencilElement {}
   var HTMLOaiSegmentsElement: {
     prototype: HTMLOaiSegmentsElement;
@@ -170,6 +184,18 @@ declare global {
     new (): HTMLOaiSelectResizerElement;
   };
 
+  interface HTMLOaiTabElement extends Components.OaiTab, HTMLStencilElement {}
+  var HTMLOaiTabElement: {
+    prototype: HTMLOaiTabElement;
+    new (): HTMLOaiTabElement;
+  };
+
+  interface HTMLOaiTabsElement extends Components.OaiTabs, HTMLStencilElement {}
+  var HTMLOaiTabsElement: {
+    prototype: HTMLOaiTabsElement;
+    new (): HTMLOaiTabsElement;
+  };
+
   interface HTMLOaiToolbarElement extends Components.OaiToolbar, HTMLStencilElement {}
   var HTMLOaiToolbarElement: {
     prototype: HTMLOaiToolbarElement;
@@ -183,10 +209,13 @@ declare global {
     'oai-lazy-content': HTMLOaiLazyContentElement;
     'oai-progress-indicator': HTMLOaiProgressIndicatorElement;
     'oai-resizer': HTMLOaiResizerElement;
+    'oai-ripple': HTMLOaiRippleElement;
     'oai-segments': HTMLOaiSegmentsElement;
     'oai-select': HTMLOaiSelectElement;
     'oai-select-bind': HTMLOaiSelectBindElement;
     'oai-select-resizer': HTMLOaiSelectResizerElement;
+    'oai-tab': HTMLOaiTabElement;
+    'oai-tabs': HTMLOaiTabsElement;
     'oai-toolbar': HTMLOaiToolbarElement;
   }
 }
@@ -197,6 +226,7 @@ declare namespace LocalJSX {
     * (optional) The color of the button (pale / primary (default) / accent / error / warn)
     */
     'color'?: Color;
+    'disableRipple'?: boolean;
     /**
     * This attribute instructs browsers to download a URL instead of navigating to it, so the user will be prompted to save it as a local file. If the attribute has a value, it is used as the pre-filled file name in the Save prompt (the user can still change the file name if they want).
     */
@@ -241,6 +271,9 @@ declare namespace LocalJSX {
     'color': string;
     'value': string;
   }
+  interface OaiRipple extends JSXBase.HTMLAttributes<HTMLOaiRippleElement> {
+    'el': HTMLElement;
+  }
   interface OaiSegments extends JSXBase.HTMLAttributes<HTMLOaiSegmentsElement> {
     /**
     * (optional) auto expand selection (default = false)
@@ -266,6 +299,10 @@ declare namespace LocalJSX {
   interface OaiSelectResizer extends JSXBase.HTMLAttributes<HTMLOaiSelectResizerElement> {
     'index': number;
   }
+  interface OaiTab extends JSXBase.HTMLAttributes<HTMLOaiTabElement> {
+    'disableRipple'?: boolean;
+  }
+  interface OaiTabs extends JSXBase.HTMLAttributes<HTMLOaiTabsElement> {}
   interface OaiToolbar extends JSXBase.HTMLAttributes<HTMLOaiToolbarElement> {
     /**
     * The color to use from your application's color palette. Default options are: `"primary"`, `"secondary"`, `"tertiary"`, `"success"`, `"warning"`, `"danger"`, `"light"`, `"medium"`, and `"dark"`. For more information on colors, see [theming](/docs/theming/basics).
@@ -281,10 +318,13 @@ declare namespace LocalJSX {
     'oai-lazy-content': OaiLazyContent;
     'oai-progress-indicator': OaiProgressIndicator;
     'oai-resizer': OaiResizer;
+    'oai-ripple': OaiRipple;
     'oai-segments': OaiSegments;
     'oai-select': OaiSelect;
     'oai-select-bind': OaiSelectBind;
     'oai-select-resizer': OaiSelectResizer;
+    'oai-tab': OaiTab;
+    'oai-tabs': OaiTabs;
     'oai-toolbar': OaiToolbar;
   }
 }

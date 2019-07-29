@@ -1,0 +1,11 @@
+@import '../../utils/theme/components-utils';
+
+:host {
+  cursor: pointer;
+  padding: 20px;
+  @include ripple;
+}
+
+::slotted(:any-link) {
+  text-decoration: none;
+}
