@@ -1,0 +1,21 @@
+  @mixin highlighter-marker {
+    // user-select: none;
+    position: relative;
+    display: inline-block;
+    // font: 3em Caveat,
+    //   sans-serif;
+    // text-align: center;
+    // text-transform: uppercase;
+    // padding: 50px;
+
+    --highlighter-pen: url('./assets/images/highlighter.png');
+    --highlighter-color: cyan;
+    --highlighter-path: path("M46.83,230.9c24.41,-51.06 455.28,-6.72 465.09,-16.82");
+    --highlighter-size: 35;
+    --highlighter-opacity: 1;
+    --highlighter-smooth: 1;
+    --highlighter-progress: 0;
+    transition: --highlighter-progress 500ms cubic-bezier(0.55, 0.055, 0.675, 0.19);
+    border-image-source: var(--highlighter-pen);
+    background: paint(highlighter);
+  }

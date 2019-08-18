@@ -1,3 +1,5 @@
+@import '../../../utils/theme/highlighter-marker.scss';
+
 oai-resizer {
   position: relative;
   display: inline-block;
@@ -48,7 +50,24 @@ oai-resizer {
   offset-block-end: -9px;
 }
 
-// .selection {
-//   text-decoration-line: underline;
-//   text-decoration-style: wavy;
+// ::selection {
+//   background-color: yellow;
+//   text-decoration: line-through;
 // }
+
+// .selection {
+//   user-select: none;
+// }
+
+@supports (background: paint(id)) {
+  .selection {
+    @include highlighter-marker;
+    color: inherit;
+  }
+}
+
+@supports not (background: paint(id)) {
+  .selection {
+    background: var(--highlighter-color);
+  }
+}

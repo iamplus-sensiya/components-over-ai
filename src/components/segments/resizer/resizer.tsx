@@ -20,12 +20,16 @@ export class OAIResizer {
         const shadowRoot = this.container.parentNode as ShadowRoot;
         return shadowRoot.getSelection();
     }
-    @State() showMarkers = true;
+    @State() showMarkers = false;
 
     @Listen('mouseenter')
     mouseEnterHandler() { this.showMarkers = true; }
     // @Listen('mouseleave')
-    // mouseLeaveHandler() { this.showMarkers = false; }
+    // mouseLeaveHandler(e: MouseEvent) {
+    //     console.log(e.offsetY)
+    //     // TODO expand mouse leaving boundaries before hiding markers
+    //     this.showMarkers = false;
+    // }
 
     private reset() {
         if (this.selection)
@@ -56,9 +60,10 @@ export class OAIResizer {
         // }
         // let x = 0;
 
-        return () => {
-            // const rect = this.el.getBoundingClientRect();
-            // x = e.clientX - rect.left;
+        return (e: MouseEvent) => {
+            const rect = this.el.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            console.log(rect, x)
 
             const selection = this.selection;
 
@@ -118,6 +123,15 @@ export class OAIResizer {
 
     }
 
+    componentDidRender() {
+        // console.log(this.el.querySelector('.selection'))
+        setTimeout(() =>
+            (this.el.querySelector('.selection') as any)
+                .attributeStyleMap
+                .set('--highlighter-progress', 1)
+        );
+    }
+
     render() {
 
         const marker = (align: string) => <span class={MARKER_CLASS}
@@ -132,7 +146,7 @@ export class OAIResizer {
 
         return ([
             this.showMarkers ? marker(Alignment.Start) : null,
-            <mark class="selection" style={{ 'backgroundColor': this.color }}>
+            <mark class="selection" style={{ '--highlighter-color': this.color }}>
                 <slot />
             </mark>,
             this.showMarkers ? marker(Alignment.End) : null
