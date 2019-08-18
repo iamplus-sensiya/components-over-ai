@@ -1,9 +1,12 @@
 // #region COLOR PALETTES DATA
 $main-colors: ('pale': #B0B0B0,
-  'primary': #4A90E2,
-  'secondary': #009473,
-  'error' : #DD4124,
-  'warn' : #F5A623);
+  'primary': #33aaee,
+  'secondary': #ff8f02,
+  'success' : #35be8b,
+  'warn' : #ffc000,
+  'error' : #f2596b,
+  'dark' : #2c2d30,
+  'medium' : #c4cdd5);
 
 @function color($key) {
   @if map-has-key($colors, $key) {

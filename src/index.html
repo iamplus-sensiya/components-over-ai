@@ -11,39 +11,16 @@
 
   <link rel="stylesheet" href="./build/overaiComponents.css">
 
-
-
 </head>
 
 <body>
+
   <oai-include src="sections/tabs.html" id="tabs"></oai-include>
   <oai-include src="sections/segments.html" id="segments"></oai-include>
   <oai-include src="sections/toolbar.html" id="toolbar"></oai-include>
   <oai-include src="sections/buttons.html" id="buttons"></oai-include>
   <oai-include src="sections/drawers.html" id="drawers"></oai-include>
   <oai-include src="sections/typography.html" id="typography"></oai-include>
-
-  <script>
-    // polyfill fot css paint API
-    import('https://unpkg.com/css-paint-polyfill/dist/css-paint-polyfill.js');
-
-    // register progress variable for animated transition
-    // TODO this doesn't work
-    if ('registerProperty' in CSS) {
-      CSS.registerProperty({
-        name: '--highlighter-progress',
-        syntax: '<number>',
-        inherits: false,
-        initialValue: 0.5
-      })
-    }
-
-    // add the highlighter module
-    if ('paintWorklet' in CSS) {
-      CSS.paintWorklet.addModule('./assets/worklets/highlighter.js');
-    }
-
-  </script>
 
 </body>
 

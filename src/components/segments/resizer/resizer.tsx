@@ -1,4 +1,5 @@
 import { Component, h, Element, Listen, State, Prop } from '@stencil/core';
+
 const MARKER_CLASS = 'marker';
 const HANDLE_CLASS = 'handle';
 
@@ -123,6 +124,10 @@ export class OAIResizer {
 
     }
 
+    connectedCallback() {
+        import('/assets/css-modules/highlighter.js'!);
+    }
+
     componentDidRender() {
         // console.log(this.el.querySelector('.selection'))
         setTimeout(() =>
@@ -133,7 +138,6 @@ export class OAIResizer {
     }
 
     render() {
-
         const marker = (align: string) => <span class={MARKER_CLASS}
             onMouseDown={this.onMouseDown.bind(
                 this,

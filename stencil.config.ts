@@ -33,7 +33,7 @@ export const config: Config = {
     { components: ['oai-toolbar'] },
     { components: ['oai-progress-indicator'] },
     { components: ['oai-drawer-stack', 'oai-drawer'] },
-    { components: ['oai-segments'] },
+    { components: ['oai-segments', 'oai-resizer'] },
     { components: ['oai-tabs', 'oai-tab'] },
     { components: ['oai-ripple'] },
     { components: ['oai-include'] },
