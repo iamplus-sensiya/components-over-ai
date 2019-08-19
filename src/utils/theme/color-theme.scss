@@ -18,7 +18,7 @@
 
 // @import '../../../styles/mixins';
 
-$themes: pale primary secondary error warn;
+$themes: primary secondary success error warn dark medium light;
 $nagatedAttributeSelectors:();
 
 @each $theme in $themes {
@@ -32,42 +32,18 @@ $nagatedAttributeSelectors:();
     --oai-color-shade: var(--oai-color-#{$theme}-shade);
     --oai-color-tint: var(--oai-color-#{$theme}-tint);
     --oai-color-dim: var(--oai-color-#{$theme}-dim);
-    // --contrast: white;
 
-    // &:focus {
-    //   --theme: var(--oai-color-#{$theme}-shade);
-    // }
-
-    // &:active {
-    //   --theme: var(--oai-color-#{$theme}-tint);
-    // }
-
-    // &:disabled {
-    //   --theme: var(--oai-color-#{$theme}-disabled);
-    // }
   }
 
 }
 
-// DEFAULT
-@include nagateMultiSelectors(':host', $nagatedAttributeSelectors) {
+// // DEFAULT
+// @include nagateMultiSelectors(':host', $nagatedAttributeSelectors) {
 
-  --oai-color-base: var(--oai-color-primary);
-  --oai-color-contrast: var(--oai-color-primary-contrast);
-  --oai-color-shade: var(--oai-color-primary-shade);
-  --oai-color-tint: var(--oai-color-primary-tint);
-  --oai-color-dim: var(--oai-color-primary-dim);
+//   --oai-color-base: var(--oai-color-primary);
+//   --oai-color-contrast: var(--oai-color-primary-contrast);
+//   --oai-color-shade: var(--oai-color-primary-shade);
+//   --oai-color-tint: var(--oai-color-primary-tint);
+//   --oai-color-dim: var(--oai-color-primary-dim);
 
-  // &:focus {
-  //   --theme: var(--oai-color-pale-shade);
-  // }
-
-  // &:active {
-  //   --theme: var(--oai-color-pale-tint);
-  // }
-
-  // &:disabled {
-  //   --theme: var(--oai-color-pale-disabled);
-  // }
-
-}
+// }

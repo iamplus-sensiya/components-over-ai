@@ -1,3 +1,5 @@
+@import '../../utils/theme/color-theme.scss';
+
 :host {
   min-block-size: var(--size-block);
   max-block-size: 100%;

@@ -12,9 +12,6 @@ import {
 import {
   OAIDrawersStack,
 } from './components/drawer/drawer-stack';
-import {
-  Segment,
-} from './components/select/select';
 
 export namespace Components {
   interface OaiApplicationLayout {}
@@ -79,32 +76,15 @@ export namespace Components {
     'autoExpand': boolean;
     'segments': Segment[];
   }
-  interface OaiSelect {
-    /**
-    * (optional) auto expand selection (default = false)
-    */
-    'autoExpand': boolean;
-    'condenseEnd': (i: number, offsetX: number) => Promise<void>;
-    'condenseStart': (i: number, offsetX: number) => Promise<void>;
-    'expandEnd': (i: number, offsetX: number) => Promise<void>;
-    'expandStart': (i: number, offsetX: number) => Promise<void>;
-    'segments': Segment[];
-  }
-  interface OaiSelectBind {
-    'color': string;
-    'index': number;
-    'value': string | undefined;
-  }
-  interface OaiSelectResizer {
-    'index': number;
-  }
   interface OaiTab {
     'disableRipple': boolean;
   }
-  interface OaiTabs {}
+  interface OaiTabs {
+    'color'?: Color;
+  }
   interface OaiToolbar {
     /**
-    * The color to use from your application's color palette. Default options are: `"primary"`, `"secondary"`, `"tertiary"`, `"success"`, `"warning"`, `"danger"`, `"light"`, `"medium"`, and `"dark"`. For more information on colors, see [theming](/docs/theming/basics).
+    * The color to use from your application's color palette. Default options are: `"primary"`, `"secondary"`, `"success"`, `"error"`, `"warn"`, `"light"`, `"medium"`, and `"dark"`. For more information on colors, see [theming](/docs/theming/basics).
     */
     'color'?: Color;
   }
@@ -173,24 +153,6 @@ declare global {
     new (): HTMLOaiSegmentsElement;
   };
 
-  interface HTMLOaiSelectElement extends Components.OaiSelect, HTMLStencilElement {}
-  var HTMLOaiSelectElement: {
-    prototype: HTMLOaiSelectElement;
-    new (): HTMLOaiSelectElement;
-  };
-
-  interface HTMLOaiSelectBindElement extends Components.OaiSelectBind, HTMLStencilElement {}
-  var HTMLOaiSelectBindElement: {
-    prototype: HTMLOaiSelectBindElement;
-    new (): HTMLOaiSelectBindElement;
-  };
-
-  interface HTMLOaiSelectResizerElement extends Components.OaiSelectResizer, HTMLStencilElement {}
-  var HTMLOaiSelectResizerElement: {
-    prototype: HTMLOaiSelectResizerElement;
-    new (): HTMLOaiSelectResizerElement;
-  };
-
   interface HTMLOaiTabElement extends Components.OaiTab, HTMLStencilElement {}
   var HTMLOaiTabElement: {
     prototype: HTMLOaiTabElement;
@@ -219,9 +181,6 @@ declare global {
     'oai-resizer': HTMLOaiResizerElement;
     'oai-ripple': HTMLOaiRippleElement;
     'oai-segments': HTMLOaiSegmentsElement;
-    'oai-select': HTMLOaiSelectElement;
-    'oai-select-bind': HTMLOaiSelectBindElement;
-    'oai-select-resizer': HTMLOaiSelectResizerElement;
     'oai-tab': HTMLOaiTabElement;
     'oai-tabs': HTMLOaiTabsElement;
     'oai-toolbar': HTMLOaiToolbarElement;
@@ -291,30 +250,15 @@ declare namespace LocalJSX {
     'onTextSelected'?: (event: CustomEvent<any>) => void;
     'segments'?: Segment[];
   }
-  interface OaiSelect extends JSXBase.HTMLAttributes<HTMLOaiSelectElement> {
-    /**
-    * (optional) auto expand selection (default = false)
-    */
-    'autoExpand'?: boolean;
-    'onTextSelected'?: (event: CustomEvent<any>) => void;
-    'onUpdate'?: (event: CustomEvent<any>) => void;
-    'segments'?: Segment[];
-  }
-  interface OaiSelectBind extends JSXBase.HTMLAttributes<HTMLOaiSelectBindElement> {
-    'color': string;
-    'index': number;
-    'value'?: string | undefined;
-  }
-  interface OaiSelectResizer extends JSXBase.HTMLAttributes<HTMLOaiSelectResizerElement> {
-    'index': number;
-  }
   interface OaiTab extends JSXBase.HTMLAttributes<HTMLOaiTabElement> {
     'disableRipple'?: boolean;
   }
-  interface OaiTabs extends JSXBase.HTMLAttributes<HTMLOaiTabsElement> {}
+  interface OaiTabs extends JSXBase.HTMLAttributes<HTMLOaiTabsElement> {
+    'color'?: Color;
+  }
   interface OaiToolbar extends JSXBase.HTMLAttributes<HTMLOaiToolbarElement> {
     /**
-    * The color to use from your application's color palette. Default options are: `"primary"`, `"secondary"`, `"tertiary"`, `"success"`, `"warning"`, `"danger"`, `"light"`, `"medium"`, and `"dark"`. For more information on colors, see [theming](/docs/theming/basics).
+    * The color to use from your application's color palette. Default options are: `"primary"`, `"secondary"`, `"success"`, `"error"`, `"warn"`, `"light"`, `"medium"`, and `"dark"`. For more information on colors, see [theming](/docs/theming/basics).
     */
     'color'?: Color;
   }
@@ -330,9 +274,6 @@ declare namespace LocalJSX {
     'oai-resizer': OaiResizer;
     'oai-ripple': OaiRipple;
     'oai-segments': OaiSegments;
-    'oai-select': OaiSelect;
-    'oai-select-bind': OaiSelectBind;
-    'oai-select-resizer': OaiSelectResizer;
     'oai-tab': OaiTab;
     'oai-tabs': OaiTabs;
     'oai-toolbar': OaiToolbar;

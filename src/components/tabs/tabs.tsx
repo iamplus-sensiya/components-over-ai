@@ -1,4 +1,6 @@
-import { Component, h, Element } from '@stencil/core';
+import { Component, h, Element, Host, Prop } from '@stencil/core';
+import { Color } from '../../interface';
+import { createColorClasses } from '../../utils/theme';
 const SELECTED = 'selected';
 
 @Component({
@@ -7,6 +9,7 @@ const SELECTED = 'selected';
     shadow: true
 })
 export class OAITabs {
+    @Prop() color?: Color;
     @Element() el!: HTMLElement;
 
     connectedCallback() {
@@ -18,6 +21,12 @@ export class OAITabs {
     }
 
     render() {
-        return (<slot />);
+        return <Host
+            class={{
+                ...createColorClasses(this.color)
+            }}
+        >
+            <slot />
+        </Host>;
     }
 }

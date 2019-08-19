@@ -23,13 +23,14 @@ export class OAITab {
     }
 
     render() {
-        return ([
-            <div>
-                <slot />
-                {this.disableRipple
+        return (<div>
+            <slot />
+            {
+                this.disableRipple
                     ? null
-                    : <oai-ripple el={this.el} />}
-            </div>
-        ]);
+                    : <oai-ripple el={this.el} />
+            }
+        </div>
+        );
     }
 }

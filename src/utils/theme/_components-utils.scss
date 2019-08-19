@@ -47,3 +47,8 @@
     transform-origin: center;
   }
 }
+
+@mixin padding($block-start, $inline-end, $block-end, $inline-start) {
+  padding: $block-start $inline-end $block-end $inline-start;
+
+}

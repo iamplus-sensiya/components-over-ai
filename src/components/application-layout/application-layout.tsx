@@ -11,12 +11,8 @@ export class OAIApplicationLayout {
     render() {
         return (
             <div class="main-container">
-                <div class="alert alert-app-level">
-                    ...
-</div>
-                <header class="header header-6">
-                    ...
-</header>
+                <div><slot name="notification" /></div>
+                <header><slot name="header" /></header>
                 <nav class="subnav">
                     ...
 </nav>

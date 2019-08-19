@@ -1,30 +1,26 @@
 @import '../../utils/theme/components-utils';
 
+$gutter-size: calc(var(--size-gutter) / 2);
+
+
 :host {
+  @include ripple;
+  @include padding(0, #{$gutter-size}, 0, #{$gutter-size});
   cursor: pointer;
   box-sizing: border-box;
+  block-size: 100%;
   min-block-size: var(--size-block);
   position: relative;
-  padding: 0 2rem;
   display: flex;
   place-content: center;
   align-items: center;
   user-select: none;
-  @include ripple;
-
 
 
 
 
   box-sizing: border-box;
-  padding: 0.5rem 0.75rem;
-  font-family: var(--lumo-font-family);
-  font-size: var(--lumo-font-size-m);
-  line-height: var(--lumo-line-height-xs);
-  font-weight: 500;
   text-align: center;
-  opacity: 1;
-  color: var(--lumo-contrast-60pct);
   transition: 0.15s color,
     0.2s transform;
   flex-shrink: 0;
@@ -34,13 +30,7 @@
   cursor: pointer;
   transform-origin: 50% 100%;
   outline: none;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   overflow: hidden;
-  min-width: var(--lumo-size-m);
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
 
 
@@ -51,7 +41,7 @@
     transition: .3s transform;
     will-change: (transform);
     width: 100%;
-    height: 3px;
+    block-size: 5px;
     background: currentColor;
     position: absolute;
     bottom: 0;
@@ -62,6 +52,8 @@
 }
 
 :host([selected="true"]) {
+  color: var(--oai-color-base, currentColor);
+
   &::after {
     transform: translateX(-50%) scaleX(1);
   }
@@ -69,6 +61,7 @@
 
 :host-context(oai-toolbar) {
   min-block-size: var(--toolbar-size-block);
+  --oai-color-base: var(--oai-color-contrast);
 }
 
 
