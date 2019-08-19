@@ -8,7 +8,11 @@ export const config: Config = {
     { type: 'docs-readme' },
     {
       type: 'www',
-      serviceWorker: null // disable service workers
+      serviceWorker: {
+        globPatterns: [
+          '**/*.{js,css,json,html,ico,png}'
+        ]
+      }
     }
   ],
   globalStyle: 'src/styles/app.scss',
@@ -29,6 +33,7 @@ export const config: Config = {
     openBrowser: false
   },
   bundles: [
+    { components: ['oai-application-layout'] },
     { components: ['oai-button'] },
     { components: ['oai-toolbar'] },
     { components: ['oai-progress-indicator'] },

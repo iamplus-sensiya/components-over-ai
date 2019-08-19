@@ -24,7 +24,7 @@
 
 ### Depends on
 
-- [oai-resizer]()
+- [oai-resizer](resizer)
 
 ### Graph
 ```mermaid

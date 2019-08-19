@@ -1,4 +1,5 @@
 import { Component, h, Element, Listen, State, Prop } from '@stencil/core';
+import '/assets/css-modules/highlighter.mjs';
 
 const MARKER_CLASS = 'marker';
 const HANDLE_CLASS = 'handle';
@@ -122,10 +123,6 @@ export class OAIResizer {
                 .innerText += contents.textContent;
         }
 
-    }
-
-    connectedCallback() {
-        import('/assets/css-modules/highlighter.js'!);
     }
 
     componentDidRender() {

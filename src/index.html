@@ -15,12 +15,18 @@
 
 <body>
 
-  <oai-include src="sections/tabs.html" id="tabs"></oai-include>
-  <oai-include src="sections/segments.html" id="segments"></oai-include>
-  <oai-include src="sections/toolbar.html" id="toolbar"></oai-include>
-  <oai-include src="sections/buttons.html" id="buttons"></oai-include>
-  <oai-include src="sections/drawers.html" id="drawers"></oai-include>
-  <oai-include src="sections/typography.html" id="typography"></oai-include>
+  <oai-application-layout>
+
+    <div slot="content">
+      <oai-include src="sections/tabs.html" id="tabs"></oai-include>
+      <oai-include src="sections/segments.html" id="segments"></oai-include>
+      <oai-include src="sections/toolbar.html" id="toolbar"></oai-include>
+      <oai-include src="sections/buttons.html" id="buttons"></oai-include>
+      <oai-include src="sections/drawers.html" id="drawers"></oai-include>
+      <oai-include src="sections/typography.html" id="typography"></oai-include>
+    </div>
+
+  </oai-application-layout>
 
 </body>
 

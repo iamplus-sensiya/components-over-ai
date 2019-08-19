@@ -17,6 +17,7 @@ import {
 } from './components/select/select';
 
 export namespace Components {
+  interface OaiApplicationLayout {}
   interface OaiButton {
     /**
     * (optional) The color of the button (pale / primary (default) / accent / error / warn)
@@ -112,6 +113,12 @@ export namespace Components {
 declare global {
 
 
+  interface HTMLOaiApplicationLayoutElement extends Components.OaiApplicationLayout, HTMLStencilElement {}
+  var HTMLOaiApplicationLayoutElement: {
+    prototype: HTMLOaiApplicationLayoutElement;
+    new (): HTMLOaiApplicationLayoutElement;
+  };
+
   interface HTMLOaiButtonElement extends Components.OaiButton, HTMLStencilElement {}
   var HTMLOaiButtonElement: {
     prototype: HTMLOaiButtonElement;
@@ -202,6 +209,7 @@ declare global {
     new (): HTMLOaiToolbarElement;
   };
   interface HTMLElementTagNameMap {
+    'oai-application-layout': HTMLOaiApplicationLayoutElement;
     'oai-button': HTMLOaiButtonElement;
     'oai-drawer': HTMLOaiDrawerElement;
     'oai-drawer-stack': HTMLOaiDrawerStackElement;
@@ -221,6 +229,7 @@ declare global {
 }
 
 declare namespace LocalJSX {
+  interface OaiApplicationLayout extends JSXBase.HTMLAttributes<HTMLOaiApplicationLayoutElement> {}
   interface OaiButton extends JSXBase.HTMLAttributes<HTMLOaiButtonElement> {
     /**
     * (optional) The color of the button (pale / primary (default) / accent / error / warn)
@@ -311,6 +320,7 @@ declare namespace LocalJSX {
   }
 
   interface IntrinsicElements {
+    'oai-application-layout': OaiApplicationLayout;
     'oai-button': OaiButton;
     'oai-drawer': OaiDrawer;
     'oai-drawer-stack': OaiDrawerStack;
