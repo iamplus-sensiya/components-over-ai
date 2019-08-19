@@ -27,20 +27,25 @@
 
 .toolbar-container {
   @include padding(0, var(--size-gutter), 0, var(--size-gutter));
-  display: flex;
+  // display: flex;
+  // flex-direction: row;
+  // align-items: stretch;
+  // justify-content: space-between;
   position: relative;
-  flex-direction: row;
-  align-items: stretch;
-  justify-content: space-between;
-  width: 100%;
+  inline-size: 100%;
   contain: content;
   z-index: 10;
   box-sizing: border-box;
   overflow: hidden;
+  display: grid;
+  grid-template-columns: auto auto 1fr auto auto;
+  grid-gap: var(--size-gutter);
+  align-items: center;
 }
 
 .toolbar-content {
-  order: 4;
-  min-width: 0;
-  flex: 1 1 0%;
+  text-align: center;
+  // order: 4;
+  // min-width: 0;
+  // flex: 1 1 0%;
 }
