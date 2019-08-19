@@ -48,7 +48,7 @@ $gutter-size: calc(var(--size-gutter) / 2);
 }
 
 :host([selected="true"]) {
-  color: var(--oai-color-base, currentColor);
+  color: var(--oai-color-selected, currentColor);
 
   &::after {
     transform: translateX(-50%) scaleX(1);
@@ -57,7 +57,7 @@ $gutter-size: calc(var(--size-gutter) / 2);
 
 :host-context(oai-toolbar) {
   min-block-size: var(--toolbar-size-block);
-  // --oai-color-base: var(--oai-color-contrast);
+  // --oai-color-base: var(--oai-color-selected, green);
   // --oai-color-base-selected: var(--oai-color-base);
 }
 

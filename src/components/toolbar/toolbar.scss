@@ -26,17 +26,13 @@
 // }
 
 .toolbar-container {
-  padding-left: var(--padding-start);
-  padding-right: var(--padding-end);
-  padding-top: var(--padding-top);
-  padding-bottom: var(--padding-bottom);
+  @include padding(0, var(--size-gutter), 0, var(--size-gutter));
   display: flex;
   position: relative;
   flex-direction: row;
   align-items: stretch;
   justify-content: space-between;
   width: 100%;
-  min-height: var(--min-height);
   contain: content;
   z-index: 10;
   box-sizing: border-box;

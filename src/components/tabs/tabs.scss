@@ -13,3 +13,7 @@
   place-content: flex-end flex-start;
   overflow: hidden;
 }
+
+:host([color]) {
+  --oai-color-selected: var(--oai-color-base);
+}
