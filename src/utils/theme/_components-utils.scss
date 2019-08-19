@@ -30,7 +30,7 @@
     content: '';
     position: absolute;
     display: block;
-    background: var(--ripple-background, white);
+    background: var(--ripple-background, currentColor);
     border-radius: 50%;
     pointer-events: none;
 

@@ -5,7 +5,7 @@ $gutter-size: calc(var(--size-gutter) / 2);
 
 :host {
   @include ripple;
-  @include padding(0, #{$gutter-size}, 0, #{$gutter-size});
+  @include padding(0, #{$gutter-size}, 2rem, #{$gutter-size});
   cursor: pointer;
   box-sizing: border-box;
   block-size: 100%;
@@ -13,21 +13,17 @@ $gutter-size: calc(var(--size-gutter) / 2);
   position: relative;
   display: flex;
   place-content: center;
-  align-items: center;
+  align-items: flex-end;
   user-select: none;
 
 
 
 
-  box-sizing: border-box;
   text-align: center;
   transition: 0.15s color,
     0.2s transform;
+  will-change: color;
   flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  position: relative;
-  cursor: pointer;
   transform-origin: 50% 100%;
   outline: none;
   overflow: hidden;
@@ -61,7 +57,8 @@ $gutter-size: calc(var(--size-gutter) / 2);
 
 :host-context(oai-toolbar) {
   min-block-size: var(--toolbar-size-block);
-  --oai-color-base: var(--oai-color-contrast);
+  // --oai-color-base: var(--oai-color-contrast);
+  // --oai-color-base-selected: var(--oai-color-base);
 }
 
 
