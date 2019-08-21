@@ -20,8 +20,7 @@ $gutter-size: calc(var(--size-gutter) / 2);
 
 
   text-align: center;
-  transition: 0.15s color,
-    0.2s transform;
+  transition: .2s color;
   will-change: color;
   flex-shrink: 0;
   transform-origin: 50% 100%;
@@ -33,9 +32,9 @@ $gutter-size: calc(var(--size-gutter) / 2);
 
   &::after {
     content: '';
-    transform: translateX(-50%) scaleX(0);
     transition: .3s transform;
-    will-change: (transform);
+    will-change: transform;
+    transform: translateX(-50%) scaleX(0);
     width: 100%;
     block-size: 5px;
     background: currentColor;
