@@ -7,7 +7,7 @@ const SEGMENTS = 'segments';
 
 @Component({
     tag: 'oai-segments',
-    styles: `.segments { word-wrap: break-word; word-break: break-word; white-space: pre-wrap; padding: 10px 0; line-height: 1.5; }`,
+    styles: `.segments { word-wrap: break-word; word-break: break-word; white-space: pre-wrap; padding: 10px 0; line-height: 1.5; will-change: contents; }`,
     shadow: true
 })
 export class OAISegments {
