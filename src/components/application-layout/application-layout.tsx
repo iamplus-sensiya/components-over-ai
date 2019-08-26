@@ -10,21 +10,14 @@ export class OAIApplicationLayout {
 
     render() {
         return (
-            <div class="main-container">
+            <main class="main-container">
                 <div><slot name="notification" /></div>
-                <header><slot name="header" /></header>
-                <nav class="subnav">
-                    ...
-</nav>
+                <header class="header"><slot name="header" /></header>
                 <div class="content-container">
-                    <div class="content-area">
-                        <slot name="content" />
-                    </div>
-                    <nav class="sidenav">
-                        ...
-</nav>
+                    <slot name="content" />
                 </div>
-            </div>
+                <footer class="footer"><slot name="footer" /></footer>
+            </main>
         );
 
     }

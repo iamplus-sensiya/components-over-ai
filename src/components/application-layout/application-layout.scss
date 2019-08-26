@@ -1,1 +1,19 @@
+main {}
 
+.header,
+.footer {
+  position: sticky;
+  //   z-index: 2;
+}
+
+.header {
+  top: 0;
+}
+
+.footer {
+  bottom: 0;
+}
+
+// .content-container {
+//   position: relative;
+// }

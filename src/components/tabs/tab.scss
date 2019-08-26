@@ -2,14 +2,14 @@
 
 $gutter-size: calc(var(--size-gutter) / 2);
 
-
 :host {
   @include ripple;
-  @include padding(0, #{$gutter-size}, 2rem, #{$gutter-size});
+  @include padding(#{$gutter-size}, #{$gutter-size}, #{$gutter-size}, #{$gutter-size});
   cursor: pointer;
   box-sizing: border-box;
   block-size: 100%;
   min-block-size: var(--size-block);
+  min-inline-size: 12rem;
   position: relative;
   display: flex;
   place-content: center;

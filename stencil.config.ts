@@ -18,11 +18,11 @@ export const config: Config = {
   globalStyle: 'src/styles/app.scss',
   plugins: [
     sass(
-      {
-        injectGlobalPaths: [
-          'src/utils/theme/fallback-variables.scss'
-        ]
-      }
+      // {
+      //   injectGlobalPaths: [
+      //     'src/utils/theme/fallback-variables.scss'
+      //   ]
+      // }
     )
   ],
   copy: [

@@ -21,6 +21,9 @@ $main-palette-colors: ('primary': #33aaee,
   @return null;
 }
 
+$contrast-light: white;
+$contrast-dark: map-get($main-palette-colors, 'dark');
+
 :root {
   #{$color-prefix}-background: #F9F7F4;
   #{$color-prefix}-foreground: #2A2C2B;
@@ -28,7 +31,7 @@ $main-palette-colors: ('primary': #33aaee,
   @each $color-name,
   $color in $main-palette-colors {
     #{$color-prefix}-#{$color-name}: #{$color};
-    #{$color-prefix}-#{$color-name}-contrast: #{set-contrast-color($color, 'white', '#0d131d', 91)};
+    #{$color-prefix}-#{$color-name}-contrast: #{set-contrast-color($color, $contrast-light, $contrast-dark, 91)};
     #{$color-prefix}-#{$color-name}-tint: #{mix(white, $color, 12%)};
     #{$color-prefix}-#{$color-name}-shade: #{mix(black, $color, 12%)};
     // #{$color-prefix}-#{$color-name}-light: #{mix(white, $color, 18%)};

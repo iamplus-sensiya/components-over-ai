@@ -1,4 +1,5 @@
 @import '../../utils/theme/color-theme.scss';
+@import '../../utils/theme/fallback-variables.scss';
 @import './progress-indicator-size.scss';
 
 $colors: map-get($fallback-variables, "colors");

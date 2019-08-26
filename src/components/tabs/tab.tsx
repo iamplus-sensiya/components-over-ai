@@ -4,7 +4,7 @@ const SELECTED = 'selected';
 @Component({
     tag: 'oai-tab',
     styleUrl: 'tab.scss',
-    shadow: true
+    shadow: true,
 })
 export class OAITab {
     @Element() el!: HTMLElement;
