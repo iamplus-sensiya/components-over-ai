@@ -12,6 +12,9 @@ import {
 import {
   OAIDrawersStack,
 } from './components/drawer/drawer-stack';
+import {
+  Segment,
+} from './components/segments/segment.model';
 
 export namespace Components {
   interface OaiApplicationLayout {}

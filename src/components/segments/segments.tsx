@@ -2,6 +2,7 @@ import { Component, h, Prop, Listen, Element, Event, EventEmitter } from '@stenc
 import { BindingColors } from './color-stack';
 import { Expand } from './decorators';
 import { unWrap, bindElem, segmentsRepresentationFromDomElement } from './utils';
+import { Segment } from './segment.model';
 
 const SEGMENTS = 'segments';
 

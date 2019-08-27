@@ -1,3 +1,5 @@
+import { Segment } from "./segment.model";
+
 const OAI_RESIZER_TAG = 'oai-resizer';
 
 export function unWrap(range: Range, selection: Selection) {
