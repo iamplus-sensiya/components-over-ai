@@ -1,5 +1,11 @@
-import { Component, h, Element, Listen, State, Prop } from '@stencil/core';
-import '/assets/css-modules/highlighter.mjs';
+import { Component, h, Element, Listen, State, Prop, getAssetPath } from '@stencil/core';
+import(`${getAssetPath('/assets/modules/highlighter/highlighter-properties.mjs')}`);
+// TODO make sure worklet adds module only once
+// add the highlighter module
+if ('paintWorklet' in CSS) {
+    (CSS as any).paintWorklet
+        .addModule(`${getAssetPath('/assets/modules/highlighter/highlighter-worklet.js')}`);
+}
 
 const MARKER_CLASS = 'marker';
 const HANDLE_CLASS = 'handle';
@@ -17,6 +23,7 @@ export class OAIResizer {
     @Element() el!: HTMLElement;
     @Prop({ reflectToAttr: true, mutable: true }) value!: string;
     @Prop({ mutable: true }) color!: string;
+
     get container(): HTMLElement { return this.el.parentElement as HTMLElement; }
     get selection() {
         const shadowRoot = this.container.parentNode as ShadowRoot;
