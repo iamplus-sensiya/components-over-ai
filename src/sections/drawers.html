@@ -55,11 +55,10 @@
 </oai-drawer-stack>
 
 
-
 <script>
   const drawerStack = document.querySelector("oai-drawer-stack");
 
-  // drawerStack.stack = ['drawer1', 'drawer2', 'drawer3'];
+  drawerStack.stack = ['drawer1', 'drawer2', 'drawer3'];
 
   drawerStack.addEventListener('drawerPopped', event => {
     console.log(event)
