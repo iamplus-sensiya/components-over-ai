@@ -1,6 +1,6 @@
 import {
     Component, h, Element, State,
-    Event, EventEmitter, Method
+    Event, EventEmitter, Method, Listen
 } from '@stencil/core';
 
 
@@ -22,12 +22,13 @@ export class OAIDrawersStack {
 
     @State() slots: string[] = [];
 
-    // // @Listen('click', { capture: true })
-    // // handleClickOutside({ target }: Event) {
-    // //     const topDrawer = this.stack.slice(-1)[0];
-    // //     const isOutside = !(target as Element).closest(`[slot="${topDrawer}"]`);
-    // //     isOutside && this.pop();
-    // // }
+    @Listen('click', { capture: true })
+    handleClickOutside({ target }: Event) {
+        const slotNames = this.getSlotsNames(this.getDrawerElements());
+        const [activeDrawerName] = slotNames.slice(-1);
+        const isOutside = !(target as Element).closest(`[slot="${activeDrawerName}"]`);
+        isOutside && this.pop();
+    }
 
     @Event() drawerPopped!: EventEmitter;
     drawerPoppedHandler(details: { payload: any }) {
