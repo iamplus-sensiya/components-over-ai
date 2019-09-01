@@ -1,12 +1,7 @@
 import {
-    Component, h, Element, Prop,
-    Method, Listen, Event, EventEmitter
+    Component, h, Element, State,
+    Event, EventEmitter, Method
 } from '@stencil/core';
-
-type poppedEventDetails = {
-    drawer: string;
-    payload?: any;
-};
 
 
 @Component({
@@ -19,46 +14,37 @@ type poppedEventDetails = {
     shadow: true
 })
 export class OAIDrawersStack {
-    @Prop({ reflectToAttr: true }) stack: string[] = [];
+
+    drawersObserver?: MutationObserver;
 
     @Element()
     el!: HTMLElement;
 
-    @Listen('click', { capture: true })
-    handleClickOutside({ target }: Event) {
-        const topDrawer = this.stack.slice(-1)[0];
-        const isOutside = !(target as Element).closest(`[slot="${topDrawer}"]`);
-        isOutside && this.pop();
-    }
+    @State() slots: string[] = [];
+
+    // // @Listen('click', { capture: true })
+    // // handleClickOutside({ target }: Event) {
+    // //     const topDrawer = this.stack.slice(-1)[0];
+    // //     const isOutside = !(target as Element).closest(`[slot="${topDrawer}"]`);
+    // //     isOutside && this.pop();
+    // // }
 
     @Event() drawerPopped!: EventEmitter;
-
-    drawerPoppedHandler(details: poppedEventDetails) {
+    drawerPoppedHandler(details: { payload: any }) {
         this.drawerPopped.emit(details);
-    }
-
-    @Method()
-    async push(name: string) {
-
-        if (this.stack.includes(name)) {
-            console.warn('drawer name already exist in stack');
-            return;
-        }
-
-        this.stack = [...this.stack, name];
     }
 
     @Method()
     async pop(payload?: any) {
 
-        if (!this.stack.length) { return; }
-
-        const i = this.stackDomElements.length - 1;
-        const item = this.stackDomElements[i];
-        const siblings = this.stackDomElements.slice(0, i);
+        // if (!this.stack.length) { return; }
+        const drawers = this.getDrawerElements();
+        const i = drawers.length - 1;
+        const item = drawers[i];
+        const siblings = drawers.slice(0, i);
         const backdropItem: HTMLElement | null =
             this.el.shadowRoot &&
-            this.el.shadowRoot.querySelector(`.backdrop.${this.stack[i]}`);
+            this.el.shadowRoot.querySelector('.backdrop:not([hidden]):last-of-type');
 
         this.positionDrawers(siblings);
 
@@ -67,35 +53,27 @@ export class OAIDrawersStack {
         if (backdropItem) { backdropItem.style.animationName = 'hide'; }
 
         await new Promise(resolve => item.addEventListener('animationend', resolve, { capture: false, once: true }));
-        const poppedDrawer = this.stack[this.stack.length - 1];
-        this.stack = this.stack.slice(0, this.stack.length - 1);
+        // const poppedDrawer = this.stack[this.stack.length - 1];
+        // this.stack = this.stack.slice(0, this.stack.length - 1);
         item.style.animationName = '';
+        item.remove();
+        backdropItem && backdropItem.remove();
+
         this.drawerPoppedHandler({
-            payload,
-            drawer: poppedDrawer
+            payload
+            // drawer: poppedDrawer
         });
 
     }
 
-    // get stackAsArray(): string[] {
-    //     return typeof this.stack == 'string' && this.stack.split(',')
-    //         .map(s => s.trim())
-    //         .filter(Boolean) || [];
-    // }
-
-    get stackDomElements(): HTMLOaiDrawerElement[] {
-        return this.stack
-            .map(name => this.el.querySelector(`oai-drawer[slot=${name}]`) as HTMLOaiDrawerElement)
-            .filter(Boolean) || [];
+    getDrawerElements(): HTMLOaiDrawerElement[] {
+        return Array.from(this.el.querySelectorAll(`oai-drawer`)) || []
     }
 
-    componentDidRender() {
-        // const template: HTMLTemplateElement | null = this.el.querySelector('template');
-        // if (template) {
-        //     const drawers = Array.from(template.content.children).filter(c => c.matches('[slot]'));
-        //     console.log(drawers);
-        // }
-        this.positionDrawers(this.stackDomElements);
+    getSlotsNames(drawers: HTMLOaiDrawerElement[]): string[] {
+        return drawers
+            .filter((de: HTMLOaiDrawerElement) => typeof de.getAttribute('slot') == 'string')
+            .map((de: HTMLOaiDrawerElement) => de.getAttribute('slot')) as string[];
     }
 
     positionDrawers(drawers: HTMLOaiDrawerElement[]): void {
@@ -139,8 +117,40 @@ export class OAIDrawersStack {
 
     }
 
+    private observeDrawersChanges() {
+        const config = { attributes: false, childList: true, subtree: false };
+        // Callback function to execute when mutations are observed
+        // const callback = function (mutationsList: MutationRecord[], observer: MutationObserver) {
+
+        // };
+        // Create an observer instance linked to the callback function
+        this.drawersObserver = new MutationObserver(() => {
+            setTimeout(() => {
+                this.slots = this.getSlotsNames(this.getDrawerElements());
+            })
+        });
+
+        // Start observing the target node for configured mutations
+        this.drawersObserver.observe(this.el, config);
+    }
+
+    connectedCallback() {
+        this.slots = this.getSlotsNames(this.getDrawerElements());
+        this.observeDrawersChanges();
+    }
+
+    disconnectedCallback() {
+        this.drawersObserver && this.drawersObserver.disconnect();
+    }
+
+    componentDidRender() {
+        setTimeout(() => {
+            this.positionDrawers(this.getDrawerElements());
+        });
+    }
+
     render() {
-        return this.stack.map(name => [
+        return this.slots.map(name => [
             <div class={'backdrop ' + name} />,
             <slot name={name.trim()} />
         ])
