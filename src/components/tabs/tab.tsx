@@ -1,5 +1,4 @@
 import { Component, h, Prop, Element, Listen } from '@stencil/core';
-import { OAIButton } from '../button/button';
 const SELECTED = 'selected';
 
 @Component({
