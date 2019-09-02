@@ -47,6 +47,11 @@ export class OAIButton {
      */
     @Prop() target: string | undefined;
 
+    /**
+     * The type of the button.
+     */
+    @Prop() type: 'submit' | 'reset' | 'button' = 'button';
+
     // adds ripple effect
     // @Listen('click', { capture: true })
     // handleClick(ev: MouseEvent | TouchEvent) {
@@ -64,10 +69,10 @@ export class OAIButton {
     }
 
     render() {
-        const { href, rel, target } = this;
+        const { href, rel, target, type } = this;
         const TagType = href === undefined ? 'button' : 'a' as any;
         const attrs = (TagType === 'button')
-            ? {}
+            ? { type }
             : {
                 download: this.download,
                 href,

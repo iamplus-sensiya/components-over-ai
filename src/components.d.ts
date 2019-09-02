@@ -44,6 +44,10 @@ export namespace Components {
     * Specifies where to display the linked URL. Only applies when an `href` is provided. Special keywords: `"_blank"`, `"_self"`, `"_parent"`, `"_top"`.
     */
     'target': string | undefined;
+    /**
+    * The type of the button.
+    */
+    'type': 'submit' | 'reset' | 'button';
   }
   interface OaiDrawer {
     'drawerStack': OAIDrawersStack;
@@ -236,6 +240,10 @@ declare namespace LocalJSX {
     * Specifies where to display the linked URL. Only applies when an `href` is provided. Special keywords: `"_blank"`, `"_self"`, `"_parent"`, `"_top"`.
     */
     'target'?: string | undefined;
+    /**
+    * The type of the button.
+    */
+    'type'?: 'submit' | 'reset' | 'button';
   }
   interface OaiDrawer extends JSXBase.HTMLAttributes<HTMLOaiDrawerElement> {
     'drawerStack': OAIDrawersStack;
