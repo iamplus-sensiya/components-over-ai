@@ -49,9 +49,10 @@
     <option value="pending">Pending</option>
   </select>
 
-  <select name="type">
-    <option value="" selected>Default Type</option>
-    <option value="outlined">Outlined</option>
+  <select name="shape">
+    <option value="" selected>Default Type (strip)</option>
+    <option value="fill">Fill</option>
+    <option value="outline">Outline</option>
   </select>
 
 </oai-toolbar>
@@ -72,7 +73,7 @@
     buttons.forEach(b => b.setAttribute(name, value));
   };
 
-  ['minSize', 'color', 'state', 'type'].forEach(attr =>
+  ['minSize', 'color', 'state', 'shape'].forEach(attr =>
     document.getElementsByName(attr)[0]
     .addEventListener('change', setAttr)
   );

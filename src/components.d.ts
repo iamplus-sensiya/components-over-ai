@@ -37,7 +37,7 @@ export namespace Components {
     */
     'rel': string | undefined;
     /**
-    * (optional) The minimum size of the button (xs / sm / lg / xl) (optional) The type of the button (default = filled / outlined (stroked)) (optional) The state of the button (disabled / pending / undefined = default)
+    * (optional) The minimum size of the button (xs / sm / lg / xl) (optional) The shape of the button (default = clear / fill / outline (stroked)) (optional) The state of the button (disabled / pending / undefined = default)
     */
     'state'?: 'disabled' | 'pending';
     /**
@@ -209,7 +209,7 @@ declare namespace LocalJSX {
     */
     'rel'?: string | undefined;
     /**
-    * (optional) The minimum size of the button (xs / sm / lg / xl) (optional) The type of the button (default = filled / outlined (stroked)) (optional) The state of the button (disabled / pending / undefined = default)
+    * (optional) The minimum size of the button (xs / sm / lg / xl) (optional) The shape of the button (default = clear / fill / outline (stroked)) (optional) The state of the button (disabled / pending / undefined = default)
     */
     'state'?: 'disabled' | 'pending';
     /**

@@ -13,7 +13,7 @@ export class OAIButton {
     @Prop({ mutable: true }) disableRipple = false;
 
     /** (optional) The minimum size of the button (xs / sm / lg / xl) */
-    /** (optional) The type of the button (default = filled / outlined (stroked)) */
+    /** (optional) The shape of the button (default = clear / fill / outline (stroked)) */
 
     /** (optional) The state of the button (disabled / pending / undefined = default) */
     @Prop({ reflectToAttr: true }) state?: 'disabled' | 'pending';

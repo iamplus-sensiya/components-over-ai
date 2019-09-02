@@ -2,8 +2,10 @@
 @import '../../utils/theme/color-theme.scss';
 @import '../../utils/theme/fallback-variables.scss';
 
-// $filled: '[type="filled"i]';
-$outlined: '[type="outlined"i]';
+$clear: '[shape="clear"i]';
+$fill: '[shape="fill"i]';
+$outline: '[shape="outline"i]';
+
 $colors: map-get($fallback-variables, "colors");
 $sizes: map-get($fallback-variables, "sizes");
 
@@ -42,8 +44,8 @@ $sizes: map-get($fallback-variables, "sizes");
     flex-shrink: 0;
     align-items: center;
     justify-content: center;
-    width: 100%;
-    height: 100%;
+    inline-size: 100%;
+    block-size: 100%;
   }
 }
 
@@ -81,8 +83,7 @@ $sizes: map-get($fallback-variables, "sizes");
 @mixin button {
   @extend %button;
 
-  // filled is the default
-  :host(:not(#{$outlined})) & {
+  :host(#{$fill}) & {
     border: 0 none;
     background-color: var(--oai-color-base,
         map-get($colors, "base"));
@@ -110,7 +111,7 @@ $sizes: map-get($fallback-variables, "sizes");
 
   }
 
-  :host(#{$outlined}) & {
+  :host(#{$outline}) & {
     color: var(--oai-color-base,
         map-get($colors, "base"));
     background-color: transparent;
@@ -128,10 +129,6 @@ $sizes: map-get($fallback-variables, "sizes");
           map-get($colors, "contrast"));
     }
 
-    // &:not(:disabled):hover {
-    //   background-color: #{$bgColor};
-    //   color: var(--oai-color-contrast);
-    // }
 
     &:focus,
     &:not(:disabled):hover {
@@ -149,4 +146,27 @@ $sizes: map-get($fallback-variables, "sizes");
     }
 
   }
+
+  // @include nagateMultiSelectors(':host &', ('.temp1')) {
+  //   border: 7px solid forestgreen !important;
+  // }
+
+  :host(#{$clear}) &,
+  // DEFAULT TO CLEAR
+  // NAGATE OTHER SHAPES
+  :host(:not(#{$fill}):not(#{$outline})) & {
+    color: var(--oai-color-base,
+        map-get($colors, "base"));
+    background-color: transparent;
+    border: 0 none;
+
+    &:not(:disabled) {
+
+      &:hover {
+        background-color: var(--oai-color-loose,
+            map-get($colors, "loose"));
+      }
+    }
+  }
+
 }

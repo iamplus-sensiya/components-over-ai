@@ -3,6 +3,10 @@ import {
     Event, EventEmitter, Method, Listen
 } from '@stencil/core';
 
+interface CustomEventDetail {
+    slot: string;
+    payload?: any;
+}
 
 @Component({
     tag: 'oai-drawer-stack',
@@ -31,8 +35,8 @@ export class OAIDrawersStack {
     }
 
     @Event() drawerPopped!: EventEmitter;
-    drawerPoppedHandler(details: { payload: any }) {
-        this.drawerPopped.emit(details);
+    drawerPoppedHandler(detail: CustomEventDetail) {
+        this.drawerPopped.emit(detail);
     }
 
     @Method()
@@ -54,15 +58,14 @@ export class OAIDrawersStack {
         if (backdropItem) { backdropItem.style.animationName = 'hide'; }
 
         await new Promise(resolve => item.addEventListener('animationend', resolve, { capture: false, once: true }));
-        // const poppedDrawer = this.stack[this.stack.length - 1];
-        // this.stack = this.stack.slice(0, this.stack.length - 1);
+
         item.style.animationName = '';
         item.remove();
         backdropItem && backdropItem.remove();
 
         this.drawerPoppedHandler({
-            payload
-            // drawer: poppedDrawer
+            payload,
+            slot: item.getAttribute('slot') || ''
         });
 
     }

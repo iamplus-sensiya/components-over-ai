@@ -1,5 +1,6 @@
 // selects 
 @mixin nagateMultiSelectors($selector, $list) {
+
   $selector: $selector+'(';
 
   @each $item in $list {
@@ -11,6 +12,7 @@
   #{$selector} {
     @content;
   }
+
 }
 
 @mixin ripple() {

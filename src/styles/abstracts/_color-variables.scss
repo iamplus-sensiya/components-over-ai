@@ -32,10 +32,11 @@ $contrast-dark: map-get($main-palette-colors, 'dark');
   $color in $main-palette-colors {
     #{$color-prefix}-#{$color-name}: #{$color};
     #{$color-prefix}-#{$color-name}-contrast: #{set-contrast-color($color, $contrast-light, $contrast-dark, 91)};
-    #{$color-prefix}-#{$color-name}-tint: #{mix(white, $color, 12%)};
-    #{$color-prefix}-#{$color-name}-shade: #{mix(black, $color, 12%)};
-    // #{$color-prefix}-#{$color-name}-light: #{mix(white, $color, 18%)};
-    #{$color-prefix}-#{$color-name}-dim: #{mix(white, $color, 62%)};
+    #{$color-prefix}-#{$color-name}-tint: #{mix($contrast-light, $color, 12%)};
+    #{$color-prefix}-#{$color-name}-shade: #{mix($contrast-dark, $color, 12%)};
+    #{$color-prefix}-#{$color-name}-dim: #{mix($contrast-light, $color, 62%)};
+    // #{$color-prefix}-#{$color-name}-light: rgba($color, 0.2);
+    #{$color-prefix}-#{$color-name}-loose: #{lighten(mix(set-contrast-color($color, $contrast-light, $contrast-dark, 91), $color, 50%), 20% ) };
   }
 
 }
