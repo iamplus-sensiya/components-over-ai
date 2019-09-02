@@ -2,7 +2,12 @@
 
 $gutter-size: calc(var(--size-gutter) / 2);
 
-:host {
+:any-link {
+  text-decoration: none;
+}
+
+button,
+a {
   @include ripple;
   @include padding(#{$gutter-size}, #{$gutter-size}, #{$gutter-size}, #{$gutter-size});
   cursor: pointer;
@@ -15,10 +20,6 @@ $gutter-size: calc(var(--size-gutter) / 2);
   place-content: center;
   align-items: flex-end;
   user-select: none;
-
-
-
-
   text-align: center;
   transition: .2s color;
   will-change: color;
@@ -27,8 +28,10 @@ $gutter-size: calc(var(--size-gutter) / 2);
   outline: none;
   overflow: hidden;
   user-select: none;
-
-
+  background-color: transparent;
+  border: 0 none;
+  font: inherit;
+  color: inherit;
 
   &::after {
     content: '';
@@ -44,13 +47,14 @@ $gutter-size: calc(var(--size-gutter) / 2);
     left: 50%;
     offset-inline-start: 0;
   }
-}
 
-:host([selected="true"]) {
-  color: var(--oai-color-selected, currentColor);
+  :host([selected="true"]) & {
+    color: var(--oai-color-selected, currentColor);
 
-  &::after {
-    transform: translateX(-50%) scaleX(1);
+    &::after {
+      transform: translateX(-50%) scaleX(1);
+    }
+
   }
 }
 
