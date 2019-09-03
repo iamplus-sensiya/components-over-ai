@@ -160,6 +160,10 @@ $sizes: map-get($fallback-variables, "sizes");
     background-color: transparent;
     border: 0 none;
 
+    &:not(:hover):not(:focus) {
+      text-decoration: underline;
+    }
+
     &:not(:disabled) {
 
       &:hover {
