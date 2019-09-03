@@ -167,6 +167,15 @@ $sizes: map-get($fallback-variables, "sizes");
             map-get($colors, "loose"));
       }
     }
+
+    &:disabled {
+      color: var(--oai-color-dim,
+          map-get($colors, "dim"));
+    }
+
   }
 
+  &:not(:disabled) {
+    @include ripple;
+  }
 }

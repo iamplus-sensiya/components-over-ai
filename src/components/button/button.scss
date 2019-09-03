@@ -19,10 +19,6 @@ a {
   @include button;
 }
 
-button {
-  @include ripple;
-}
-
 :any-link {
   text-decoration: none;
 }

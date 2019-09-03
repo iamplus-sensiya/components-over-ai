@@ -36,7 +36,9 @@ $contrast-dark: map-get($main-palette-colors, 'dark');
     #{$color-prefix}-#{$color-name}-shade: #{mix($contrast-dark, $color, 12%)};
     #{$color-prefix}-#{$color-name}-dim: #{mix($contrast-light, $color, 62%)};
     // #{$color-prefix}-#{$color-name}-light: rgba($color, 0.2);
-    #{$color-prefix}-#{$color-name}-loose: #{lighten(mix(set-contrast-color($color, $contrast-light, $contrast-dark, 91), $color, 50%), 20% ) };
+    // #{$color-prefix}-#{$color-name}-loose: #{lighten(mix(set-contrast-color($color, $contrast-light, $contrast-dark, 91), $color, 50%), 20% ) };
+    // #{$color-prefix}-#{$color-name}-loose: #{ lighten( mix(#dbdbdb, mix($contrast-light, $color, 62%), 70%), 15% )};
+    #{$color-prefix}-#{$color-name}-loose: #{ mix( mix(set-contrast-color($color, $contrast-light, $contrast-dark, 91), $color, 95%), black, 97% )};
   }
 
 }
