@@ -1,18 +1,23 @@
 /**
  * @prop --button-size-inline: Minimum inline size (width) of the button
  */
-:host([minsize='xs'i]) {
+:host([expand='xs'i]) {
   --button-size-inline: 10rem;
 }
 
-:host([minsize='sm'i]) {
+:host([expand='sm'i]) {
   --button-size-inline: 14rem;
 }
 
-:host([minsize='lg'i]) {
+:host([expand='lg'i]) {
   --button-size-inline: 20rem;
 }
 
-:host([minsize='xl'i]) {
+:host([expand='xl'i]) {
   --button-size-inline: 25rem;
+}
+
+:host([expand='block'i]) {
+  display: block;
+  --button-size-inline: 100%;
 }

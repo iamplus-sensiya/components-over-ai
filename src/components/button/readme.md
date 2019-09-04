@@ -19,6 +19,7 @@ name: OAI Button
 | `rel`           | `rel`            | Specifies the relationship of the target object to the link object. The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).                                                                                                    | `string \| undefined`                  | `undefined` |
 | `state`         | `state`          | (optional) The minimum size of the button (xs / sm / lg / xl) (optional) The shape of the button (default = clear / fill / outline (stroked)) (optional) The state of the button (disabled / pending / undefined = default)                                                               | `"disabled" \| "pending" \| undefined` | `undefined` |
 | `target`        | `target`         | Specifies where to display the linked URL. Only applies when an `href` is provided. Special keywords: `"_blank"`, `"_self"`, `"_parent"`, `"_top"`.                                                                                                                                       | `string \| undefined`                  | `undefined` |
+| `type`          | `type`           | The type of the button.                                                                                                                                                                                                                                                                   | `"button" \| "reset" \| "submit"`      | `'button'`  |
 
 
 ## CSS Custom Properties

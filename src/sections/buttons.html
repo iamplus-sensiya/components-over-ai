@@ -32,12 +32,13 @@
   </oai-buttons>
 
 
-  <select name="minSize">
+  <select name="expand">
     <option value="" selected>Default Min Size</option>
     <option value="xs">XS</option>
     <option value="sm">SM</option>
     <option value="lg">LG</option>
     <option value="xl">XL</option>
+    <option value="block">Block</option>
   </select>
 
   <select name="color">
@@ -82,7 +83,7 @@
     buttons.forEach(b => b.setAttribute(name, value));
   };
 
-  ['minSize', 'color', 'state', 'shape'].forEach(attr =>
+  ['expand', 'color', 'state', 'shape'].forEach(attr =>
     document.getElementsByName(attr)[0]
     .addEventListener('change', setAttr)
   );
