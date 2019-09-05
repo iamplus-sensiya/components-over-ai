@@ -31,16 +31,35 @@
   // flex-direction: row;
   // align-items: stretch;
   // justify-content: space-between;
+
+
+
+
+
+  // position: relative;
+  // inline-size: 100%;
+  // z-index: 10;
+  // contain: content;
+  // box-sizing: border-box;
+  // overflow: hidden;
+  // display: grid;
+  // grid-template-columns: auto auto 1fr auto auto;
+  // grid-gap: var(--size-gutter);
+  // align-items: center;
+
+
+
+  display: flex;
   position: relative;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
   inline-size: 100%;
+  // min-height: var(--min-height);
   contain: content;
   z-index: 10;
   box-sizing: border-box;
   overflow: hidden;
-  display: grid;
-  grid-template-columns: auto auto 1fr auto auto;
-  grid-gap: var(--size-gutter);
-  align-items: center;
 }
 
 .toolbar-content {
