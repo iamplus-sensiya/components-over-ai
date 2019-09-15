@@ -1,73 +1,50 @@
-![Built With Stencil](https://img.shields.io/badge/-Built%20With%20Stencil-16161d.svg?logo=data%3Aimage%2Fsvg%2Bxml%3Bbase64%2CPD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE5LjIuMSwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IgoJIHZpZXdCb3g9IjAgMCA1MTIgNTEyIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA1MTIgNTEyOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI%2BCjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI%2BCgkuc3Qwe2ZpbGw6I0ZGRkZGRjt9Cjwvc3R5bGU%2BCjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik00MjQuNywzNzMuOWMwLDM3LjYtNTUuMSw2OC42LTkyLjcsNjguNkgxODAuNGMtMzcuOSwwLTkyLjctMzAuNy05Mi43LTY4LjZ2LTMuNmgzMzYuOVYzNzMuOXoiLz4KPHBhdGggY2xhc3M9InN0MCIgZD0iTTQyNC43LDI5Mi4xSDE4MC40Yy0zNy42LDAtOTIuNy0zMS05Mi43LTY4LjZ2LTMuNkgzMzJjMzcuNiwwLDkyLjcsMzEsOTIuNyw2OC42VjI5Mi4xeiIvPgo8cGF0aCBjbGFzcz0ic3QwIiBkPSJNNDI0LjcsMTQxLjdIODcuN3YtMy42YzAtMzcuNiw1NC44LTY4LjYsOTIuNy02OC42SDMzMmMzNy45LDAsOTIuNywzMC43LDkyLjcsNjguNlYxNDEuN3oiLz4KPC9zdmc%2BCg%3D%3D&colorA=16161d&style=flat-square)
+# Over.ai
 
-# Stencil Component Starter
+[Over.ai](https://over.aiframework.com/) is the open-source mobile app development framework that makes it easy to
+build top quality native and progressive web apps with web technologies.
 
-This is a starter project for building a standalone Web Component using Stencil.
-
-Stencil is also great for building entire apps. For that, use the [stencil-app-starter](https://github.com/ionic-team/stencil-app-starter) instead.
-
-# Stencil
-
-Stencil is a compiler for building fast web apps using Web Components.
-
-Stencil combines the best concepts of the most popular frontend frameworks into a compile-time rather than run-time tool.  Stencil takes TypeScript, JSX, a tiny virtual DOM layer, efficient one-way data binding, an asynchronous rendering pipeline (similar to React Fiber), and lazy-loading out of the box, and generates 100% standards-based Web Components that run in any browser supporting the Custom Elements v1 spec.
-
-Stencil components are just Web Components, so they work in any major framework or with no framework at all.
-
-## Getting Started
-
-To start building a new web component using Stencil, clone this repo to a new directory:
-
-```bash
-git clone https://github.com/ionic-team/stencil-component-starter.git my-component
-cd my-component
-git remote rm origin
-```
-
-and run:
-
-```bash
-npm install
-npm start
-```
-
-To build the component for production, run:
-
-```bash
-npm run build
-```
-
-To run the unit tests for the components, run:
-
-```bash
-npm test
-```
-
-Need help? Check out our docs [here](https://stenciljs.com/docs/my-first-component).
+Over.ai is based on [Web Components](https://www.webcomponents.org/introduction) and comes with many significant performance, usability, and feature improvements over the past versions.
 
 
-## Naming Components
+### Packages
 
-When creating new component tags, we recommend _not_ using `stencil` in the component name (ex: `<stencil-datepicker>`). This is because the generated component has little to nothing to do with Stencil; it's just a web component!
+| Project | Package | Version | Links |
+| ------- | ------- | ------- |:-----:|
+| **Core** | [`@over.ai/core`](https://www.npmjs.com/package/@over.ai/core) | [![version](https://img.shields.io/npm/v/@over.ai/core/latest.svg)](https://www.npmjs.com/package/@over.ai/core) | [`README.md`](core/README.md)
+| **Angular** | [`@over.ai/angular`](https://www.npmjs.com/package/@over.ai/angular) | [![version](https://img.shields.io/npm/v/@over.ai/angular/latest.svg)](https://www.npmjs.com/package/@over.ai/angular) | [`README.md`](angular/README.md)
+| **Vue** | [`@over.ai/vue`](https://www.npmjs.com/package/@over.ai/vue) | [![version](https://img.shields.io/npm/v/@over.ai/vue/latest.svg)](https://www.npmjs.com/package/@over.ai/vue) | [`README.md`](vue/README.md)
+| **React** | [`@over.ai/react`](https://www.npmjs.com/package/@over.ai/react) | [![version](https://img.shields.io/npm/v/@over.ai/react/latest.svg)](https://www.npmjs.com/package/@over.ai/react) | [`README.md`](packages/react/README.md)
 
-Instead, use a prefix that fits your company or any name for a group of related components. For example, all of the Ionic generated web components use the prefix `ion`.
+Looking for the `over.ai-angular` package? Over.ai 3 has been moved to the [`over.ai-v3`](https://github.com/over.ai-team/over.ai-v3) repo. See [Earlier Versions](#earlier-versions).
+
+### Getting Started
+
+Start a new project by following our quick [Getting Started guide](https://over.aiframework.com/getting-started/).
+We would love to hear from you! If you have any feedback or run into issues using our framework, please file
+an [issue](https://github.com/over.ai-team/over.ai/issues/new) on this repository.
 
 
-## Using this component
+### Contributing
 
-### Script tag
+Thanks for your interest in contributing! Read up on our guidelines for
+[contributing](https://github.com/over.ai-team/over.ai/blob/master/.github/CONTRIBUTING.md)
+and then look through our issues with a [help wanted](https://github.com/over.ai-team/over.ai/issues?q=is%3Aopen+is%3Aissue+label%3A%22help+wanted%22)
+label.
 
-- [Publish to NPM](https://docs.npmjs.com/getting-started/publishing-npm-packages)
-- Put a script tag similar to this `<script src='https://unpkg.com/my-component@0.0.1/dist/mycomponent.js'></script>` in the head of your index.html
-- Then you can use the element anywhere in your template, JSX, html etc
 
-### Node Modules
-- Run `npm install my-component --save`
-- Put a script tag similar to this `<script src='node_modules/my-component/dist/mycomponent.js'></script>` in the head of your index.html
-- Then you can use the element anywhere in your template, JSX, html etc
+### Examples
 
-### In a stencil-starter app
-- Run `npm install my-component --save`
-- Add an import to the npm packages `import my-component;`
-- Then you can use the element anywhere in your template, JSX, html etc
-# component-over-ai
+The [Over.ai Conference App](https://github.com/over.ai-team/over.ai-conference-app) is a full featured Over.ai app.
+It is the perfect starting point for learning and building your own app.
+
+
+### Future Goals
+
+As Over.ai components migrate to the web component standard, a goal of ours is to have Over.ai components easily work within all of the popular frameworks.
+
+### Earlier Versions
+
+The source code for earlier versions of the Over.ai Framework may exist in other repositories. Please open issues and pull requests in their respective repositories.
+
+* **Over.ai 2/3**: Moved to [`over.ai-team/over.ai-v3`](https://github.com/over.ai-team/over.ai-v3)
+* **Over.ai 1**: Moved to [`over.ai-team/over.ai-v1`](https://github.com/over.ai-team/over.ai-v1)
