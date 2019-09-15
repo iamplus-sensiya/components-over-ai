@@ -1,7 +1,7 @@
 # Over.ai
 
-[Over.ai](https://over.aiframework.com/) is the open-source mobile app development framework that makes it easy to
-build top quality native and progressive web apps with web technologies.
+[Over.ai](https://over.ai/) is the open-source web app development framework that makes it easy to
+build top quality progressive web apps with web technologies.
 
 Over.ai is based on [Web Components](https://www.webcomponents.org/introduction) and comes with many significant performance, usability, and feature improvements over the past versions.
 
@@ -14,8 +14,6 @@ Over.ai is based on [Web Components](https://www.webcomponents.org/introduction)
 | **Angular** | [`@over.ai/angular`](https://www.npmjs.com/package/@over.ai/angular) | [![version](https://img.shields.io/npm/v/@over.ai/angular/latest.svg)](https://www.npmjs.com/package/@over.ai/angular) | [`README.md`](angular/README.md)
 | **Vue** | [`@over.ai/vue`](https://www.npmjs.com/package/@over.ai/vue) | [![version](https://img.shields.io/npm/v/@over.ai/vue/latest.svg)](https://www.npmjs.com/package/@over.ai/vue) | [`README.md`](vue/README.md)
 | **React** | [`@over.ai/react`](https://www.npmjs.com/package/@over.ai/react) | [![version](https://img.shields.io/npm/v/@over.ai/react/latest.svg)](https://www.npmjs.com/package/@over.ai/react) | [`README.md`](packages/react/README.md)
-
-Looking for the `over.ai-angular` package? Over.ai 3 has been moved to the [`over.ai-v3`](https://github.com/over.ai-team/over.ai-v3) repo. See [Earlier Versions](#earlier-versions).
 
 ### Getting Started
 
@@ -41,10 +39,3 @@ It is the perfect starting point for learning and building your own app.
 ### Future Goals
 
 As Over.ai components migrate to the web component standard, a goal of ours is to have Over.ai components easily work within all of the popular frameworks.
-
-### Earlier Versions
-
-The source code for earlier versions of the Over.ai Framework may exist in other repositories. Please open issues and pull requests in their respective repositories.
-
-* **Over.ai 2/3**: Moved to [`over.ai-team/over.ai-v3`](https://github.com/over.ai-team/over.ai-v3)
-* **Over.ai 1**: Moved to [`over.ai-team/over.ai-v1`](https://github.com/over.ai-team/over.ai-v1)
