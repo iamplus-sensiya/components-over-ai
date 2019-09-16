@@ -4,9 +4,9 @@ This is the mono-repo for Over.ai's design system, Volta. **It is in active deve
 
 ## About
 
-The term "design system" might bring to mind a pristine library of interface elements. Larva is not this kind of design system. It is more like a suite of tools that can be used to rapidly _build_ interface elements. The nature of serving an ever-growing number of brands with unique identities and rapidly changing business requirements necessitate this structure.
+The term "design system" might bring to mind a pristine library of interface elements. Over.ai is not this kind of design system. It is more like a suite of tools that can be used to rapidly _build_ interface elements. The nature of serving an ever-growing number of brands with unique identities and rapidly changing business requirements necessitate this structure.
 
-Larva's architecture is designed to accommodate the unpredictable nature of the publishing industry, to serve many different brands and visual styles, and to fit in with PMC's core WordPress technology by providing tools that layer in a component API for PHP templating.
+Over.ai's architecture is designed to accommodate the unpredictable nature of the publishing industry, to serve many different brands and visual styles, and to fit in with PMC's core WordPress technology by providing tools that layer in a component API for PHP templating.
 
 ### Packages
 
@@ -16,6 +16,13 @@ The packages are:
 * @over.ai/angular - Angular extension of the core component to deliver simple suite targeting Angular best patterns.
 * @over.ai/react - React extension of the core component to deliver simple suite targeting React best patterns.
 * @over.ai/vue - Vue extension of the core component to deliver simple suite targeting Vue best patterns.
+
+| Project | Package | Version | Links |
+| ------- | ------- | ------- |:-----:|
+| **Core** | [`@over.ai/core`](https://www.npmjs.com/package/@over.ai/core) | [![version](https://img.shields.io/npm/v/@over.ai/core/latest.svg)](https://www.npmjs.com/package/@over.ai/core) | [`README.md`](core/README.md)
+| **Angular** | [`@over.ai/angular`](https://www.npmjs.com/package/@over.ai/angular) | [![version](https://img.shields.io/npm/v/@over.ai/angular/latest.svg)](https://www.npmjs.com/package/@over.ai/angular) | [`README.md`](angular/README.md)
+| **Vue** | [`@over.ai/vue`](https://www.npmjs.com/package/@over.ai/vue) | [![version](https://img.shields.io/npm/v/@over.ai/vue/latest.svg)](https://www.npmjs.com/package/@over.ai/vue) | [`README.md`](vue/README.md)
+| **React** | [`@over.ai/react`](https://www.npmjs.com/package/@over.ai/react) | [![version](https://img.shields.io/npm/v/@over.ai/react/latest.svg)](https://www.npmjs.com/package/@over.ai/react) | [`README.md`](packages/react/README.md)
 
 Possible future packages:
 
@@ -34,20 +41,11 @@ build top quality progressive web apps with web technologies.
 Over.ai is based on [Web Components](https://www.webcomponents.org/introduction) and comes with many significant performance, usability, and feature improvements over the past versions.
 
 
-### Packages
-
-| Project | Package | Version | Links |
-| ------- | ------- | ------- |:-----:|
-| **Core** | [`@over.ai/core`](https://www.npmjs.com/package/@over.ai/core) | [![version](https://img.shields.io/npm/v/@over.ai/core/latest.svg)](https://www.npmjs.com/package/@over.ai/core) | [`README.md`](core/README.md)
-| **Angular** | [`@over.ai/angular`](https://www.npmjs.com/package/@over.ai/angular) | [![version](https://img.shields.io/npm/v/@over.ai/angular/latest.svg)](https://www.npmjs.com/package/@over.ai/angular) | [`README.md`](angular/README.md)
-| **Vue** | [`@over.ai/vue`](https://www.npmjs.com/package/@over.ai/vue) | [![version](https://img.shields.io/npm/v/@over.ai/vue/latest.svg)](https://www.npmjs.com/package/@over.ai/vue) | [`README.md`](vue/README.md)
-| **React** | [`@over.ai/react`](https://www.npmjs.com/package/@over.ai/react) | [![version](https://img.shields.io/npm/v/@over.ai/react/latest.svg)](https://www.npmjs.com/package/@over.ai/react) | [`README.md`](packages/react/README.md)
-
 ### Getting Started
 
-Start a new project by following our quick [Getting Started guide](https://over.aiframework.com/getting-started/).
+Start a new project by following our quick [Getting Started guide](https://naughty-williams-443748.netlify.com/).
 We would love to hear from you! If you have any feedback or run into issues using our framework, please file
-an [issue](https://github.com/over.ai-team/over.ai/issues/new) on this repository.
+an [issue](https://github.com/iamplus-sensiya/components-over-ai/issues/new) on this repository.
 
 
 ### Contributing
@@ -60,7 +58,7 @@ label.
 
 ### Examples
 
-The [Over.ai Conference App](https://github.com/over.ai-team/over.ai-conference-app) is a full featured Over.ai app.
+The [Over.ai Example App](https://naughty-williams-443748.netlify.com/) is a featured Over.ai app.
 It is the perfect starting point for learning and building your own app.
 
 
