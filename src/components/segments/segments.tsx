@@ -1,7 +1,7 @@
 import { Component, h, Prop, Listen, Element, Event, EventEmitter } from '@stencil/core';
 import { BindingColors } from './color-stack';
 import { Expand } from './decorators';
-import { unWrap, bindElem, segmentsRepresentationFromDomElement } from './utils';
+import { unWrap, bindElem } from './utils';
 import { Segment } from './segment.model';
 
 const SEGMENTS = 'segments';
@@ -22,7 +22,7 @@ export class OAISegments {
 
     @Listen('select')
     selectHandler(event: CustomEvent) {
-        // console.log('select', event);
+        console.log('select', event);
     }
 
     colors = new BindingColors();

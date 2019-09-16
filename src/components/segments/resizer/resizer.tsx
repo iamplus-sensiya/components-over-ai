@@ -70,6 +70,7 @@ export class OAIResizer {
         return (e: MouseEvent) => {
             const rect = this.el.getBoundingClientRect();
             const x = e.clientX - rect.left;
+            console.log(rect, x)
 
             const selection = this.selection;
 
