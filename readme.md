@@ -1,5 +1,33 @@
 # Over.ai
 
+This is the mono-repo for Over.ai's design system, Volta. **It is in active development and should not be used.** When it is more mature, Volta's packages can used on any web project and has most popular frameworks suites.
+
+## About
+
+The term "design system" might bring to mind a pristine library of interface elements. Larva is not this kind of design system. It is more like a suite of tools that can be used to rapidly _build_ interface elements. The nature of serving an ever-growing number of brands with unique identities and rapidly changing business requirements necessitate this structure.
+
+Larva's architecture is designed to accommodate the unpredictable nature of the publishing industry, to serve many different brands and visual styles, and to fit in with PMC's core WordPress technology by providing tools that layer in a component API for PHP templating.
+
+### Packages
+
+The packages are:
+
+* @over.ai/core - Provides a server for viewing patterns and scripts for working with patterns.
+* @over.ai/angular - Angular extension of the core component to deliver simple suite targeting Angular best patterns.
+* @over.ai/react - React extension of the core component to deliver simple suite targeting React best patterns.
+* @over.ai/vue - Vue extension of the core component to deliver simple suite targeting Vue best patterns.
+
+Possible future packages:
+
+* @over.ai/fontloader - JS for interactivity and utilities for tasks like font loading. 
+
+## Usage
+
+Consult each package's readme for a description and directions for use.
+
+
+# Over.ai
+
 [Over.ai](https://over.ai/) is the open-source web app development framework that makes it easy to
 build top quality progressive web apps with web technologies.
 
