@@ -22,7 +22,7 @@ export class OAISegments {
 
     @Listen('select')
     selectHandler(event: CustomEvent) {
-        console.log('select', event);
+        // console.log('select', event);
     }
 
     colors = new BindingColors();
@@ -39,7 +39,6 @@ export class OAISegments {
 
     @Expand()
     textSelectedHandler(range: Range, selection: Selection) {
-        console.log(range, selection)
         this.textSelected.emit({
             bindSelectedText: this.segmentBindingFnFactory(range, selection)
         });
@@ -74,11 +73,11 @@ export class OAISegments {
         // concat text nodes within parent element
         this.el.normalize();
 
-        const segmentsElem = this.el.shadowRoot!.querySelector(`.${SEGMENTS}`) as HTMLElement;
-        // while (segmentsElem.firstChild) {
-        //     segmentsElem.removeChild(segmentsElem.firstChild);
-        // }
-        console.log(segmentsRepresentationFromDomElement(segmentsElem));
+        // const segmentsElem = this.el.shadowRoot!.querySelector(`.${SEGMENTS}`) as HTMLElement;
+        // // while (segmentsElem.firstChild) {
+        // //     segmentsElem.removeChild(segmentsElem.firstChild);
+        // // }
+        // console.log(segmentsRepresentationFromDomElement(segmentsElem));
 
     }
 

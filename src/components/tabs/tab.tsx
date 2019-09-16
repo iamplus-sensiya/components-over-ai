@@ -45,7 +45,6 @@ export class OAITab {
         const { target } = e;
         if (target instanceof HTMLElement) {
             const { parentElement } = target;
-            console.log(parentElement)
             const selected = parentElement && parentElement.querySelectorAll(`[${SELECTED}="true"]`);
             selected && selected.forEach(sl => sl.removeAttribute(SELECTED));
             target.setAttribute(SELECTED, 'true');

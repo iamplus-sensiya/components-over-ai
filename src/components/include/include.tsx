@@ -11,7 +11,6 @@ export class OAIInclude {
     html!: string;
 
     loaded() {
-        console.log(this);
         // this.before((this.contentDocument.body || this.contentDocument).children[0]); this.remove()
     }
 

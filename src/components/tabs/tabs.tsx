@@ -17,7 +17,6 @@ export class OAITabs {
             this.el.firstElementChild instanceof HTMLElement &&
             this.el.firstElementChild.setAttribute(SELECTED, 'true');
 
-        console.log(this.el.firstElementChild)
     }
 
     render() {

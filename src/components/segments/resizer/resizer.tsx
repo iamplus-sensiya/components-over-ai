@@ -52,7 +52,6 @@ export class OAIResizer {
     }
 
     removeMouseEvents() {
-        console.log('removed mouse events!')
         this.container.onmousemove = null;
         this.container.onmouseup = null;
         this.container.onmouseleave = null;
@@ -65,14 +64,12 @@ export class OAIResizer {
         //     if (!selection) { return; }
         //     const range = selection.getRangeAt(0);
 
-        //     console.log(range.intersectsNode(this.el.querySelector('.selection')!))
         // }
         // let x = 0;
 
         return (e: MouseEvent) => {
             const rect = this.el.getBoundingClientRect();
             const x = e.clientX - rect.left;
-            console.log(rect, x)
 
             const selection = this.selection;
 

@@ -55,7 +55,6 @@ export class OAIButton {
     // adds ripple effect
     // @Listen('click', { capture: true })
     // handleClick(ev: MouseEvent | TouchEvent) {
-    //     console.log(this.el)
     //     const event = 'touches' in ev ? ev.touches.item(0) : ev;
     //     if (event) {
     //         const r = this.el.getBoundingClientRect(), d = Math.sqrt(Math.pow(r.width, 2) + Math.pow(r.height, 2)) * 2;

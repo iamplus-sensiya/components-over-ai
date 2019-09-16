@@ -8,7 +8,7 @@ export class OAIRipple {
 
     // @Listen('click', { target: 'parent' })
     handleClick(ev: MouseEvent | TouchEvent) {
-        console.log('RIPPLE CLICKED')
+        // console.log('RIPPLE CLICKED')
         const event = 'touches' in ev ? ev.touches.item(0) : ev;
         if (this.el instanceof HTMLElement && event) {
             const r = this.el.getBoundingClientRect(), d = Math.sqrt(Math.pow(r.width, 2) + Math.pow(r.height, 2)) * 2;

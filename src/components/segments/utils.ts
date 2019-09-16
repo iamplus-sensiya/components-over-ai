@@ -40,7 +40,6 @@ export function bindElem(text: string = '', value: string, color: string) {
 export function segmentsRepresentationFromDomElement(el: HTMLElement): Segment[] {
 
     const nodes = el && el.childNodes && Array.from(el.childNodes) || [];
-    console.log(nodes)
     const ObjectRepresentation = nodes
         .filter(({ nodeType, nodeName, textContent }) =>
             typeof textContent == 'string' &&
@@ -53,7 +52,6 @@ export function segmentsRepresentationFromDomElement(el: HTMLElement): Segment[]
 
     // .map(({ textContent: text }) => ({ text }))
 
-    // console.log(ObjectRepresentation)
 
     // .reduce((a, b) => a + b.textContent, '')
     // nodes&& [...nodes].map(node => { text: node.textContent })
